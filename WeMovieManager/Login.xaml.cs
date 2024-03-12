@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,9 @@ namespace WeMovieManager
         public Login()
         {
             InitializeComponent();
+            WeMovieEntities db = new WeMovieEntities();
+            var result = from m in db.Managers where m.username.Equals("vuanhkhoa007") select new { Username = m.username, Password = m.password };
+            Trace.WriteLine(result.ToList()[0]);
             MyDatePicker.PreviewTextInput += DatePicker_PreviewTextInput;
         }
 
