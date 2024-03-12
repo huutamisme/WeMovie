@@ -250,7 +250,7 @@ namespace LoginForm
                 Rectangle overlayRectangle = FindVisualChild<Rectangle>(filmGrid, "OverlayRectangle");
                 TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
                 StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
-                TextBlock filmGenreText = FindVisualChild<TextBlock>(filmGrid, "FilmGenreText");
+                StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
                 TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
 
                 Debug.WriteLine("test " + filmTitle);
@@ -290,7 +290,7 @@ namespace LoginForm
                 Rectangle overlayRectangle = FindVisualChild<Rectangle>(filmGrid, "OverlayRectangle");
                 TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
                 StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
-                TextBlock filmGenreText = FindVisualChild<TextBlock>(filmGrid, "FilmGenreText");
+                StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
                 TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
 
                 // Use DoubleAnimation to animate the opacity property

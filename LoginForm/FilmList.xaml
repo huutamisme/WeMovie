@@ -12,6 +12,7 @@
         <BitmapImage x:Key="BackImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/back.png"/>
         <BitmapImage x:Key="NextImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/next.png"/>
         <BitmapImage x:Key="DurationImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/clock.png"/>
+        <BitmapImage x:Key="GenreImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/tag.png"/>
         <!-- Add more resources if needed -->
     </mah:MetroWindow.Resources>
 
@@ -24,7 +25,7 @@
         </ScrollViewer.Background>
         <Grid>
             <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center">
+                <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
                         PHIM BOM TẤN
                 </TextBlock>
                 <!-- Top Films with Buttons -->
@@ -46,14 +47,16 @@
                                         <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
                                         <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                            <StackPanel HorizontalAlignment="Center">
-                                                <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-                                            </StackPanel>
-                                            <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                       FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                            <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
                                                 <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
-                                                <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                                                <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </StackPanel>
-                                            <TextBlock x:Name="FilmGenreText" Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                                            <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Grid>
                                 </StackPanel>
@@ -91,7 +94,7 @@
 
                 <StackPanel Height="50"></StackPanel>
 
-                <TextBlock FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center">
+                <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
                         PHIM GIỜ VÀNG
                 </TextBlock>
                 <!-- Bottom Films with Buttons -->
@@ -113,9 +116,16 @@
                                         <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
                                         <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                            <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-                                            <TextBlock x:Name="FilmDurationText" Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-                                            <TextBlock x:Name="FilmGenreText" Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                                            <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                       FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                            <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Grid>
                                 </StackPanel>
