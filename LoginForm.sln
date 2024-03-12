@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginForm", "LoginForm\LoginForm.csproj", "{AC825BA9-C3C9-4688-93D6-6EF4A6013D67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeMovieManager", "WeMovieManager\WeMovieManager.csproj", "{ACE61511-42EB-4F72-B1C5-EAB783EE0F81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC825BA9-C3C9-4688-93D6-6EF4A6013D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC825BA9-C3C9-4688-93D6-6EF4A6013D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC825BA9-C3C9-4688-93D6-6EF4A6013D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC825BA9-C3C9-4688-93D6-6EF4A6013D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE61511-42EB-4F72-B1C5-EAB783EE0F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE61511-42EB-4F72-B1C5-EAB783EE0F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE61511-42EB-4F72-B1C5-EAB783EE0F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE61511-42EB-4F72-B1C5-EAB783EE0F81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFA91A72-3872-4EBE-A265-A54AF6D1F2CA}
+	EndGlobalSection
+EndGlobal

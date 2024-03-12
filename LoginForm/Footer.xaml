@@ -1,0 +1,107 @@
+﻿<Controls:MetroWindow x:Class="LoginForm.Footer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginForm"
+        mc:Ignorable="d"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Footer" Height="650" Width="1080">
+    <Controls:MetroWindow.Resources>
+        <LinearGradientBrush x:Key="FooterGradientBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9C27B0" Offset="0.2"/>
+            <GradientStop Color="#2196F3" Offset="1"/>
+        </LinearGradientBrush>
+    </Controls:MetroWindow.Resources>
+    <StackPanel Background="{StaticResource FooterGradientBrush}" Height="300">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images/logo.png" Height="100" Width="100"/>
+                    <TextBlock Text="WeMovie"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       FontSize="50"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+                </StackPanel>
+
+                <TextBlock Text="Cinema Magic: Where Dreams Take Flight!"
+                       FontSize="15"
+                       Margin="20,0,0,0"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+                <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
+                <Span FontStyle="Italic" FontWeight="Bold" Foreground="Black">Utilizing Entity Framework with LINQ</Span>
+                </TextBlock>
+
+                <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
+                <Span  FontStyle="Italic" FontWeight="Bold" Foreground="Black">Powered by WPF and MVVM</Span>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                    Orientation="Vertical"
+                    Margin="40, 20, 0, 0">
+                <TextBlock Text="Contact Us"
+                       VerticalAlignment="Center"
+                       FontSize="50"
+                       FontWeight="Bold"
+                       Foreground="White" 
+                       HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <fa:IconImage Icon="Phone"
+                                    Height="40" Width="40"
+                                      Margin="10,0"/>
+                    <TextBlock Text="0-188-421-631"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <fa:IconImage Icon="MailBulk"
+                                    Height="40" Width="40"
+                                      Margin="10,0"/>
+                    <TextBlock Text="wemoviesupport@gmail.com"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <fa:IconImage Icon="Home"
+                              Height="40" Width="40"
+                              Margin="10,0"/>
+                    <TextBlock Text="227 Nguyen Van Cu, District 5, Ho Chi Minh city"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="2"
+                    Orientation="Vertical"
+                    Margin="40, 20, 0, 0">
+                <TextBlock Text="About Us"
+                        VerticalAlignment="Center"
+                        FontSize="50"
+                        FontWeight="Bold"
+                        Foreground="White" 
+                        HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                    <fa:IconImage Icon="UserAlt"
+                              Height="40" Width="40"
+                                Margin="10,0"/>
+                    <TextBlock Text="21127188 - DO MINH TRIET"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                    <fa:IconImage Icon="UserAlt"
+                              Height="40" Width="40"
+                                Margin="10,0"/>
+                    <TextBlock Text="21127421 - HO HUU TAM"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                    <fa:IconImage Icon="UserAlt"
+                              Height="40" Width="40"
+                                Margin="10,0"/>
+                    <TextBlock Text="21127631 - VU ANH KHOA"  Margin="10,10,0,0" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Controls:MetroWindow>
