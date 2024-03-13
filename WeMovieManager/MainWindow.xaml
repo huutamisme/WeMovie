@@ -10,7 +10,8 @@
         xmlns:uc="clr-namespace:WeMovieManager.User_Controls"
         Background="Transparent"
         Title="MainWindow" Height="650" Width="1080"
-        xmlns:views="clr-namespace:WeMovieManager.View">
+        xmlns:views="clr-namespace:WeMovieManager.View"
+        xmlns:vms="clr-namespace:WeMovieManager.ViewModels">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
@@ -53,7 +54,7 @@
                 <RadioButton Style="{StaticResource menuButton}"
                              Tag="{StaticResource color1}"
                              IsChecked="True"
-                             Command="{Binding ShowHomeViewCommand}">
+                             Command="{Binding DashboardNavigateCommand}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
@@ -61,7 +62,7 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                              Tag="{StaticResource color2}"
-                             Command="{Binding ShowCustomerViewCommand}">
+                             Command="{Binding FilmManagementNavigateCommand}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Film" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Movie" Style="{StaticResource menuButtonText}"/>
@@ -117,9 +118,22 @@
         </Border>
 
         <!--Main Section-->
+
         <Border Grid.Column="1" CornerRadius="10">
-            <views:FilmManagementView DataContext="{Binding CurrentViewModel}" />
+            <Grid>
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type vms:DashboardViewModel}">
+                    <views:DashboardView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:FilmsManagementViewModel}">
+                    <views:FilmManagementView />
+                </DataTemplate>
+            </Grid.Resources>
+
+                <ContentControl Content="{Binding CurrentViewModel}" />
+            </Grid>
         </Border>
+
     </Grid>
 </Window>
 

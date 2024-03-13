@@ -185,12 +185,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="User Controls\InfoCard.xaml.cs">
       <DependentUpon>InfoCard.xaml</DependentUpon>
     </Compile>
