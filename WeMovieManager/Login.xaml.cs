@@ -23,14 +23,16 @@ namespace WeMovieManager
     /// </summary>
     public partial class Login : MetroWindow
     {
-        public Login()
+        private Window mainWindow;
+
+        public Login(Window mainWindow)
         {
             InitializeComponent();
-            WeMovieEntities db = new WeMovieEntities();
-            var result = from m in db.Managers where m.username.Equals("vuanhkhoa007") select new { Username = m.username, Password = m.password };
-            Trace.WriteLine(result.ToList()[0]);
             MyDatePicker.PreviewTextInput += DatePicker_PreviewTextInput;
+            this.mainWindow = mainWindow;
+
         }
+
 
         private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -124,13 +126,25 @@ namespace WeMovieManager
             else
             {
                 //sign in successfully
-                txtBlockFLyout.Text = "Sign in successfully!";
-                SuccessFlyout.IsOpen = true;
-                SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
-                await Task.Delay(2000);
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                this.Close();
+                var username = emailBox.Text;
+                var password = passwordBox.Password;
+
+                var query = from user in App.WeMovieDb.Managers
+                            where user.username.Equals(username)
+                            select new { Username = user.username, Password = user.password };
+                var students = query.ToList();
+                if (students.Count == 1)
+                {
+                    if (students[0].Password.Equals(password))
+                    {
+                        txtBlockFLyout.Text = "Sign in successfully!";
+                        SuccessFlyout.IsOpen = true;
+                        SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
+                        await Task.Delay(1000);
+                        this.Close();
+                        mainWindow.Show();
+                    }
+                }
             }
         }
     }
