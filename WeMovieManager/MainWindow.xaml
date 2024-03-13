@@ -70,8 +70,7 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color3}"
-                              IsChecked="False"
-                              Command="{Binding ShowHomeViewCommand}">
+                              IsChecked="False">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Film" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Showtime" Style="{StaticResource menuButtonText}"/>
@@ -79,8 +78,7 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color4}"
-                              IsChecked="False"
-                              Command="{Binding ShowHomeViewCommand}">
+                              IsChecked="False">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Ticket" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Ticket" Style="{StaticResource menuButtonText}"/>
@@ -88,8 +86,7 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color5}"
-                              IsChecked="False"
-                              Command="{Binding ShowHomeViewCommand}">
+                              IsChecked="False">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Ticket" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Voucher" Style="{StaticResource menuButtonText}"/>
@@ -97,8 +94,7 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color7}"
-                              IsChecked="False"
-                              Command="{Binding ShowHomeViewCommand}">
+                              IsChecked="False">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="PieChart" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Report" Style="{StaticResource menuButtonText}"/>
@@ -107,7 +103,6 @@
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color9}"
                               IsChecked="False"
-                              Command="{Binding ShowHomeViewCommand}"
                               Click="LogoutButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}"/>
