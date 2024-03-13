@@ -13,5 +13,6 @@ namespace WeMovieManager
     /// </summary>
     public partial class App : Application
     {
+        public static WeMovieEntities WeMovieDb = new WeMovieEntities();
     }
 }

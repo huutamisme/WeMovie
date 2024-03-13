@@ -124,13 +124,26 @@ namespace WeMovieManager
             else
             {
                 //sign in successfully
-                txtBlockFLyout.Text = "Sign in successfully!";
-                SuccessFlyout.IsOpen = true;
-                SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
-                await Task.Delay(2000);
-                MainWindow mw = new MainWindow();
-                mw.Show();
-                this.Close();
+                var username = emailBox.Text;
+                var password = passwordBox.Password;
+
+                var query = from user in App.WeMovieDb.Managers
+                            where user.username.Equals(username)
+                            select new { Username = user.username, Password = user.password };
+                var students = query.ToList();
+                if (students.Count == 1)
+                {
+                    if (students[0].Password.Equals(password))
+                    {
+                        txtBlockFLyout.Text = "Sign in successfully!";
+                        SuccessFlyout.IsOpen = true;
+                        SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
+                        await Task.Delay(2000);
+                        MainWindow mw = new MainWindow();
+                        mw.Show();
+                        this.Close();
+                    }
+                }
             }
         }
     }
