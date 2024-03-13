@@ -123,6 +123,10 @@ namespace LoginForm
                 txtBlockFLyout.Text = "Sign in successfully!";
                 SuccessFlyout.IsOpen = true;
                 SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
+                await Task.Delay(1000);
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
             }
         }
     }
