@@ -23,14 +23,16 @@ namespace WeMovieManager
     /// </summary>
     public partial class Login : MetroWindow
     {
-        public Login()
+        private Window mainWindow;
+
+        public Login(Window mainWindow)
         {
             InitializeComponent();
-            WeMovieEntities db = new WeMovieEntities();
-            var result = from m in db.Managers where m.username.Equals("vuanhkhoa007") select new { Username = m.username, Password = m.password };
-            Trace.WriteLine(result.ToList()[0]);
             MyDatePicker.PreviewTextInput += DatePicker_PreviewTextInput;
+            this.mainWindow = mainWindow;
+
         }
+
 
         private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -139,9 +141,8 @@ namespace WeMovieManager
                         SuccessFlyout.IsOpen = true;
                         SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
                         await Task.Delay(2000);
-                        MainWindow mw = new MainWindow();
-                        mw.Show();
                         this.Close();
+                        mainWindow.Show();
                     }
                 }
             }

@@ -23,16 +23,16 @@ namespace WeMovieManager
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
             _navigationStore.CurrentViewModel = new DashboardViewModel();
 
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)
             };
-            MainWindow.Show();
+            Login login = new Login(MainWindow);
+            login.Show();
 
-            base.OnStartup(e);
         }
-
     }
 }
