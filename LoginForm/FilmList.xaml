@@ -1,0 +1,165 @@
+﻿<mah:MetroWindow x:Class="LoginForm.FilmList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:LoginForm"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 mc:Ignorable="d"
+                 Title="FilmList" Height="650" Width="1080">
+
+    <mah:MetroWindow.Resources>
+        <BitmapImage x:Key="BackImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/back.png"/>
+        <BitmapImage x:Key="NextImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/next.png"/>
+        <BitmapImage x:Key="DurationImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/clock.png"/>
+        <BitmapImage x:Key="GenreImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/tag.png"/>
+        <!-- Add more resources if needed -->
+    </mah:MetroWindow.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both">
+        <ScrollViewer.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                <GradientStop Color="#10172B" Offset="0"/>
+                <GradientStop Color="#1C0E49" Offset="1"/>
+            </LinearGradientBrush>
+        </ScrollViewer.Background>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
+                        PHIM BOM TẤN
+                </TextBlock>
+                <!-- Top Films with Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Left Button -->
+                    <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                           Mouse.MouseUp="BomTan_BackButton_Click"/>
+
+                    <ListBox Name="BomTan_FilmListBox" Background="Transparent">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel x:Name="BomTan_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
+                                        <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                        <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                            <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                       FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                            <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                                <StackPanel>
+                                                    <ContentPresenter/>
+                                                    <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                    </ListBox>
+
+                    <!-- Right Button -->
+                    <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                           Mouse.MouseUp="BomTan_NextButton_Click"/>
+                </StackPanel>
+
+                <StackPanel Height="50"></StackPanel>
+
+                <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
+                        PHIM GIỜ VÀNG
+                </TextBlock>
+                <!-- Bottom Films with Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Left Button -->
+                    <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                           Mouse.MouseUp="GioVang_BackButton_Click"/>
+
+                    <ListBox Name="GioVang_FilmListBox" Background="Transparent">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel x:Name="GioVang_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
+                                        <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                        <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                            <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                       FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                            <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                                <StackPanel>
+                                                    <ContentPresenter/>
+                                                    <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+
+                    <!-- Right Button -->
+                    <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                           Mouse.MouseUp="GioVang_NextButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</mah:MetroWindow>
