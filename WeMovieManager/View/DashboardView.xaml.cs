@@ -15,20 +15,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WeMovieManager
+namespace WeMovieManager.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DashboardView : UserControl
     {
-        public MainWindow()
+        public DashboardView()
         {
             InitializeComponent();
-        }
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
