@@ -194,6 +194,9 @@
     <Compile Include="FilmDetail.xaml.cs">
       <DependentUpon>FilmDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FilmList.xaml.cs">
+      <DependentUpon>FilmList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FilmManagement.xaml.cs">
       <DependentUpon>FilmManagement.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,9 @@
     </Compile>
     <Compile Include="Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
@@ -227,6 +233,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FilmList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FilmManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Header.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,6 +335,20 @@
   <ItemGroup>
     <Resource Include="Images\logo.png" />
     <Resource Include="Images\unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Film helper\back.png" />
+    <Resource Include="Images\Film helper\clock.png" />
+    <Resource Include="Images\Film helper\next.png" />
+    <Resource Include="Images\Film helper\tag.png" />
+    <Resource Include="Images\Film\Avatar.jpg" />
+    <Resource Include="Images\Film\Avengers.jpg" />
+    <Resource Include="Images\Film\Black Panther.jpg" />
+    <Resource Include="Images\Film\Captain America.jpg" />
+    <Resource Include="Images\Film\Fast and Furious 9.jpg" />
+    <Resource Include="Images\Film\Finding Dory.jpg" />
+    <Resource Include="Images\Film\Harry Potter.jpg" />
+    <Resource Include="Images\Film\Incredibles 2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
