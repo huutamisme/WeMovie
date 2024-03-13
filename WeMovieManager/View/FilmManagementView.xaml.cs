@@ -11,21 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LoginForm
+namespace WeMovieManager.View
 {
     /// <summary>
-    /// Interaction logic for FilmManagement.xaml
+    /// Interaction logic for FilmManagementView.xaml
     /// </summary>
-    public partial class FilmManagement : Window
+    public partial class FilmManagementView : UserControl
     {
         public ObservableCollection<Movie> MovieList { get; set; }
-
-        public FilmManagement()
+        public FilmManagementView()
         {
             InitializeComponent();
-
             // Initialize your MovieList
             MovieList = new ObservableCollection<Movie>();
 
@@ -47,19 +46,15 @@ namespace LoginForm
 
         private void PencilIcon_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBoxCustom mb = new MessageBoxCustom("Triết ngok" , "Thông tin", MessageType.Info, MessageButtons.OK);
-            mb.ShowDialog();
         }
-        
+
 
         private void TrashIcon_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             // Handle trash icon click event here
         }
-
     }
 
-    // Define the Movie class
     public class Movie
     {
         public string DisplayName { get; set; }
