@@ -118,7 +118,7 @@
 
         <!--Main Section-->
         <Border Grid.Column="1" CornerRadius="10">
-            <views:DashboardView DataContext="{Binding CurrentViewModel}" />
+            <views:FilmManagementView DataContext="{Binding CurrentViewModel}" />
         </Border>
     </Grid>
 </Window>
