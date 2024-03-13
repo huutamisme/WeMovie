@@ -9,7 +9,8 @@
         WindowStyle="None" AllowsTransparency="True"
         xmlns:uc="clr-namespace:WeMovieManager.User_Controls"
         Background="Transparent"
-        Title="MainWindow" Height="650" Width="1080">
+        Title="MainWindow" Height="650" Width="1080"
+        xmlns:views="clr-namespace:WeMovieManager.View">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
@@ -116,7 +117,9 @@
         </Border>
 
         <!--Main Section-->
-        
+        <Border Grid.Column="1" CornerRadius="10">
+            <views:DashboardView DataContext="{Binding CurrentViewModel}" />
+        </Border>
     </Grid>
 </Window>
 

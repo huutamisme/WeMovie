@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WeMovieManager.ViewModels;
 
 namespace WeMovieManager
 {
@@ -14,5 +15,16 @@ namespace WeMovieManager
     public partial class App : Application
     {
         public static WeMovieEntities WeMovieDb = new WeMovieEntities();
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
+            MainWindow.Show();
+
+            base.OnStartup(e);
+        }
     }
 }
