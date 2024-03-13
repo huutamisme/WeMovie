@@ -47,7 +47,7 @@ namespace LoginForm
 
         private void PencilIcon_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBoxCustom mb = new MessageBoxCustom("," , ",", MessageType.Info, MessageButtons.OK);
+            MessageBoxCustom mb = new MessageBoxCustom("Triết ngok" , "Thông tin", MessageType.Info, MessageButtons.OK);
             mb.ShowDialog();
         }
         

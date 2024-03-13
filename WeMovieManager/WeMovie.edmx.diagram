@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b9278c4c5f7b4d36afd57e3d482f947e" Name="Diagram1">
+      <Diagram DiagramId="1e2466bedeec4060a0793f054e202273" Name="Diagram1">
         <EntityTypeShape EntityType="WeMovieModel.Manager" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
