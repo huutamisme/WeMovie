@@ -14,485 +14,343 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-    <Controls:MetroWindow.Flyouts>
-        <Controls:FlyoutsControl>
-            <Controls:Flyout x:Name="SuccessFlyout"
-                             Header=""
-                             Position="Top"
-                             Width="1080"
-                             AutoCloseInterval="2000"
-                             IsAutoCloseEnabled="True"
-                             Foreground="Green"
-                             Background="White">
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                    <ContentPresenter HorizontalAlignment="Center"
-                          VerticalAlignment="Center"/>
-                    <TextBlock x:Name="txtBlockFLyout" FontSize="24" FontWeight="Bold"></TextBlock>
-                    <iconPacks:PackIconMaterial Kind="Check"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="10,0"
-                                    VerticalAlignment="Center"/>
-                </StackPanel>
-            </Controls:Flyout>
-            <Controls:Flyout x:Name="ErrorFlyout"
-                             Header=""
-                             Position="Top"
-                             Width="1080"
-                             AutoCloseInterval="2000"
-                             IsAutoCloseEnabled="True"
-                             Foreground="Red"
-                             Background="White">
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                    <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
-                    <TextBlock x:Name="txtBlockError" FontSize="24" FontWeight="Bold"></TextBlock>
-                    <iconPacks:PackIconMaterial Kind="Close"
-                                                Width="20"
-                                                Height="20"
-                                                Margin="10,0"
-                                                VerticalAlignment="Center"/>
-                </StackPanel>
-            </Controls:Flyout>
-        </Controls:FlyoutsControl>
-    </Controls:MetroWindow.Flyouts>
-
     <Controls:MetroWindow.Resources>
-        <FontFamily x:Key="CourierNewFontFamily">Courier New</FontFamily>
-        <Style TargetType="Control">
-            <Setter Property="FontFamily" Value="{StaticResource CourierNewFontFamily}" />
-        </Style>
-        <Style x:Key="SignInButton" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}">
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Content" Value="Sign in"/>
-            <Setter Property="Background" Value="Black"/>
+        <Style x:Key="HyperlinkCustom" TargetType="Hyperlink">
+            <Setter Property="TextDecorations" Value="None"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="SignInButtonBorder"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="16">
-                            <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center"/>
-                                <iconPacks:PackIconMaterial Kind="LoginVariant"
-                                                                Width="20"
-                                                                Height="20"
-                                                                Margin="10,0"
-                                                                VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="SignUpButton" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}">
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Content" Value="Sign up"/>
-            <Setter Property="Background" Value="Black"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="SignInButtonBorder"
-                        Background="{TemplateBinding Background}"
-                        CornerRadius="16">
-                            <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
-                                <iconPacks:PackIconMaterial Kind="PencilBox"
-                                                        Width="20"
-                                                        Height="20"
-                                                        Margin="10,0"
-                                                        VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="TabItemCustomStyle" TargetType="TabItem">
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Opacity" Value="0.9"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
             <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="Opacity" Value="0.9"/>
-                </Trigger>
-                <Trigger Property="IsSelected" Value="False">
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabItem">
-                                <Grid>
-                                    <Border Background="Transparent"/>
-                                    <Border Background="#AFFFFFFF"/>
-                                    <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="Foreground" Value="Yellow"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <LinearGradientBrush x:Key="FooterGradientBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#9C27B0" Offset="0.2"/>
+            <GradientStop Color="#2196F3" Offset="1"/>
+        </LinearGradientBrush>
+        <BitmapImage x:Key="BackImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/back.png"/>
+        <BitmapImage x:Key="NextImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/next.png"/>
+        <BitmapImage x:Key="DurationImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/clock.png"/>
+        <BitmapImage x:Key="GenreImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/tag.png"/>
     </Controls:MetroWindow.Resources>
-
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Images/bg.jpg"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+            </LinearGradientBrush>
         </Grid.Background>
-        <Grid>
-            <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}" TabStripPlacement="Top" Background="White" Opacity="0.9" Width="400" Height="450">
-                <TabItem Header="SIGN IN" Style="{StaticResource TabItemCustomStyle}">
-                    <Border Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20,20,20,20" >
-                        
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock 
-                                Text="WeMovie"
-                                FontSize="60" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="0"/>
-                            <TextBlock 
-                                Text="Cinema Magic: Where Dreams Take Flight!"
-                                FontSize="13" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="1"
-                                Margin="0,-10,0,40"
-                                Opacity="0.5"/>
-                            <StackPanel Grid.Row="2" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Email"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <TextBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="emailBox" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.TextBox}"
-                                            Controls:TextBoxHelper.Watermark="Enter your email"
-                                            Controls:TextBoxHelper.ClearTextButton="True"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="105,-20,0,0" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="330"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="Images/logo.png" Height="120" Width="120" Grid.Column="0" ></Image>
+                <TextBlock Text="WeMovie"
+                           Grid.Column="1"
+                           VerticalAlignment="Center"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           Foreground="White" 
+                           HorizontalAlignment="Center"/>
+                <Border Grid.Column="2" Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="25" Padding="0,0,10,0" Height="45" VerticalAlignment="Center" Margin="80,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <iconPacks:PackIconModern Kind="Magnify"
+                                                  Width="20"
+                                                  Height="20"
+                                                  Margin="10"
+                                                  Foreground="Black"/>
+                        <TextBox BorderThickness="0"
+                                 BorderBrush="Transparent"
+                                 x:Name="emailBox"
+                                 Height="20"
+                                 Grid.Column="1"
+                                 Style="{StaticResource MahApps.Styles.TextBox}"
+                                 Controls:TextBoxHelper.Watermark="Search movie, actor, director, ..."
+                                 Controls:TextBoxHelper.ClearTextButton="True"/>
+                    </Grid>
+                </Border>
+                <StackPanel Grid.Column="3" Margin="30,10,0,0">
+                    <Grid Height="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Width="40" Height="40" Background="White" CornerRadius="50" VerticalAlignment="Center">
+                            <Image Source="Images/unknown.png" Stretch="UniformToFill" Width="20" Height="20"/>
+                        </Border>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Margin="10,0,0,0">
+                            <Hyperlink Style="{StaticResource HyperlinkCustom}">
+                                <TextBlock Text="Sign In"/>
+                            </Hyperlink>
+                            /
+                            <Hyperlink Style="{StaticResource HyperlinkCustom}">
+                                <TextBlock Text="Sign Up"/>
+                            </Hyperlink>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Separator Margin="10,-40,115,0" Background="White" Opacity="0.5"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both" Grid.Row="1">
+            <ScrollViewer.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                    <GradientStop Color="#10172B" Offset="0"/>
+                    <GradientStop Color="#1C0E49" Offset="1"/>
+                </LinearGradientBrush>
+            </ScrollViewer.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
+                      PHIM BOM TẤN
+                        </TextBlock>
+                        <!-- Top Films with Buttons -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <!-- Left Button -->
+                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                         Mouse.MouseUp="BomTan_BackButton_Click"/>
+
+                            <ListBox Name="BomTan_FilmListBox" Background="Transparent">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel x:Name="BomTan_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
+                                                <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                                <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                     FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                                    <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                        <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                        <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0"/>
+                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                                        <StackPanel>
+                                                            <ContentPresenter/>
+                                                            <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+                            </ListBox>
+
+                            <!-- Right Button -->
+                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                         Mouse.MouseUp="BomTan_NextButton_Click"/>
+                        </StackPanel>
+
+                        <StackPanel Height="50"></StackPanel>
+
+                        <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
+                      PHIM GIỜ VÀNG
+                        </TextBlock>
+                        <!-- Bottom Films with Buttons -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <!-- Left Button -->
+                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                         Mouse.MouseUp="GioVang_BackButton_Click"/>
+
+                            <ListBox Name="GioVang_FilmListBox" Background="Transparent">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel x:Name="GioVang_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
+                                                <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                                <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                     FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
+                                                    <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                        <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                    <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                        <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0"/>
+                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                                        <StackPanel>
+                                                            <ContentPresenter/>
+                                                            <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+
+                            <!-- Right Button -->
+                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
+                         Mouse.MouseUp="GioVang_NextButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Background="{StaticResource FooterGradientBrush}" Height="300" Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="350"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/logo.png" Height="100" Width="100"/>
+                                <TextBlock Text="WeMovie"
+                  Grid.Column="1"
+                  VerticalAlignment="Center"
+                  FontSize="50"
+                  FontWeight="Bold"
+                  Foreground="White"/>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="3" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Lock"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <PasswordBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="passwordBox" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"
-                                            Controls:TextBoxHelper.Watermark="Enter your password"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
+                            <TextBlock Text="Cinema Magic: Where Dreams Take Flight!"
+                  FontSize="15"
+                  Margin="20,0,0,0"
+                  FontWeight="Bold"
+                  Foreground="White"/>
+                            <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
+           <Span FontStyle="Italic" FontWeight="Bold" Foreground="Black">Utilizing Entity Framework with LINQ</Span>
+                            </TextBlock>
+
+                            <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
+           <Span  FontStyle="Italic" FontWeight="Bold" Foreground="Black">Powered by WPF and MVVM</Span>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+               Orientation="Vertical"
+               Margin="40, 20, 0, 0">
+                            <TextBlock Text="Contact Us"
+                  VerticalAlignment="Center"
+                  FontSize="50"
+                  FontWeight="Bold"
+                  Foreground="White" 
+                  HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                                <fa:IconImage Icon="Phone"
+                               Height="40" Width="40"
+                                 Margin="10,0"/>
+                                <TextBlock Text="0-188-421-631"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
-                            <StackPanel Grid.Row="4" HorizontalAlignment="Center" Width="350" Margin="0,0,0,20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <CheckBox FontWeight="Bold" Content="Remember me" HorizontalAlignment="Left" Grid.Column="0"/>
-                                    <TextBlock FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Right">
-                                    <Hyperlink NavigateUri="ForgotPassword.xaml" Foreground="Black">
-                                        <Run Text="Forgot password"/>
-                                        <Hyperlink.Style>
-                                            <Style TargetType="Hyperlink">
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="TextDecorations" Value="Underline"/>
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="False">
-                                                        <Setter Property="TextDecorations" Value="None"/>
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Hyperlink.Style>
-                                    </Hyperlink>
-                                    </TextBlock>
-                                </Grid>
+                            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                                <fa:IconImage Icon="MailBulk"
+                               Height="40" Width="40"
+                                 Margin="10,0"/>
+                                <TextBlock Text="wemoviesupport@gmail.com"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
-
-                            <Button 
-                                Grid.Row="5"
-                                Margin="0,0,0,20"
-                                Click="SignInButtonClick">
-                                <Button.Resources>
-                                    <!-- Define gradient brush for button background -->
-                                    <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#9C27B0" Offset="0"/>
-                                        <GradientStop Color="#2196F3" Offset="1"/>
-                                    </LinearGradientBrush>
-                                    <!-- Define storyboard for gradient animation -->
-                                    <Storyboard x:Key="OnMouseEnterAnimation">
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0"/>
-                                            <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0.5"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                    <Storyboard x:Key="OnMouseLeaveAnimation">
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0"/>
-                                            <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0.5"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="White" KeyTime="0:0:0"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </Button.Resources>
-
-                                <!-- Use VisualStateManager to handle mouse enter and leave events -->
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="Normal"/>
-                                        <VisualState x:Name="MouseOver">
-                                            <Storyboard>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Color" Duration="0:0:0.5" RepeatBehavior="1x">
-                                                    <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0"/>
-                                                    <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0.5"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <!-- Set triggers for mouse enter and leave events -->
-                                <Button.Triggers>
-                                    <EventTrigger RoutedEvent="MouseEnter">
-                                        <BeginStoryboard Storyboard="{StaticResource OnMouseEnterAnimation}"/>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="MouseLeave">
-                                        <BeginStoryboard Storyboard="{StaticResource OnMouseLeaveAnimation}"/>
-                                    </EventTrigger>
-                                </Button.Triggers>
-
-                                <!-- Icon and text layout -->
-                                <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="LoginVariant" Width="20" Height="20" Margin="5"/>
-                                    <TextBlock FontSize="20" Text="Sign in" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-                        </Grid>
-                    </Border>
-                </TabItem>
-                <TabItem Header="SIGN UP" Style="{StaticResource TabItemCustomStyle}">
-                    <Border Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20,20,20,20" >
-
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock 
-                                Text="WeMovie"
-                                FontSize="60" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="0"/>
-                            <TextBlock 
-                                Text="Cinema Magic: Where Dreams Take Flight!"
-                                FontSize="13" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="1"
-                                Margin="0,-10,0,40"
-                                Opacity="0.5"/>
-                            <StackPanel Grid.Row="2" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Email"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <TextBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="emailBoxSignUp" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.TextBox}"
-                                            Controls:TextBoxHelper.Watermark="Enter your email"
-                                            Controls:TextBoxHelper.ClearTextButton="True"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
+                            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                                <fa:IconImage Icon="Home"
+                         Height="40" Width="40"
+                         Margin="10,0"/>
+                                <TextBlock Text="227 Nguyen Van Cu, District 5, Ho Chi Minh city"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
-
-                            <StackPanel Grid.Row="3" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Lock"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <PasswordBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="passwordBoxSignUp" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"
-                                            Controls:TextBoxHelper.Watermark="Enter your password"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2"
+               Orientation="Vertical"
+               Margin="40, 20, 0, 0">
+                            <TextBlock Text="About Us"
+                   VerticalAlignment="Center"
+                   FontSize="50"
+                   FontWeight="Bold"
+                   Foreground="White" 
+                   HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                                <fa:IconImage Icon="UserAlt"
+                         Height="40" Width="40"
+                           Margin="10,0"/>
+                                <TextBlock Text="21127188 - DO MINH TRIET"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
-
-                            <StackPanel Grid.Row="4" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Calendar"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <DatePicker
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="MyDatePicker" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.DatePicker}"
-                                            Controls:TextBoxHelper.Watermark="Enter your date of birth (dd/mm/yyyy)"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"
-                                            Language="en-GB"
-                                            PreviewTextInput="DatePicker_PreviewTextInput"/>
-                                    </Grid>
-                                </Border>
+                            <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                                <fa:IconImage Icon="UserAlt"
+                         Height="40" Width="40"
+                           Margin="10,0"/>
+                                <TextBlock Text="21127421 - HO HUU TAM"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
-
-                            <Button Grid.Row="5"
-                                    Margin="0,0,0,20"
-                                    Click="SignUpButtonClick">
-                                <Button.Resources>
-                                    <!-- Define gradient brush for button background -->
-                                    <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#9C27B0" Offset="0"/>
-                                        <GradientStop Color="#2196F3" Offset="1"/>
-                                    </LinearGradientBrush>
-                                    <!-- Define storyboard for gradient animation -->
-                                    <Storyboard x:Key="OnMouseEnterAnimation">
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0"/>
-                                            <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0.5"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                    <Storyboard x:Key="OnMouseLeaveAnimation">
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0"/>
-                                            <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0.5"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Duration="0:0:0.5" RepeatBehavior="1x">
-                                            <LinearColorKeyFrame Value="White" KeyTime="0:0:0"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </Button.Resources>
-
-                                <!-- Use VisualStateManager to handle mouse enter and leave events -->
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates1">
-                                        <VisualState x:Name="Normal1"/>
-                                        <VisualState x:Name="MouseOver1">
-                                            <Storyboard>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="ButtonBackground" Storyboard.TargetProperty="Color" Duration="0:0:0.5" RepeatBehavior="1x">
-                                                    <LinearColorKeyFrame Value="#2196F3" KeyTime="0:0:0"/>
-                                                    <LinearColorKeyFrame Value="#9C27B0" KeyTime="0:0:0.5"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <!-- Set triggers for mouse enter and leave events -->
-                                <Button.Triggers>
-                                    <EventTrigger RoutedEvent="MouseEnter">
-                                        <BeginStoryboard Storyboard="{StaticResource OnMouseEnterAnimation}"/>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="MouseLeave">
-                                        <BeginStoryboard Storyboard="{StaticResource OnMouseLeaveAnimation}"/>
-                                    </EventTrigger>
-                                </Button.Triggers>
-
-                                <!-- Icon and text layout -->
-                                <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="PencilBox" Width="20" Height="20" Margin="5"/>
-                                    <TextBlock FontSize="20" Text="Sign up" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-                        </Grid>
-                    </Border>
-                </TabItem>
-            </TabControl>
-        </Grid>
+                            <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
+                                <fa:IconImage Icon="UserAlt"
+                         Height="40" Width="40"
+                           Margin="10,0"/>
+                                <TextBlock Text="21127631 - VU ANH KHOA"  Margin="10,10,0,0" FontWeight="Bold"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        
+        
     </Grid>
-
 </Controls:MetroWindow>
