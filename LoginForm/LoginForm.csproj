@@ -221,6 +221,12 @@
     <Compile Include="User Controls\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FilmDetailView.xaml.cs">
+      <DependentUpon>FilmDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketBookingView.xaml.cs">
+      <DependentUpon>TicketBookingView.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddFilm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -285,6 +291,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\FilmDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TicketBookingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -318,8 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Avengers.jpg" />
