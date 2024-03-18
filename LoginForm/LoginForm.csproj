@@ -188,6 +188,8 @@
     <Compile Include="AddFilm.xaml.cs">
       <DependentUpon>AddFilm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -212,6 +214,8 @@
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="TicketBooking.xaml.cs">
       <DependentUpon>TicketBooking.xaml</DependentUpon>
     </Compile>
@@ -220,6 +224,14 @@
     </Compile>
     <Compile Include="User Controls\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="View\FilmDetailView.xaml.cs">
+      <DependentUpon>FilmDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketBookingView.xaml.cs">
+      <DependentUpon>TicketBookingView.xaml</DependentUpon>
     </Compile>
     <Page Include="AddFilm.xaml">
       <SubType>Designer</SubType>
@@ -285,6 +297,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\FilmDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TicketBookingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -318,8 +338,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Avengers.jpg" />
