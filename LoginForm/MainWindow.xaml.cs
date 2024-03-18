@@ -23,7 +23,7 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace LoginForm
 {
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : Window
     {
        
         public MainWindow()

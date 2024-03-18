@@ -1,4 +1,6 @@
-﻿using LoginForm.Stores;
+﻿using LoginForm.Commands;
+using LoginForm.Services;
+using LoginForm.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +23,6 @@ namespace LoginForm.ViewModels
         {
             NavigationStore = navigationStore;
             NavigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-            DashboardNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new DashboardViewModel(); }));
-            FilmManagementNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new FilmsManagementViewModel(); }));
         }
 
         private void OnCurrentViewModelChanged()

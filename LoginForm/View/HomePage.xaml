@@ -119,9 +119,9 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <!-- Left Button -->
                             <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
-                     Mouse.MouseUp="BomTan_BackButton_Click"/>
+                     Mouse.MouseUp="{Binding ExitCommand}"/>
 
-                            <ListBox Name="BomTan_FilmListBox" Background="Transparent">
+                            <ListBox Name="BomTan_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmList_BomTan}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="BomTan_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -190,7 +190,7 @@
                             <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
                      Mouse.MouseUp="GioVang_BackButton_Click"/>
 
-                            <ListBox Name="GioVang_FilmListBox" Background="Transparent">
+                            <ListBox Name="GioVang_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmList_GioVang}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="GioVang_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
