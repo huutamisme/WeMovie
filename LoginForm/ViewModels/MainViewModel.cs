@@ -3,6 +3,7 @@ using LoginForm.Services;
 using LoginForm.Stores;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,6 @@ namespace LoginForm.ViewModels
         public ViewModelBase CurrentViewModel => NavigationStore.CurrentViewModel;
         public NavigationStore NavigationStore;
 
-        public ICommand DashboardNavigateCommand { get; }
-        public ICommand FilmManagementNavigateCommand { get; }
-
-
         public MainViewModel(NavigationStore navigationStore)
         {
             NavigationStore = navigationStore;
@@ -27,6 +24,7 @@ namespace LoginForm.ViewModels
 
         private void OnCurrentViewModelChanged()
         {
+            Trace.WriteLine(CurrentViewModel.ToString());
             OnPropertyChanged(nameof(CurrentViewModel));
         }
     }

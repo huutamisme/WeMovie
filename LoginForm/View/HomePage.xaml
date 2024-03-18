@@ -127,7 +127,7 @@
                                 </i:Interaction.Triggers>
                             </Image>
 
-                            <ListBox Name="BomTan_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_BomTan}">
+                            <ListBox Name="BomTan_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_BomTan}" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="BomTan_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -206,7 +206,7 @@
                                 </i:Interaction.Triggers>
                             </Image>
 
-                            <ListBox Name="GioVang_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_GioVang}">
+                            <ListBox Name="GioVang_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_GioVang}" SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="GioVang_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />

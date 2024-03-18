@@ -52,6 +52,27 @@ namespace LoginForm.ViewModels
         public string ageImagePath { get; set; }
         public string genreImagePath { get; set; }
 
+        private Film _selectedItem;
+        public Film SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+                navigateToFilmDetail();
+            }
+        }
+
+        private void navigateToFilmDetail()
+        {
+            NavigateCommand filmDetailNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new FilmDetailViewModel(); }));
+            filmDetailNavigateCommand.Execute(this);
+        }
+
         public class Film
         {
             public string ThumbnailPath { get; set; }

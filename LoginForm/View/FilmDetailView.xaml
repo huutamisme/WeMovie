@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border CornerRadius="10" Grid.Row="0" BorderBrush="White" HorizontalAlignment="Left" Margin="30 10 0 0">
-            <Button Width="60" Height="40" Background="Transparent" Cursor="Hand">
+            <Button Width="60" Height="40" Background="Transparent" Cursor="Hand" Command="{Binding HomeNavigateCommand}">
                 <fa:IconImage Icon="ArrowLeft"
                               Width="20"
                               Height="20"
