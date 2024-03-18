@@ -48,7 +48,7 @@
                     <StackPanel>
                         <ListView x:Name="MovieListView"
                               ItemsSource="{Binding MovieList}"
-                              SelectedItem="{Binding SelectedItem}"
+                              SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                               Focusable="True"
                               Height="578"
                               Background="{StaticResource dashboardRightBg}">
@@ -128,8 +128,7 @@
                                                         <StackPanel>
                                                             <fa:IconImage Icon="Pencil"
                                                                       Width="30"
-                                                                      Height="30"
-                                                                      PreviewMouseDown="PencilIcon_PreviewMouseDown" />
+                                                                      Height="30"/>
                                                         </StackPanel>
                                                     </Border>
                                                     <Border BorderThickness="0.5"
@@ -151,8 +150,7 @@
                                                         <StackPanel>
                                                             <fa:IconImage Icon="Trash"
                                                                       Width="30"
-                                                                      Height="30"
-                                                                      PreviewMouseDown="TrashIcon_PreviewMouseDown" >
+                                                                      Height="30">
                                                             </fa:IconImage>
                                                         </StackPanel>
                                                     </Border>
