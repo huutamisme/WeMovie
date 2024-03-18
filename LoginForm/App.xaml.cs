@@ -23,7 +23,7 @@ namespace LoginForm
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            _navigationStore.CurrentViewModel = new TicketBookingViewModel();
+            _navigationStore.CurrentViewModel = new HomePageViewModel();
 
             MainWindow = new MainWindow()
             {

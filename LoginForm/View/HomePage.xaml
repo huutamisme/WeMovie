@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoginForm.View"
              mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              d:DesignHeight="650" d:DesignWidth="1080">
     <UserControl.Resources>
@@ -118,10 +119,15 @@
                         <!-- Top Films with Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <!-- Left Button -->
-                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
-                     Mouse.MouseUp="{Binding ExitCommand}"/>
+                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown" >
+                                        <i:InvokeCommandAction Command="{Binding backButtonBomTanCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
 
-                            <ListBox Name="BomTan_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmList_BomTan}">
+                            <ListBox Name="BomTan_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_BomTan}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="BomTan_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -175,8 +181,13 @@
                             </ListBox>
 
                             <!-- Right Button -->
-                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
-                     Mouse.MouseUp="BomTan_NextButton_Click"/>
+                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown" >
+                                        <i:InvokeCommandAction Command="{Binding nextButtonBomTanCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </StackPanel>
 
                         <StackPanel Height="50"></StackPanel>
@@ -187,10 +198,15 @@
                         <!-- Bottom Films with Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <!-- Left Button -->
-                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
-                     Mouse.MouseUp="GioVang_BackButton_Click"/>
+                            <Image Source="{Binding backImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown" >
+                                        <i:InvokeCommandAction Command="{Binding backButtonGioVangCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
 
-                            <ListBox Name="GioVang_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmList_GioVang}">
+                            <ListBox Name="GioVang_FilmListBox" Background="Transparent" ItemsSource="{Binding FilmListDisplayed_GioVang}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel x:Name="GioVang_WrapPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -243,8 +259,13 @@
                             </ListBox>
 
                             <!-- Right Button -->
-                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" 
-                     Mouse.MouseUp="GioVang_NextButton_Click"/>
+                            <Image Source="{Binding nextImagePath}" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown" >
+                                        <i:InvokeCommandAction Command="{Binding nextButtonGioVangCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
