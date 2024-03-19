@@ -14,20 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WeMovieManager.View
+namespace LoginForm.View
 {
     /// <summary>
-    /// Interaction logic for FilmManagementView.xaml
+    /// Interaction logic for FilmDetailView.xaml
     /// </summary>
-    public partial class FilmManagementView : UserControl
+    public partial class FilmDetailView : UserControl
     {
-        public FilmManagementView()
+        public FilmDetailView()
         {
             InitializeComponent();
-            // Initialize your MovieList
-
         }
+
     }
-
-
 }

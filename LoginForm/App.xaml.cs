@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LoginForm.Stores;
+using LoginForm.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,22 @@ namespace LoginForm
     /// </summary>
     public partial class App : Application
     {
+        public static NavigationStore _navigationStore;
+        public App()
+        {
+            _navigationStore = new NavigationStore();
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            _navigationStore.CurrentViewModel = new HomePageViewModel();
+
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_navigationStore)
+            };
+            MainWindow.Show();
+
+        }
     }
 }
