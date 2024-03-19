@@ -221,6 +221,9 @@
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Payment.xaml.cs">
+      <DependentUpon>Payment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Film.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
@@ -292,6 +295,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MessageBoxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Payment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
