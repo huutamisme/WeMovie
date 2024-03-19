@@ -1,26 +1,50 @@
-﻿using LoginForm.Models;
-using MahApps.Metro.Controls;
+﻿using LoginForm.Commands;
+using LoginForm.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
-namespace LoginForm
+namespace LoginForm.ViewModels
 {
-    /// <summary>
-    /// Interaction logic for FilmList.xaml
-    /// </summary>
-    public partial class FilmList : MetroWindow
+
+    public class HomePageViewModel : ViewModelBase
     {
         public ObservableCollection<Film> FilmList_BomTan { get; set; }
+        public ObservableCollection<Film> _filmListDisplayed_BomTan;
+        public ObservableCollection<Film> FilmListDisplayed_BomTan
+        {
+            get
+            {
+                return _filmListDisplayed_BomTan;
+            }
+            set
+            {
+                Trace.WriteLine("HERE");
+                _filmListDisplayed_BomTan = value;
+                OnPropertyChanged(nameof(FilmListDisplayed_BomTan));
+            }
+        }
+
         public ObservableCollection<Film> FilmList_GioVang { get; set; }
+        public ObservableCollection<Film> _filmListDisplayed_GioVang;
+        public ObservableCollection<Film> FilmListDisplayed_GioVang
+        {
+            get
+            {
+                return _filmListDisplayed_GioVang;
+            }
+            set
+            {
+                _filmListDisplayed_GioVang = value;
+                OnPropertyChanged(nameof(FilmListDisplayed_GioVang));
+            }
+        }
         private int currentIndex_BomTan = 0;
         private int currentIndex_GioVang = 0;
         public string backImagePath { get; set; }
@@ -28,12 +52,30 @@ namespace LoginForm
         public string durationImagePath { get; set; }
         public string ageImagePath { get; set; }
         public string genreImagePath { get; set; }
-        public FilmList()
+
+        private Film _selectedItem;
+        public Film SelectedItem
         {
-            InitializeComponent();
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+                navigateToFilmDetail();
+            }
+        }
 
-            DataContext = this;
+        private void navigateToFilmDetail()
+        {
+            NavigateCommand filmDetailNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new FilmDetailViewModel(SelectedItem); }));
+            filmDetailNavigateCommand.Execute(this);
+        }
 
+        public HomePageViewModel()
+        {
             InitializeFilms_BomTan();
             InitializeFilms_GioVang();
             UpdateDisplayedFilms_BomTan();
@@ -45,6 +87,7 @@ namespace LoginForm
             ageImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/age.png";
             genreImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/genre.png";
         }
+
         private void InitializeFilms_BomTan()
         {
             FilmList_BomTan = new ObservableCollection<Film>
@@ -116,33 +159,31 @@ namespace LoginForm
                 }
             };
             // Set the data context to the MainWindow instance itself
-            BomTan_FilmListBox.ItemsSource = FilmList_BomTan;
         }
         private void UpdateDisplayedFilms_BomTan()
         {
             int startIndex = currentIndex_BomTan;
-            var displayedFilms = FilmList_BomTan.Skip(startIndex).Take(4).ToList();
-
-            BomTan_FilmListBox.ItemsSource = displayedFilms;
+            FilmListDisplayed_BomTan = new ObservableCollection<Film>(FilmList_BomTan.Skip(startIndex).Take(4));
         }
 
-        private void BomTan_NextButton_Click(object sender, System.Windows.RoutedEventArgs e)
+
+        public RelayCommand nextButtonBomTanCommand => new RelayCommand(execute =>
         {
             if (currentIndex_BomTan < FilmList_BomTan.Count - 4)
             {
                 currentIndex_BomTan++;
                 UpdateDisplayedFilms_BomTan();
             }
-        }
+        }, canExecute => { return true; });
 
-        private void BomTan_BackButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
+        public RelayCommand backButtonBomTanCommand => new RelayCommand(execute => {
             if (currentIndex_BomTan > 0)
             {
                 currentIndex_BomTan--;
                 UpdateDisplayedFilms_BomTan();
             }
-        }
+        }, canExecute => { return true; });
+
         private void InitializeFilms_GioVang()
         {
             FilmList_GioVang = new ObservableCollection<Film>
@@ -214,147 +255,29 @@ namespace LoginForm
                 }
             };
             // Set the data context to the MainWindow instance itself
-            GioVang_FilmListBox.ItemsSource = FilmList_GioVang;
         }
         private void UpdateDisplayedFilms_GioVang()
         {
             int startIndex = currentIndex_GioVang;
-            var displayedFilms = FilmList_GioVang.Skip(startIndex).Take(4).ToList();
-
-            GioVang_FilmListBox.ItemsSource = displayedFilms;
+            FilmListDisplayed_GioVang = new ObservableCollection<Film>(FilmList_GioVang.Skip(startIndex).Take(4));
         }
 
-        private void GioVang_NextButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        public RelayCommand nextButtonGioVangCommand => new RelayCommand(execute =>
         {
             if (currentIndex_GioVang < FilmList_GioVang.Count - 4)
             {
                 currentIndex_GioVang++;
                 UpdateDisplayedFilms_GioVang();
             }
-        }
-        private void GioVang_BackButton_Click(object sender, RoutedEventArgs e)
+        }, canExecute => { return true; });
+
+        public RelayCommand backButtonGioVangCommand => new RelayCommand(execute =>
         {
             if (currentIndex_GioVang > 0)
             {
                 currentIndex_GioVang--;
                 UpdateDisplayedFilms_GioVang();
             }
-        }
-
-        private void FilmGrid_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Grid filmGrid = (Grid)sender;
-            ListBoxItem listBoxItem = FindVisualParent<ListBoxItem>(filmGrid);
-
-            if (listBoxItem != null)
-            {
-                Rectangle overlayRectangle = FindVisualChild<Rectangle>(filmGrid, "OverlayRectangle");
-                TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
-                StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
-                StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
-                TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
-
-                Debug.WriteLine("test " + filmTitle);
-
-                // Use DoubleAnimation to animate the opacity property
-                DoubleAnimation opacityAnimation = new DoubleAnimation
-                {
-                    From = 0.0,
-                    To = 1.0,
-                    Duration = TimeSpan.FromSeconds(0.3)
-                };
-
-                SolidColorBrush yellowBrush = new SolidColorBrush(Colors.Yellow);
-
-                overlayRectangle.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmTitleText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmDurationText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmGenreText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-
-                overlayRectangle.Visibility = Visibility.Visible;
-                filmTitleText.Visibility = Visibility.Visible;
-                filmDurationText.Visibility = Visibility.Visible;
-                filmGenreText.Visibility = Visibility.Visible;
-
-                // Change the text color to yellow
-                filmTitle.Foreground = yellowBrush;
-            }
-        }
-
-        private void FilmGrid_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Grid filmGrid = (Grid)sender;
-            ListBoxItem listBoxItem = FindVisualParent<ListBoxItem>(filmGrid);
-
-            if (listBoxItem != null)
-            {
-                Rectangle overlayRectangle = FindVisualChild<Rectangle>(filmGrid, "OverlayRectangle");
-                TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
-                StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
-                StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
-                TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
-
-                // Use DoubleAnimation to animate the opacity property
-                DoubleAnimation opacityAnimation = new DoubleAnimation
-                {
-                    From = 1.0,
-                    To = 0.0,
-                    Duration = TimeSpan.FromSeconds(0.3)
-                };
-
-                overlayRectangle.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmTitleText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmDurationText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-                filmGenreText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
-
-                overlayRectangle.Visibility = Visibility.Hidden;
-                filmTitleText.Visibility = Visibility.Hidden;
-                filmDurationText.Visibility = Visibility.Hidden;
-                filmGenreText.Visibility = Visibility.Hidden;
-
-                // Revert the text color to white
-                filmTitle.Foreground = Brushes.White;
-            }
-        }
-
-        private T FindVisualChild<T>(DependencyObject parent, string childName) where T : DependencyObject
-        {
-            int count = VisualTreeHelper.GetChildrenCount(parent);
-
-            for (int i = 0; i < count; i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
-
-                if (child is T && ((FrameworkElement)child).Name == childName)
-                {
-                    return (T)child;
-                }
-
-                T childOfChild = FindVisualChild<T>(child, childName);
-
-                if (childOfChild != null)
-                {
-                    return childOfChild;
-                }
-            }
-
-            if (parent is Control control && control.Template != null)
-            {
-                return FindVisualChild<T>(control.Template.LoadContent() as DependencyObject, childName);
-            }
-
-            return null;
-        }
-
-        private T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            while ((child != null) && !(child is T))
-            {
-                child = VisualTreeHelper.GetParent(child);
-            }
-
-            return (T)child;
-        }
+        }, canExecute => { return true; });
     }
-    // Assuming you have a Film class defined like this
 }

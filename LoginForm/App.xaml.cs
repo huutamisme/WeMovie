@@ -1,4 +1,5 @@
 ﻿using LoginForm.Stores;
+using LoginForm.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,14 +23,13 @@ namespace LoginForm
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            //_navigationStore.CurrentViewModel = new DashboardViewModel();
+            _navigationStore.CurrentViewModel = new HomePageViewModel();
 
-            //MainWindow = new MainWindow()
-            //{
-            //    DataContext = new MainViewModel(_navigationStore)
-            //};
-            //Login login = new Login(MainWindow);
-            //login.Show();
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_navigationStore)
+            };
+            MainWindow.Show();
 
         }
     }
