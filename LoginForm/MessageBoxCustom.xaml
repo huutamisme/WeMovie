@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:LoginForm"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MessageBoxCustom" Height="250" Width="300"
+        Title="MessageBoxCustom" Height="200" Width="350"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        ShowInTaskbar="False"
         WindowStyle="None" Background="Transparent" ResizeMode="NoResize">
 
-    <Border CornerRadius="10"
-        BorderBrush="Black"
-        BorderThickness="1.2"
-        Background="White">
+    <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1.2" Background="White">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
@@ -28,38 +28,35 @@
                     Grid.ColumnSpan="2"
                     Background="Green"
                     CornerRadius="10,10,0,0">
-                <materialDesign:Card 
-                                 Background="Transparent"
-                                 Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
+                <materialDesign:Card Background="Transparent"
+                                     Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}">
                     <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center">
-                        <Image Source="/Images/iconApp.ico"
-                           Width="25"
-                           Height="25" />
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <Image Source="/Images/iconApp.ico" Width="25" Height="25" />
                         <TextBlock x:Name="txtTitle"
-                               Height="15"
-                               Margin="5 4 0 0"
-                               TextAlignment="Center"
-                               FontSize="14">Title</TextBlock>
+                                   Height="15"
+                                   Margin="5 4 0 0"
+                                   TextAlignment="Center"
+                                   FontSize="14">Title</TextBlock>
                     </StackPanel>
                 </materialDesign:Card>
             </Border>
             <StackPanel  HorizontalAlignment="Right"
-                     Margin="0,5,5,0"
-                     VerticalAlignment="Top"
-                     Grid.Column="1">
+                         Margin="0,5,5,0"
+                         VerticalAlignment="Top"
+                         Grid.Column="1">
                 <Button x:Name="btnClose"
-                    Click="btnClose_Click"
-                    Width="20"
-                    Height="20"
-                    Background="White"
-                    Foreground="{DynamicResource PrimaryHueDarkBrush}">
-                    <materialDesign:PackIcon Kind="Close" />
+                        Content="x"
+                        Click="btnClose_Click"
+                        Width="20"
+                        Height="20"
+                        Background="White"
+                        Foreground="{DynamicResource PrimaryHueDarkBrush}">
+                    
                 </Button>
             </StackPanel>
-            <Grid Grid.Row="1"
-              Grid.ColumnSpan="2">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid Margin="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="90" />
@@ -68,29 +65,28 @@
 
                     <Grid Grid.Row="0">
                         <materialDesign:TransitioningContent VerticalAlignment="Center"
-                                                         Height="80">
+                                                             Height="80">
                             <materialDesign:TransitioningContent.OpeningEffects>
                                 <materialDesign:TransitionEffect Kind="FadeIn" />
                                 <materialDesign:TransitionEffect Kind="SlideInFromBottom" />
                             </materialDesign:TransitioningContent.OpeningEffects>
                             <StackPanel Orientation="Horizontal">
                                 <Image x:Name="ImgMessage"
-                                   Height="50"
-                                   Margin="20 0 0 5" />
+                                       Height="50"
+                                       Margin="20 0 0 5" />
                                 <TextBlock x:Name="txtMessage"
-                                       TextWrapping="Wrap"
-                                       Width="220"
-                                       Height="45"
-                                       HorizontalAlignment="Center"
-                                       Grid.Row="0"
-                                       Margin="15 23 5 5"
-                                       materialDesign:HintAssist.Hint=""
-                                       FontSize="18" />
+                                           TextWrapping="Wrap"
+                                           Width="220"
+                                           Height="45"
+                                           HorizontalAlignment="Center"
+                                           Grid.Row="0"
+                                           Margin="15 23 5 5"
+                                           materialDesign:HintAssist.Hint=""
+                                           FontSize="18" />
                             </StackPanel>
                         </materialDesign:TransitioningContent>
                     </Grid>
-                    <Grid Grid.Row="1"
-                      Margin="0,10,0,5">
+                    <Grid Grid.Row="1" Margin="0,10,0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
@@ -99,38 +95,35 @@
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="btnOk"
-                            Click="btnOk_Click"
-                            Grid.Column="1"
-                            BorderBrush="Black"
-                            Margin="20 2 20 0"
-                            Width="95"
-                            Content="Xác nhận"
-                            />
+                                Click="btnOk_Click"
+                                Grid.Column="1"
+                                BorderBrush="Black"
+                                Margin="20 2 20 0"
+                                Width="95"
+                                Content="Xác nhận" />
                         <Button x:Name="btnCancel"
-                            Background="#FF92A9C0"
-                            Click="btnCancel_Click"
-                            Grid.Column="2"
-                            BorderBrush="Black"
-                            Margin="20 2 20 0"
-                            Width="75"
-                            Content="Đóng"
-                            />
+                                Background="#FF92A9C0"
+                                Click="btnCancel_Click"
+                                Grid.Column="2"
+                                BorderBrush="Black"
+                                Margin="20 2 20 0"
+                                Width="75"
+                                Content="Đóng" />
                         <Button x:Name="btnYes"
-                            Click="btnYes_Click"
-                            Grid.Column="1"
-                            BorderBrush="Black"
-                            Margin="20 2 20 0"
-                            Width="80"
-                            Content="Đồng ý"
-                           />
+                                Click="btnYes_Click"
+                                Grid.Column="1"
+                                BorderBrush="Black"
+                                Margin="20 2 20 0"
+                                Width="80"
+                                Content="Đồng ý" />
                         <Button x:Name="btnNo"
-                            Background="#FF92A9C0"
-                            Click="btnNo_Click"
-                            Grid.Column="2"
-                            BorderBrush="Black"
-                            Margin="20 2 20 0"
-                            Width="80"
-                            Content="Không"/>
+                                Background="#FF92A9C0"
+                                Click="btnNo_Click"
+                                Grid.Column="2"
+                                BorderBrush="Black"
+                                Margin="20 2 20 0"
+                                Width="80"
+                                Content="Không"/>
                     </Grid>
                 </Grid>
             </Grid>
