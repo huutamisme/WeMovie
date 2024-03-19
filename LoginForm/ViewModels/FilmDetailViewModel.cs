@@ -1,4 +1,5 @@
 ﻿using LoginForm.Commands;
+using LoginForm.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,39 @@ namespace LoginForm.ViewModels
     public class FilmDetailViewModel : ViewModelBase
     {
         public ICommand HomeNavigateCommand { get; set; }
+        private Film _film;
+
+        public string FilmTitle
+        {
+            get
+            {
+                return _film.FilmTitle;
+            }
+        }
+
+        public string Duration
+        {
+            get
+            {
+                return _film.Duration;
+            }
+        }
+
+        public string ThumbnailPath
+        {
+            get
+            {
+                return _film.ThumbnailPath;
+            }
+        }
+
+        public string Genre
+        {
+            get
+            {
+                return _film.Genre;
+            }
+        }
 
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
 
@@ -27,7 +61,8 @@ namespace LoginForm.ViewModels
             Showtimes.Add(new Showtime { StartTime = "20:30" });
             Showtimes.Add(new Showtime { StartTime = "22:00" });
         }
-        public FilmDetailViewModel() {
+        public FilmDetailViewModel(Film film) {
+            _film = film;
             GenerateShowtimes();
             HomeNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new HomePageViewModel(); }));
         }

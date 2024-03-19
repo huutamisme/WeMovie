@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using LoginForm.Models;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -356,12 +357,4 @@ namespace LoginForm
         }
     }
     // Assuming you have a Film class defined like this
-    public class Film
-    {
-        public string ThumbnailPath { get; set; }
-        public string FilmTitle { get; set; }
-        public string Duration { get; set; }
-        public string Genre { get; set; }
-        // Add other properties as needed (e.g., Title, Description, etc.)
-    }
 }

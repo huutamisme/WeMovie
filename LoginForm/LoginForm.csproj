@@ -221,6 +221,7 @@
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Film.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="TicketBooking.xaml.cs">
@@ -353,9 +354,7 @@
   <ItemGroup>
     <Resource Include="Images\bg.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Avengers.jpg" />
   </ItemGroup>
