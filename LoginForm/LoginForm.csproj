@@ -218,6 +218,9 @@
     <Compile Include="EditShowtime.xaml.cs">
       <DependentUpon>EditShowtime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditShowtimePage.xaml.cs">
+      <DependentUpon>EditShowtimePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FilmDetail.xaml.cs">
       <DependentUpon>FilmDetail.xaml</DependentUpon>
     </Compile>
@@ -280,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditShowtimePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
