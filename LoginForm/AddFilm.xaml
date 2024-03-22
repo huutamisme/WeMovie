@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:LoginForm"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
         Title="AddFilm" Height="650" Width="1080">
     <Grid>
         <Border CornerRadius="10"
                 BorderThickness="2"
                 BorderBrush="{StaticResource BoxBorderGradient}"
                 Background="White">
-            
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -209,8 +211,8 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="75*" />
-                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="70*" />
+                            <ColumnDefinition Width="30*" />
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
@@ -244,7 +246,7 @@
                                              Text="{Binding movieDes,Mode=TwoWay}" />
 
                                 </StackPanel>
-                                <StackPanel Margin="30,10,0,0"
+                                <StackPanel Margin="30,20,0,0"
                                             Width="346"
                                             Orientation="Horizontal">
 
@@ -276,10 +278,51 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
 
+                            <StackPanel Orientation="Horizontal" >
+                                <StackPanel>
+                                    <Label Content="IMDb"
+                                           FontSize="20"
+                                           Height="36" />
+                                    <TextBox Padding="0 17 0 0"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="22"
+                                             Background="White"
+                                             BorderThickness="0,0,0,1"
+                                             Foreground="Black"
+                                             Height="50"
+                                             materialDesign:ValidationAssist.Background="White"
+                                             Width="100"
+                                             x:Name="_IMDb" />
+                                </StackPanel>
+
+                                <StackPanel Margin="25 0 0 0">
+                                    <Label Content="Certification"
+                                           FontSize="20"
+                                           Height="36" />
+                                    <TextBox Padding="0 17 0 0"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             FontSize="22"
+                                             Background="White"
+                                             BorderThickness="0,0,0,1"
+                                             Foreground="Black"
+                                             Height="50"
+                                             Width="150"
+                                             materialDesign:ValidationAssist.Background="White"
+                                             x:Name="_certification" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            
+
                             <!--Button-->
-                            <Grid Grid.Row="1">
+                            <Grid Grid.Row="2">
                                 <StackPanel VerticalAlignment="Bottom"
                                             HorizontalAlignment="Right"
                                             Orientation="Horizontal"
