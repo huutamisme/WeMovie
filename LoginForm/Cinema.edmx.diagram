@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="148a6c2d19f24a2880f5cd98de5bfbe9" Name="Diagram1">
+        <EntityTypeShape EntityType="CinemaModel.actor" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.director" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.movie" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.seat" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.showtime" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.ticket" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.user" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="CinemaModel.FK_movie_actor1" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_movie_director1" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_movie_showtime" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_showtime_movie" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_showtime_seat" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_ticket_seat" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_ticket_showtime" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_user_ticket" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

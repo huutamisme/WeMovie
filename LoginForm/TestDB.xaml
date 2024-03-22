@@ -1,0 +1,33 @@
+﻿<Window x:Class="LoginForm.TestDB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginForm"
+        mc:Ignorable="d"
+        Title="TestDB" Height="450" Width="800">
+    <Grid>
+        <!-- Add a DataGrid to display movies -->
+        <DataGrid x:Name="MoviesDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Height="380" Width="540">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding name}" />
+                <DataGridTextColumn Header="Genre" Binding="{Binding genre}" />
+                <DataGridTemplateColumn Header="Poster">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding poster}" Width="100" Height="180" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Add more columns as needed -->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Buttons -->
+        <Button Content="Load" HorizontalAlignment="Left" Height="28" Margin="600,10,0,0" VerticalAlignment="Top" Width="94" Click="ButtonShow_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Height="28" Margin="600,50,0,0" VerticalAlignment="Top" Width="94" Click="ButtonAdd_Click"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Height="28" Margin="600,90,0,0" VerticalAlignment="Top" Width="94" Click="ButtonDelete_Click"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Height="28" Margin="600,130,0,0" VerticalAlignment="Top" Width="94" Click="ButtonAlter_Click"/>
+    </Grid>
+</Window>
