@@ -10,9 +10,16 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Accent and AppTheme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
                 <ResourceDictionary Source="Styles/UIColors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <LinearGradientBrush x:Key="BoxBorderGradient" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#9C27B0" Offset="0.2"/>
+                <GradientStop Color="#2196F3" Offset="1"/>
+            </LinearGradientBrush>
 
             <LinearGradientBrush x:Key="dashboardRightBg" StartPoint="1,0" EndPoint="0,1">
                 <GradientStop Color="#41518F" Offset="0" />

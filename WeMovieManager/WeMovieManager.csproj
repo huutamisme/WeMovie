@@ -193,8 +193,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddShowtime.xaml.cs">
+      <DependentUpon>AddShowtime.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="EditShowtime.xaml.cs">
+      <DependentUpon>EditShowtime.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -219,6 +225,9 @@
     <Compile Include="View\FilmManagementView.xaml.cs">
       <DependentUpon>FilmManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ShowtimeManagementView.xaml.cs">
+      <DependentUpon>ShowtimeManagementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeMovie.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,6 +243,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeMovie.edmx</DependentUpon>
     </Compile>
+    <Page Include="AddShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FilmManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowtimeManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

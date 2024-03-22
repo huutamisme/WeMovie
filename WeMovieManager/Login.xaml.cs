@@ -74,13 +74,13 @@ namespace WeMovieManager
                         mainWindow.Show();
                     }
                 }
-
                 //txtBlockFLyout.Text = "Sign in successfully!";
                 //SuccessFlyout.IsOpen = true;
                 //SuccessFlyout.CloseButtonVisibility = Visibility.Hidden;
                 //await Task.Delay(1000);
                 //this.Close();
                 //mainWindow.Show();
+
             }
         }
 
