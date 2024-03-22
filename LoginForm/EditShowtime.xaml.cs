@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,32 +15,28 @@ using System.Windows.Shapes;
 namespace LoginForm
 {
     /// <summary>
-    /// Interaction logic for AddFilm.xaml
+    /// Interaction logic for EditShowtime.xaml
     /// </summary>
-    public partial class AddFilm : Window
+    public partial class EditShowtime : Window
     {
-        public AddFilm()
+        public EditShowtime()
         {
             InitializeComponent();
         }
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !IsTextAllowed(e.Text);
-        }
-        private static readonly Regex _regex = new Regex("[^0-9]+"); //regex that matches disallowed text
-        private static bool IsTextAllowed(string text)
-        {
-            return !_regex.IsMatch(text);
-        }
 
-
-        private void _movieGenre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void TimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(e.Text, "^[a-zA-Z]"))
+            // Get the selected time from the TimePicker
+            DateTime? selectedTime = timePicker.SelectedTime;
+
+            // Update UI element with the selected time
+            if (selectedTime.HasValue)
             {
-                e.Handled = true;
+                // Assuming you have a Label named 'selectedTimeLabel'
+                selectedTimeLabel.Text = selectedTime.Value.ToString("HH:mm");
             }
         }
+
         private void Button_MouseEnter_1(object sender, MouseEventArgs e)
         {
             Button btn = sender as Button;
@@ -53,6 +48,11 @@ namespace LoginForm
         {
             Button btn = sender as Button;
             btn.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
