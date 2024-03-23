@@ -12,15 +12,12 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class User
     {
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
         public string gender { get; set; }
-        public Nullable<int> ticket { get; set; }
-    
-        public virtual ticket ticket1 { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 
 namespace LoginForm
 {
@@ -10,12 +9,12 @@ namespace LoginForm
     {
         public TestDB()
         {
-            InitializeComponent();
+            // InitializeComponent();
         }
         private void load()
         {
-            CinemaEntities db = new CinemaEntities();
-            MoviesDataGrid.ItemsSource = db.movies.ToList();
+            //CinemaEntities db = new CinemaEntities();
+            //MoviesDataGrid.ItemsSource = db.movies.ToList();
         }
         private void add()
         {

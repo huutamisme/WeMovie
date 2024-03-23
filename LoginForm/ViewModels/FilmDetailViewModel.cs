@@ -1,74 +1,88 @@
 ﻿using LoginForm.Commands;
-using LoginForm.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LoginForm.ViewModels
 {
     public class FilmDetailViewModel : ViewModelBase
     {
+        public static WeMovieEntities db = new WeMovieEntities();
         public ICommand HomeNavigateCommand { get; set; }
         private Film _film;
-
-        public string FilmTitle
+        public int id
         {
             get
             {
-                return _film.FilmTitle;
+                return _film.id;
             }
         }
-
-        public string Duration
+        public string name
         {
             get
             {
-                return _film.Duration;
+                return _film.name;
             }
         }
 
-        public string ThumbnailPath
+        public int duration
         {
             get
             {
-                return _film.ThumbnailPath;
+                return (int)_film.duration;
             }
         }
 
-        public string Genre
+        public string poster
         {
             get
             {
-                return _film.Genre;
+                return _film.poster;
             }
         }
 
+        public string genre
+        {
+            get
+            {
+                return _film.genre;
+            }
+        }
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
 
         private void GenerateShowtimes()
         {
-            Showtimes.Add(new Showtime { StartTime = "10:00" });
-            Showtimes.Add(new Showtime { StartTime = "11:30" });
-            Showtimes.Add(new Showtime { StartTime = "13:00" });
-            Showtimes.Add(new Showtime { StartTime = "14:30" });
-            Showtimes.Add(new Showtime { StartTime = "16:00" });
-            Showtimes.Add(new Showtime { StartTime = "17:30" });
-            Showtimes.Add(new Showtime { StartTime = "19:00" });
-            Showtimes.Add(new Showtime { StartTime = "20:30" });
-            Showtimes.Add(new Showtime { StartTime = "22:00" });
+            //Showtimes.Add(new Showtime { StartTime = "10:30" });
+            //Showtimes.Add(new Showtime { StartTime = "11:30" });
+            //Showtimes.Add(new Showtime { StartTime = "13:00" });
+            //Showtimes.Add(new Showtime { StartTime = "14:30" });
+            //Showtimes.Add(new Showtime { StartTime = "16:00" });
+            //Showtimes.Add(new Showtime { StartTime = "17:30" });
+            //Showtimes.Add(new Showtime { StartTime = "19:00" });
+            //Showtimes.Add(new Showtime { StartTime = "20:30" });
+            //Showtimes.Add(new Showtime { StartTime = "22:00" });
+
+            using (var db = new WeMovieEntities())
+            {
+                var showtimes = db.Showtimes.Where(s => s.Film == _film.id).ToList();
+                Debug.WriteLine("count " + showtimes.Count);
+                foreach (var showtime in showtimes)
+                {
+                    Debug.WriteLine("check " + showtime.time);
+                    Showtimes.Add(showtime);
+                }
+            }
         }
-        public FilmDetailViewModel(Film film) {
+        public FilmDetailViewModel(Film film)
+        {
             _film = film;
             GenerateShowtimes();
             HomeNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new HomePageViewModel(); }));
         }
     }
-    public class Showtime
-    {
-        public string StartTime { get; set; }
-    }
+    //public class Showtime
+    //{
+    //    public string StartTime { get; set; }
+    //}
 }

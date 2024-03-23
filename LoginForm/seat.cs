@@ -12,21 +12,20 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class seat
+    public partial class Seat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public seat()
+        public Seat()
         {
-            this.showtimes = new HashSet<showtime>();
-            this.tickets = new HashSet<ticket>();
+            this.Showtimes = new HashSet<Showtime>();
         }
     
         public int id { get; set; }
         public string status { get; set; }
+        public Nullable<int> Showtime { get; set; }
     
+        public virtual Showtime Showtime1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<showtime> showtimes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ticket> tickets { get; set; }
+        public virtual ICollection<Showtime> Showtimes { get; set; }
     }
 }

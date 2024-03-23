@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WeMovieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="biography" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="biography" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="genre" Type="nchar" MaxLength="50" />
+          <Property Name="duration" Type="int" />
+          <Property Name="publishedYear" Type="date" />
+          <Property Name="rating" Type="int" />
+          <Property Name="poster" Type="nvarchar" MaxLength="200" />
+          <Property Name="certification" Type="nvarchar" MaxLength="10" />
+          <Property Name="Actor" Type="int" />
+          <Property Name="Director" Type="int" />
+          <Property Name="Showtime" Type="int" />
+          <Property Name="plotSummary" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="status" Type="nchar" MaxLength="10" />
+          <Property Name="Showtime" Type="int" />
+        </EntityType>
+        <EntityType Name="Showtime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="time" Type="time" Precision="7" />
+          <Property Name="Film" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="price" Type="int" />
+          <Property Name="Seat" Type="int" />
+          <Property Name="seatQuantities" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="Showtime" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nchar" MaxLength="50" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="gender" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="20" />
+          <Property Name="releasePeriod" Type="nvarchar" MaxLength="50" />
+          <Property Name="releaseDate" Type="date" />
+          <Property Name="quantities" Type="int" />
+          <Property Name="denomination" Type="int" />
+        </EntityType>
+        <Association Name="FK_Film_Actor1">
+          <End Role="Actor" Type="Self.Actor" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Actor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Director1">
+          <End Role="Director" Type="Self.Director" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seat_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="Film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Seat">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="Seat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeMovieModelStoreContainer">
+          <EntitySet Name="Actor" EntityType="Self.Actor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Showtime" EntityType="Self.Showtime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Film_Actor1" Association="Self.FK_Film_Actor1">
+            <End Role="Actor" EntitySet="Actor" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Director1" Association="Self.FK_Film_Director1">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Showtime" Association="Self.FK_Film_Showtime">
+            <End Role="Showtime" EntitySet="Showtime" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seat_Showtime" Association="Self.FK_Seat_Showtime">
+            <End Role="Showtime" EntitySet="Showtime" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Film" Association="Self.FK_Showtime_Film">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Seat" Association="Self.FK_Showtime_Seat">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Showtime" Association="Self.FK_Ticket_Showtime">
+            <End Role="Showtime" EntitySet="Showtime" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WeMovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="biography" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Actor1" FromRole="Actor" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="Director">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="biography" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Director1" FromRole="Director" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="genre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="publishedYear" Type="DateTime" Precision="0" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="poster" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="certification" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Actor" Type="Int32" />
+          <Property Name="Director" Type="Int32" />
+          <Property Name="Showtime" Type="Int32" />
+          <Property Name="plotSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Actor1" Relationship="Self.FK_Film_Actor1" FromRole="Film" ToRole="Actor" />
+          <NavigationProperty Name="Director1" Relationship="Self.FK_Film_Director1" FromRole="Film" ToRole="Director" />
+          <NavigationProperty Name="Showtime1" Relationship="Self.FK_Film_Showtime" FromRole="Film" ToRole="Showtime" />
+          <NavigationProperty Name="Showtimes" Relationship="Self.FK_Showtime_Film" FromRole="Film" ToRole="Showtime" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Showtime" Type="Int32" />
+          <NavigationProperty Name="Showtime1" Relationship="Self.FK_Seat_Showtime" FromRole="Seat" ToRole="Showtime" />
+          <NavigationProperty Name="Showtimes" Relationship="Self.FK_Showtime_Seat" FromRole="Seat" ToRole="Showtime" />
+        </EntityType>
+        <EntityType Name="Showtime">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="time" Type="Time" Precision="7" />
+          <Property Name="Film" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="Seat" Type="Int32" />
+          <Property Name="seatQuantities" Type="Int32" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Showtime" FromRole="Showtime" ToRole="Film" />
+          <NavigationProperty Name="Film1" Relationship="Self.FK_Showtime_Film" FromRole="Showtime" ToRole="Film" />
+          <NavigationProperty Name="Seats" Relationship="Self.FK_Seat_Showtime" FromRole="Showtime" ToRole="Seat" />
+          <NavigationProperty Name="Seat1" Relationship="Self.FK_Showtime_Seat" FromRole="Showtime" ToRole="Seat" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Showtime" FromRole="Showtime" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="Showtime" Type="Int32" />
+          <NavigationProperty Name="Showtime1" Relationship="Self.FK_Ticket_Showtime" FromRole="Ticket" ToRole="Showtime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="releasePeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="releaseDate" Type="DateTime" Precision="0" />
+          <Property Name="quantities" Type="Int32" />
+          <Property Name="denomination" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Film_Actor1">
+          <End Role="Actor" Type="Self.Actor" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Actor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Director1">
+          <End Role="Director" Type="Self.Director" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="Film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seat_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Seat">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="Seat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Showtime">
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="Showtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WeMovieEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actors" EntityType="Self.Actor" />
+          <EntitySet Name="Directors" EntityType="Self.Director" />
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="Seats" EntityType="Self.Seat" />
+          <EntitySet Name="Showtimes" EntityType="Self.Showtime" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <AssociationSet Name="FK_Film_Actor1" Association="Self.FK_Film_Actor1">
+            <End Role="Actor" EntitySet="Actors" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Director1" Association="Self.FK_Film_Director1">
+            <End Role="Director" EntitySet="Directors" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Showtime" Association="Self.FK_Film_Showtime">
+            <End Role="Showtime" EntitySet="Showtimes" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Film" Association="Self.FK_Showtime_Film">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seat_Showtime" Association="Self.FK_Seat_Showtime">
+            <End Role="Showtime" EntitySet="Showtimes" />
+            <End Role="Seat" EntitySet="Seats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Seat" Association="Self.FK_Showtime_Seat">
+            <End Role="Seat" EntitySet="Seats" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Showtime" Association="Self.FK_Ticket_Showtime">
+            <End Role="Showtime" EntitySet="Showtimes" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeMovieModelStoreContainer" CdmEntityContainer="WeMovieEntities">
+          <EntitySetMapping Name="Actors">
+            <EntityTypeMapping TypeName="WeMovieModel.Actor">
+              <MappingFragment StoreEntitySet="Actor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="biography" ColumnName="biography" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Directors">
+            <EntityTypeMapping TypeName="WeMovieModel.Director">
+              <MappingFragment StoreEntitySet="Director">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="biography" ColumnName="biography" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="WeMovieModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="publishedYear" ColumnName="publishedYear" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="poster" ColumnName="poster" />
+                <ScalarProperty Name="certification" ColumnName="certification" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Showtime" ColumnName="Showtime" />
+                <ScalarProperty Name="plotSummary" ColumnName="plotSummary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seats">
+            <EntityTypeMapping TypeName="WeMovieModel.Seat">
+              <MappingFragment StoreEntitySet="Seat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Showtime" ColumnName="Showtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Showtimes">
+            <EntityTypeMapping TypeName="WeMovieModel.Showtime">
+              <MappingFragment StoreEntitySet="Showtime">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="Film" ColumnName="Film" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Seat" ColumnName="Seat" />
+                <ScalarProperty Name="seatQuantities" ColumnName="seatQuantities" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WeMovieModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="WeMovieModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Showtime" ColumnName="Showtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WeMovieModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="WeMovieModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="releasePeriod" ColumnName="releasePeriod" />
+                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+                <ScalarProperty Name="quantities" ColumnName="quantities" />
+                <ScalarProperty Name="denomination" ColumnName="denomination" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LoginForm
 {
@@ -31,20 +19,20 @@ namespace LoginForm
 
         private void GenerateShowtimes()
         {
-            Showtimes.Add(new Showtime { StartTime = "10:00" });
-            Showtimes.Add(new Showtime { StartTime = "11:30" });
-            Showtimes.Add(new Showtime { StartTime = "13:00" });
-            Showtimes.Add(new Showtime { StartTime = "14:30" });
-            Showtimes.Add(new Showtime { StartTime = "16:00" });
-            Showtimes.Add(new Showtime { StartTime = "17:30" });
-            Showtimes.Add(new Showtime { StartTime = "19:00" });
-            Showtimes.Add(new Showtime { StartTime = "20:30" });
-            Showtimes.Add(new Showtime { StartTime = "22:00" });
+            //Showtimes.Add(new Showtime { StartTime = "10:00" });
+            //Showtimes.Add(new Showtime { StartTime = "11:30" });
+            //Showtimes.Add(new Showtime { StartTime = "13:00" });
+            //Showtimes.Add(new Showtime { StartTime = "14:30" });
+            //Showtimes.Add(new Showtime { StartTime = "16:00" });
+            //Showtimes.Add(new Showtime { StartTime = "17:30" });
+            //Showtimes.Add(new Showtime { StartTime = "19:00" });
+            //Showtimes.Add(new Showtime { StartTime = "20:30" });
+            //Showtimes.Add(new Showtime { StartTime = "22:00" });
         }
     }
 
-    public class Showtime
-    {
-        public string StartTime { get; set; }
-    }
+    //public class Showtime
+    //{
+    //    public string StartTime { get; set; }
+    //}
 }

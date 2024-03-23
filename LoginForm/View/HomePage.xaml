@@ -137,18 +137,18 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
-                                                <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                                <Image x:Name="FilmImage" Source="{Binding poster}" Width="215" Height="300" Stretch="UniformToFill"/>
                                                 <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding name}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
                                                  FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
                                                     <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
                                                         <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
-                                                        <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        <TextBlock Text="{Binding duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
                                                         <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
-                                                        <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        <TextBlock Text="{Binding genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                 </StackPanel>
                                             </Grid>
@@ -169,7 +169,7 @@
                                                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                                                         <StackPanel>
                                                             <ContentPresenter/>
-                                                            <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                            <TextBlock x:Name="FilmTitle" Text="{Binding name}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
                                                         </StackPanel>
                                                     </Border>
                                                 </ControlTemplate>
@@ -216,18 +216,18 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <Grid Margin="10" x:Name="FilmGrid" MouseEnter="FilmGrid_MouseEnter" MouseLeave="FilmGrid_MouseLeave">
-                                                <Image x:Name="FilmImage" Source="{Binding ThumbnailPath}" Width="215" Height="300" Stretch="UniformToFill"/>
+                                                <Image x:Name="FilmImage" Source="{Binding poster}" Width="215" Height="300" Stretch="UniformToFill"/>
                                                 <Rectangle x:Name="OverlayRectangle" Fill="#80000000" Visibility="Hidden"/>
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding FilmTitle}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
+                                                    <TextBlock x:Name="FilmTitleText" Text="{Binding name}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
                                                  FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
                                                     <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
                                                         <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
-                                                        <TextBlock Text="{Binding Duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        <TextBlock Text="{Binding duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
                                                         <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
-                                                        <TextBlock Text="{Binding Genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        <TextBlock Text="{Binding genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                 </StackPanel>
                                             </Grid>
@@ -248,7 +248,7 @@
                                                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                                                         <StackPanel>
                                                             <ContentPresenter/>
-                                                            <TextBlock x:Name="FilmTitle" Text="{Binding FilmTitle}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
+                                                            <TextBlock x:Name="FilmTitle" Text="{Binding name}" FontSize="18" FontWeight="Bold" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"/>
                                                         </StackPanel>
                                                     </Border>
                                                 </ControlTemplate>

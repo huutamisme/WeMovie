@@ -12,25 +12,31 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class showtime
+    public partial class Showtime
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public showtime()
+        public Showtime()
         {
-            this.movies = new HashSet<movie>();
-            this.tickets = new HashSet<ticket>();
+            this.Films = new HashSet<Film>();
+            this.Seats = new HashSet<Seat>();
+            this.Tickets = new HashSet<Ticket>();
         }
     
         public int id { get; set; }
-        public Nullable<System.DateTime> time { get; set; }
-        public Nullable<int> seat { get; set; }
-        public Nullable<int> movie { get; set; }
+        public Nullable<System.TimeSpan> time { get; set; }
+        public Nullable<int> Film { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<int> price { get; set; }
+        public Nullable<int> Seat { get; set; }
+        public Nullable<int> seatQuantities { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<movie> movies { get; set; }
-        public virtual movie movie1 { get; set; }
-        public virtual seat seat1 { get; set; }
+        public virtual ICollection<Film> Films { get; set; }
+        public virtual Film Film1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ticket> tickets { get; set; }
+        public virtual ICollection<Seat> Seats { get; set; }
+        public virtual Seat Seat1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class director
+    public partial class Director
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public director()
+        public Director()
         {
-            this.movies = new HashSet<movie>();
+            this.Films = new HashSet<Film>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace LoginForm
         public string biography { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<movie> movies { get; set; }
+        public virtual ICollection<Film> Films { get; set; }
     }
 }
