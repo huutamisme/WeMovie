@@ -30,12 +30,10 @@ namespace LoginForm
         public string certification { get; set; }
         public Nullable<int> Actor { get; set; }
         public Nullable<int> Director { get; set; }
-        public Nullable<int> Showtime { get; set; }
         public string plotSummary { get; set; }
     
         public virtual Actor Actor1 { get; set; }
         public virtual Director Director1 { get; set; }
-        public virtual Showtime Showtime1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Showtime> Showtimes { get; set; }
     }

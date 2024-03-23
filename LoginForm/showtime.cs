@@ -17,7 +17,6 @@ namespace LoginForm
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Showtime()
         {
-            this.Films = new HashSet<Film>();
             this.Seats = new HashSet<Seat>();
             this.Tickets = new HashSet<Ticket>();
         }
@@ -27,15 +26,11 @@ namespace LoginForm
         public Nullable<int> Film { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<int> price { get; set; }
-        public Nullable<int> Seat { get; set; }
         public Nullable<int> seatQuantities { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Film> Films { get; set; }
         public virtual Film Film1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seat> Seats { get; set; }
-        public virtual Seat Seat1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }

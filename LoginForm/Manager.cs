@@ -12,12 +12,9 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class Manager
     {
-        public int id { get; set; }
-        public string status { get; set; }
-        public Nullable<int> Showtime { get; set; }
-    
-        public virtual Showtime Showtime1 { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     }
 }

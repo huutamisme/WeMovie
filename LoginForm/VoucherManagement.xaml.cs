@@ -17,24 +17,24 @@ namespace LoginForm
 {
     public partial class VoucherManagement : Window
     {
-        public ObservableCollection<Voucher> VoucherList { get; set; }
+        public ObservableCollection<Voucher2> VoucherList { get; set; }
 
         public VoucherManagement()
         {
             InitializeComponent();
             DataContext = this;
             // Example data
-            VoucherList = new ObservableCollection<Voucher>()
+            VoucherList = new ObservableCollection<Voucher2>()
             {
 
-                new Voucher { Code = "Voucher001", ReleasePeriod = "Holiday", Quantity = 100, Denomination = "$50" },
-                new Voucher { Code = "Voucher002", ReleasePeriod = "Birthday", Quantity = 150, Denomination = "$100" },
-                new Voucher { Code = "Voucher003", ReleasePeriod = "Anniversary", Quantity = 120, Denomination = "$75" },
+                new Voucher2 { Code = "Voucher001", ReleasePeriod = "Holiday", Quantity = 100, Denomination = "$50" },
+                new Voucher2 { Code = "Voucher002", ReleasePeriod = "Birthday", Quantity = 150, Denomination = "$100" },
+                new Voucher2 { Code = "Voucher003", ReleasePeriod = "Anniversary", Quantity = 120, Denomination = "$75" },
             };
         }
     }
 
-    public class Voucher
+    public class Voucher2
     {
         public string Code { get; set; }
         public string ReleasePeriod { get; set; }

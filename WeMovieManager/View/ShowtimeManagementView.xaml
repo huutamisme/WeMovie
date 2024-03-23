@@ -78,6 +78,7 @@
                                      Style="{StaticResource MahApps.Styles.TextBox}"/>
                         </Grid>
                     </Border>
+                    <Button Style="{StaticResource addFilmBtn}" Margin="10 0 0 0 "/>
 
                 </StackPanel>
 
