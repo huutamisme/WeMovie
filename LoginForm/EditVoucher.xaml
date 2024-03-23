@@ -1,0 +1,266 @@
+﻿<Window x:Class="LoginForm.EditVoucher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginForm"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="EditVoucher" Height="350" Width="800">
+    <Window.Resources>
+        <Style x:Key="CloseWindow" TargetType="Button">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="Transparent"
+                               CornerRadius="5">
+                            <StackPanel Orientation="Horizontal"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="WindowClose"
+                                                         Height="20"
+                                                         Width="20"/>
+                            </StackPanel>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource color11}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DeleteBtn" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{StaticResource color11}"
+                               CornerRadius="5">
+                            <StackPanel Orientation="Horizontal"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource BoxBorderGradient}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SaveBtn" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{StaticResource color3}"
+                               CornerRadius="5">
+                            <StackPanel Orientation="Horizontal"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource BoxBorderGradient}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border Background="#FFF0F3F7"
+            CornerRadius="10"
+            BorderBrush="{StaticResource BoxBorderGradient}"
+            BorderThickness="5">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderThickness="0,0,0,1"
+                    BorderBrush="Black">
+                    <Grid>
+                        <TextBlock Text="Edit Voucher"
+                               FontSize="25"
+                               Margin="20,10,0,0"
+                               FontWeight="Bold" />
+                        <Button Click="Button_Click_1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource CloseWindow}">
+                        </Button>
+                    </Grid>
+
+                </Border>
+            </Grid>
+            <Grid  Grid.Row="1"
+               Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="65*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--NAME-->
+                    <StackPanel Grid.Column="0"
+                            Margin="25,0,25,10"
+                            Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Content="Code"
+                               FontSize="20" />
+                            <TextBox Width="175"
+                                     Height="47"
+                                     BorderThickness="0 0 0 1"
+                                     Background="#FFF0F3F7"
+                                     FontSize="25"
+                                     VerticalAlignment="Bottom"
+                                     FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Release Period-->
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Release Period"
+                               FontSize="20"
+                               Height="40" />
+                        <TextBox Width="479"
+                                 Height="43"
+                                 FontSize="25"
+                                 HorizontalAlignment="Left"
+                                 Background="Transparent"
+                                 BorderThickness="0 0 0 1">
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="1"
+                        Orientation="Horizontal">
+
+                    <!--ReleaseDate-->
+                    <StackPanel Margin="25,10,25,0"
+                            Width="200"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Left">
+                        <Label Content="Release Date"
+                               FontSize="20"
+                               Height="40" />
+                        <StackPanel>
+                            <DatePicker materialDesign:HintAssist.Hint="{Binding SetCurrentDate}"
+                                        FirstDayOfWeek="Monday"
+                                        SelectedDateFormat="Short"
+                                        Foreground="Black"
+                                        FontSize="25"
+                                        Height="39"
+                                        Padding="10,0,0,0"
+                                        Margin="0,0,0,0"
+                                        x:Name="_movieDate"
+                                        DisplayDateStart="{Binding GetCurrentDate}"
+                                        SelectedDate="{Binding showtimeDate, Mode=TwoWay}"
+                                        materialDesign:HintAssist.IsFloating="False"
+                                        Focusable="False" />
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!--Denomination-->
+                    <StackPanel VerticalAlignment="Bottom"
+                            Margin="70,0,0,0">
+                        <Label Content="Denomination"
+                           FontSize="20" />
+                        <TextBox Width="175"
+                             Height="43"
+                             FontSize="25"
+                                 Background="Transparent"
+                                 BorderThickness="0 0 0 1"
+                             Text="{Binding moviePrice}"
+                             x:Name="_moviePrice">
+                        </TextBox>
+                    </StackPanel>
+
+                    <!--Quantity-->
+                    <StackPanel VerticalAlignment="Bottom"
+                           Margin="70,0,0,0">
+                        <Label Content="Quantity"
+                          FontSize="20" />
+                        <TextBox Width="175"
+                            Height="43"
+                            FontSize="25"
+                            Background="Transparent"
+                            BorderThickness="0 0 0 1"
+                            x:Name="numberofseat">
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    Orientation="Horizontal"
+                                    Margin="0,0,140,10">
+                    <Button Style="{StaticResource DeleteBtn}" 
+                            Content="DELETE"
+                            Command="{Binding SaveCM}"
+                            CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                    </Button>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    Orientation="Horizontal"
+                                    Margin="0,0,24,10">
+                    <Button Style="{StaticResource SaveBtn}" 
+                            Content="SAVE"
+                            Command="{Binding SaveCM}"
+                            CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -26,13 +26,13 @@ namespace LoginForm
             PopulateListBoxWithSampleData();
         }
 
-        ObservableCollection<Voucher> sampleData = new ObservableCollection<Voucher>();
+        ObservableCollection<Voucher1> sampleData = new ObservableCollection<Voucher1>();
 
         private void PopulateListBoxWithSampleData()
         {
            
-            sampleData.Add(new Voucher { Code = "KHLS1GG30H", VoucherInfoStr = "(Discount 30000)" });
-            sampleData.Add(new Voucher { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
+            sampleData.Add(new Voucher1 { Code = "KHLS1GG30H", VoucherInfoStr = "(Discount 30000)" });
+            sampleData.Add(new Voucher1 { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
             listBox.ItemsSource = sampleData;
         }
 
@@ -54,7 +54,7 @@ namespace LoginForm
             else
             {
                 // check invalid voucher
-                listBox.Items.Add(new Voucher { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
+                listBox.Items.Add(new Voucher1 { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
                 VoucherTextBox.Text = "";
             }
 
@@ -62,7 +62,7 @@ namespace LoginForm
 
     }
 
-    public class Voucher
+    public class Voucher1
     {
         public string Code { get; set; }
         public string VoucherInfoStr { get; set; }

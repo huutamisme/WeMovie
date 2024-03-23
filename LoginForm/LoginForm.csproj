@@ -209,6 +209,9 @@
     <Compile Include="AddFilm.xaml.cs">
       <DependentUpon>AddFilm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddVoucher.xaml.cs">
+      <DependentUpon>AddVoucher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
@@ -220,6 +223,9 @@
     </Compile>
     <Compile Include="EditShowtimePage.xaml.cs">
       <DependentUpon>EditShowtimePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditVoucher.xaml.cs">
+      <DependentUpon>EditVoucher.xaml</DependentUpon>
     </Compile>
     <Compile Include="FilmDetail.xaml.cs">
       <DependentUpon>FilmDetail.xaml</DependentUpon>
@@ -246,6 +252,9 @@
       <DependentUpon>Payment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Film.cs" />
+    <Compile Include="Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ShowtimeManagement.xaml.cs">
       <DependentUpon>ShowtimeManagement.xaml</DependentUpon>
@@ -274,7 +283,14 @@
     <Compile Include="View\TicketBookingView.xaml.cs">
       <DependentUpon>TicketBookingView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VoucherManagement.xaml.cs">
+      <DependentUpon>VoucherManagement.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddVoucher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -287,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditShowtimePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditVoucher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -334,6 +354,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShowtimeManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -365,6 +389,10 @@
     <Page Include="View\TicketBookingView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VoucherManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
