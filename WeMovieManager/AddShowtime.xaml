@@ -58,7 +58,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Height="100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="65*" />
                         <ColumnDefinition Width="35*" />
@@ -71,14 +71,14 @@
                         <StackPanel>
                             <Label Content="Movie name"
                                FontSize="20" />
-                            <TextBox Width="479"
-                                     Height="47"
-                                     BorderThickness="0 0 0 1"
-                                     Background="#FFF0F3F7"
-                                     FontSize="25"
-                                     VerticalAlignment="Bottom"
-                                     IsReadOnly="True"
-                                     FontWeight="Bold"/>
+                            <ComboBox x:Name="filmList" 
+                                      Width="400"
+                                      Height="47"
+                                      BorderThickness="1"
+                                      Background="#FFF0F3F7"
+                                      FontSize="25"
+                                      VerticalAlignment="Bottom"
+                                      FontWeight="Bold"/>
                         </StackPanel>
                     </StackPanel>
 
