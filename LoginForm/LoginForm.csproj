@@ -462,10 +462,20 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Actor\" />
     <Folder Include="Images\Director\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Actor\Captain America\Chris_Evans.jpg" />
+    <Resource Include="Images\Actor\Captain America\Scarlett_Johansson.jpg" />
+    <Resource Include="Images\Actor\Captain America\Sebastian_Stan.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Chadwick_Boseman.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Lupita_Nyong%27o.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Michael_B._Jordan.jpg" />
+    <Resource Include="Images\Actor\Avatar\Kate_Winslet.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sam_ Worthington.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sigourney_ Weaver.jpg" />
+    <Resource Include="Images\Actor\Avatar\Stephen_Lang.jpg" />
+    <Resource Include="Images\Actor\Avatar\Zoe_Saldana.jpg" />
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>
