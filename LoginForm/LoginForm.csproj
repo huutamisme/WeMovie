@@ -463,6 +463,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Actor\" />
+    <Folder Include="Images\Director\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="WeMovie.Context.tt">
