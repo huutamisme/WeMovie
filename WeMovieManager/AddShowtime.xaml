@@ -9,7 +9,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        Title="EditShowtime" Height="650" Width="800">
+        Title="EditShowtime" Height="350" Width="800">
     <Border Background="#FFF0F3F7"
             CornerRadius="10"
             BorderBrush="{StaticResource BoxBorderGradient}"
@@ -20,7 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
                 <RowDefinition Height="35*" />
-                <RowDefinition Height="55*" />
+                <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Border BorderThickness="0,0,0,1"
@@ -87,13 +87,19 @@
                         <Label Content="Date"
                            FontSize="20"
                            Height="40" />
-                        <TextBox Width="175"
-                                Height="43"
-                                FontSize="25"
-                                 HorizontalAlignment="Left"
-                                Background="Transparent"
-                                BorderThickness="0 0 0 1">
-                        </TextBox>
+                        <DatePicker materialDesign:HintAssist.Hint="{Binding SetCurrentDate}"
+                                        FirstDayOfWeek="Monday"
+                                        SelectedDateFormat="Short"
+                                        Foreground="Black"
+                                        FontSize="25"
+                                        Height="39"
+                                        Padding="10,0,0,0"
+                                        Margin="0,0,64,0"
+                                        x:Name="_movieDate"
+                                        DisplayDateStart="{Binding GetCurrentDate}"
+                                        SelectedDate="{Binding showtimeDate, Mode=TwoWay}"
+                                        materialDesign:HintAssist.IsFloating="False"
+                                        Focusable="False" />
                     </StackPanel>
                 </Grid>
 
@@ -169,60 +175,6 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Grid>
-                    <Grid Grid.Column="0"
-                      Margin="0,50,0,0">
-                        <!--Descripstion-->
-                        <StackPanel HorizontalAlignment="Left"
-                                Width="290"
-                                Margin="25,0,0,0">
-
-                            <StackPanel>
-                                <Label Content="Describe Addition"
-                                   FontSize="20"
-                                   Foreground="Black"
-                                   Margin="0,10,0,0" />
-                                <Border BorderThickness="1"
-                                    BorderBrush="Black"
-                                    Height="200"
-                                    CornerRadius="8">
-                                    <StackPanel>
-                                        <StackPanel.Resources>
-                                            <Style TargetType="Label">
-                                                <Setter Property="Margin"
-                                                    Value="5,10,0,0" />
-                                                <Setter Property="FontSize"
-                                                    Value="15" />
-                                            </Style>
-                                        </StackPanel.Resources>
-                                        <StackPanel>
-                                            <Label Content="{Binding movieSelected.DisplayName}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Date:" />
-                                            <Label Content="{Binding showtimeDate.Date}"
-                                               ContentStringFormat="dd/MM/yyyy" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Showtime:" />
-                                            <Label Content="{Binding Showtime.TimeOfDay}" />
-                                            <Label Content="->" />
-                                            <Label Content="{Binding EndTime.TimeOfDay}" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Price:" />
-                                            <Label  x:Name="_desPrice"
-                                                Content="{Binding Path=Text, ElementName=_moviePrice}" />
-                                            <Label  Content="VND" />
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="Seat quantity:" />
-                                            <Label  x:Name="_SeatQuantity"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                        </StackPanel>
-                    </Grid>
 
                     <Grid Grid.Column="1">
 
