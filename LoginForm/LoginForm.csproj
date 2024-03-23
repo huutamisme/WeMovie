@@ -250,10 +250,6 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestDB.xaml.cs">
-      <DependentUpon>TestDB.xaml</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Ticket.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -353,11 +349,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="TestDB.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Page Include="TicketBooking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
