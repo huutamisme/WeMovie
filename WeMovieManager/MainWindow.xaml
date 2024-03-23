@@ -70,7 +70,8 @@
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color3}"
-                              IsChecked="False">
+                              IsChecked="False"
+                             Command="{Binding ShowTimeManagementNavigateCommand}">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Film" Style="{StaticResource menuButtonIcon}"/>
                         <TextBlock Text="Showtime" Style="{StaticResource menuButtonText}"/>
@@ -123,7 +124,10 @@
                 <DataTemplate DataType="{x:Type vms:FilmsManagementViewModel}">
                     <views:FilmManagementView />
                 </DataTemplate>
-            </Grid.Resources>
+                    <DataTemplate DataType="{x:Type vms:ShowTimeManagementViewModel}">
+                        <views:ShowtimeManagementView />
+                    </DataTemplate>
+                </Grid.Resources>
 
                 <ContentControl Content="{Binding CurrentViewModel}" />
             </Grid>
