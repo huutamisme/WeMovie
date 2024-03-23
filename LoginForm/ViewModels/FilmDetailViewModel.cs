@@ -72,8 +72,4 @@ namespace LoginForm.ViewModels
             HomeNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new HomePageViewModel(); }));
         }
     }
-    //public class Showtime
-    //{
-    //    public string StartTime { get; set; }
-    //}
 }
