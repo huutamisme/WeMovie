@@ -6,6 +6,19 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9df728abd36c40b58fcff152d8b2f00b" Name="Diagram1">
         <EntityTypeShape EntityType="WeMovieModel.Manager" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Actor" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WeMovieModel.Director" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WeMovieModel.Film" Width="1.5" PointX="6" PointY="2.875" />
+        <EntityTypeShape EntityType="WeMovieModel.Seat" Width="1.5" PointX="10.5" PointY="5.125" />
+        <EntityTypeShape EntityType="WeMovieModel.Showtime" Width="1.5" PointX="8.25" PointY="3.375" />
+        <EntityTypeShape EntityType="WeMovieModel.Ticket" Width="1.5" PointX="10.5" PointY="2.625" />
+        <EntityTypeShape EntityType="WeMovieModel.User" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="WeMovieModel.Voucher" Width="1.5" PointX="2.75" PointY="7.25" />
+        <AssociationConnector Association="WeMovieModel.FK_Film_Actor1" />
+        <AssociationConnector Association="WeMovieModel.FK_Film_Director1" />
+        <AssociationConnector Association="WeMovieModel.FK_Showtime_Film" />
+        <AssociationConnector Association="WeMovieModel.FK_Seat_Showtime" />
+        <AssociationConnector Association="WeMovieModel.FK_Ticket_Showtime" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

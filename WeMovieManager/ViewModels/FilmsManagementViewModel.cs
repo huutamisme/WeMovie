@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeMovieManager.Commands;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WeMovieManager.ViewModels
@@ -12,6 +13,7 @@ namespace WeMovieManager.ViewModels
     public class FilmsManagementViewModel : ViewModelBase
     {
         public ObservableCollection<Movie> MovieList { get; set; }
+
         private Movie _selectedItem;
         public Movie SelectedItem
         {
@@ -30,19 +32,13 @@ namespace WeMovieManager.ViewModels
         public FilmsManagementViewModel()
         {
             // Initialize your MovieList
-            MovieList = new ObservableCollection<Movie>();
+            
+
+            var query = from film in App.WeMovieDb.Films
+                        select new Movie { DisplayName = film.name, MovieType = film.genre, Country = "Ko co", RunningTime = (int)film.duration };
 
             // Add some example movies
-            MovieList.Add(new Movie { DisplayName = "Movie 1", MovieType = "Type 1", Country = "Country 1", RunningTime = 120 });
-            MovieList.Add(new Movie { DisplayName = "Movie 2", MovieType = "Type 2", Country = "Country 2", RunningTime = 90 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
-            MovieList.Add(new Movie { DisplayName = "Movie 3", MovieType = "Type 3", Country = "Country 3", RunningTime = 150 });
+            MovieList = new ObservableCollection<Movie>(query.ToList());
 
             // Set the DataContext to this instance (for binding)
         }
@@ -53,6 +49,11 @@ namespace WeMovieManager.ViewModels
             public string MovieType { get; set; }
             public string Country { get; set; }
             public int RunningTime { get; set; }
+
+            public RelayCommand editButtonCommand => new RelayCommand(execute =>
+            {
+                Trace.WriteLine("Edit " + DisplayName);
+            }, canExecute => { return true; });
         }
     }
 }

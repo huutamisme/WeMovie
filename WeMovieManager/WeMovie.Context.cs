@@ -26,5 +26,13 @@ namespace WeMovieManager
         }
     
         public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<Actor> Actors { get; set; }
+        public virtual DbSet<Director> Directors { get; set; }
+        public virtual DbSet<Film> Films { get; set; }
+        public virtual DbSet<Seat> Seats { get; set; }
+        public virtual DbSet<Showtime> Showtimes { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
     }
 }
