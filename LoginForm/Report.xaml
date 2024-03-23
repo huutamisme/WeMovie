@@ -12,26 +12,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:uc="clr-namespace:LoginForm.User_Controls"
         Title="Report" Height="650" Width="800">
-    <Window.Resources>
-        <!-- Define the gold gradient brush -->
-        <LinearGradientBrush x:Key="top1Gradient" StartPoint="0,0" EndPoint="1,0.7">
-            <GradientStop Color="#FFFFD700" Offset="0"/>
-            <GradientStop Color="#FFFFA500" Offset="0.5"/>
-            <GradientStop Color="#FFDAA520" Offset="1"/>
-        </LinearGradientBrush>
 
-        <LinearGradientBrush x:Key="top2Gradient" StartPoint="0,0" EndPoint="1,0.7">
-            <GradientStop Color="#FFE6E8EA" Offset="0"/>
-            <GradientStop Color="#FFBDC3C7" Offset="0.5"/>
-            <GradientStop Color="#FFA6ACAF" Offset="1"/>
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="top3Gradient" StartPoint="0,0" EndPoint="1,0.7">
-            <GradientStop Color="#FFCD7F32" Offset="0"/>
-            <GradientStop Color="#FF8B4513" Offset="0.5"/>
-            <GradientStop Color="#FF7D4918" Offset="1"/>
-        </LinearGradientBrush>
-    </Window.Resources>
     <Grid>
         <!--Main Section-->
         <Border Grid.Column="1" CornerRadius="0 10 10 0">
@@ -180,7 +161,7 @@
                                         </lvc:CartesianChart.AxisY>
 
                                         <lvc:CartesianChart.Series>
-                                            <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,50000,30000,20000,10000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
+                                            <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,45000,30000,20000,10000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
                                                 <lvc:LineSeries.Fill>
                                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                         <GradientStop Color="#B397E2" Offset="0.4"/>
@@ -268,7 +249,7 @@
                                         </lvc:CartesianChart.AxisY>
 
                                         <lvc:CartesianChart.Series>
-                                            <lvc:LineSeries Name="Sl" Values="20000,17000,30000,15000,50000,30000,20000,10000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
+                                            <lvc:LineSeries Name="Sl" Values="30000,20000,30000,40000,20000,30000,23000,20000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
                                                 <lvc:LineSeries.Fill>
                                                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                         <GradientStop Color="#B397E2" Offset="0.4"/>
@@ -287,15 +268,47 @@
                     <Border CornerRadius="20" Background="#243771" Grid.Column="1" Margin="0,0,30,40">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="110"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
+                            <Border CornerRadius="20" Grid.Row="0" Margin="10" Background="#41518F">
+                                <Label Content="Movie Showtime Pie Chart" FontSize="20" FontWeight="Bold" Foreground="White" Grid.Row="0" HorizontalAlignment="Center"/>
+                            </Border>
+                            
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                <ListBox x:Name="phimListBox"
+                                         Width="200"
+                                             Margin="10"
+                                             SelectionMode="Multiple"
+                                             SelectionChanged="phimListBox_SelectionChanged"
+                                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                             Background="#41518F"
+                                             Foreground="White">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Margin" Value="0,5" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+
+                                <StackPanel Orientation="Vertical" Width="70" Background="#41518F" Height="90">
+                                    <Label Content="Total" FontSize="19" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" BorderThickness="0 0 0 1" BorderBrush="Black"></Label>
+                                    <TextBlock FontSize="20" FontWeight="Bold" Text="30" Foreground="White" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+
 
                             <lvc:PieChart LegendLocation="Bottom"
+                                          Foreground="White"
                                           Background="Transparent"
                                           Series="{Binding MovieData}"
                                           Height="300"
-                                          Width="300" />
+                                          Width="300" 
+                                          x:Name="pieChart"
+                                          Grid.Row="2"/>
 
                         </Grid>
                     </Border>
