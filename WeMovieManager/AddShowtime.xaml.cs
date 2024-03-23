@@ -22,6 +22,17 @@ namespace WeMovieManager
         public AddShowtime()
         {
             InitializeComponent();
+            List<string> movieNames = new List<string>
+            {
+                "The Shawshank Redemption",
+                "The Godfather",
+                "The Dark Knight",
+                "Forrest Gump",
+                "Inception"
+            };
+
+            // Set the sample data as the ItemsSource for the ComboBox
+            filmList.ItemsSource = movieNames;
         }
 
         private void TimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
@@ -52,7 +63,8 @@ namespace WeMovieManager
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
+
     }
 }
