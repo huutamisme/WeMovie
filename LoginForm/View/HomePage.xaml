@@ -27,6 +27,34 @@
         <BitmapImage x:Key="NextImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/next.png"/>
         <BitmapImage x:Key="DurationImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/clock.png"/>
         <BitmapImage x:Key="GenreImage" UriSource="pack://application:,,,/LoginForm;component/Images/Film helper/tag.png"/>
+
+        <Style x:Key="SearchBtn" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="Transparent" CornerRadius="25">
+                            <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                                <fa:IconImage Icon="MagnifyingGlass"
+                                      Height="20"
+                                      Width="20"
+                                      Foreground="Black"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
@@ -47,7 +75,13 @@
                     <ColumnDefinition Width="330"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="/Images/logo.png" Height="120" Width="120" Grid.Column="0" ></Image>
+                <Image Source="/Images/logo.png" Height="120" Width="120" Grid.Column="0" MouseDown="ScrollToTop_Click" Cursor="Hand">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction Command="{Binding backButtonBomTanCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
                 <TextBlock Text="WeMovie"
                        Grid.Column="1"
                        VerticalAlignment="Center"
@@ -60,18 +94,32 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <fa:IconImage Icon="MagnifyingGlass"
-                                              Width="20"
-                                              Height="20"
-                                              Margin="10"
-                                              Foreground="Black"/>
-                        <TextBox BorderThickness="0"
-                             BorderBrush="Transparent"
-                             x:Name="emailBox"
-                             Height="20"
-                             Grid.Column="1"/>
+                        <Button Style="{StaticResource SearchBtn}" Margin="0,5,0,4" Click="SearchBtn_Click" HorizontalAlignment="Right" Width="40"/>
+                        <Grid Grid.Column="1">
+                            <TextBox BorderThickness="0"
+                                     BorderBrush="Transparent"
+                                     x:Name="searchBox"
+                                     Height="20"
+                                     PreviewKeyDown="TextBox_PreviewKeyDown"/>
+                            <TextBlock Text="Search film, cast, director"
+                                       Foreground="Gray"
+                                       Margin="5,0,0,0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Width="140">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=searchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
                     </Grid>
                 </Border>
                 <StackPanel Grid.Column="3" Margin="30,10,0,0">
@@ -98,7 +146,7 @@
             <Separator Margin="10,-40,115,0" Background="White" Opacity="0.5"/>
         </StackPanel>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both" Grid.Row="1">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both" Grid.Row="1" x:Name="scrollView">
             <ScrollViewer.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
                     <GradientStop Color="#10172B" Offset="0"/>
@@ -269,7 +317,7 @@
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                <StackPanel Background="{StaticResource FooterGradientBrush}" Height="300" Grid.Row="1">
+                <StackPanel Background="{StaticResource FooterGradientBrush}" Height="Auto" Grid.Row="1" Margin="0 40 0 0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="350"/>
@@ -281,79 +329,79 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/logo.png" Height="100" Width="100"/>
                                 <TextBlock Text="WeMovie"
-              Grid.Column="1"
-              VerticalAlignment="Center"
-              FontSize="50"
-              FontWeight="Bold"
-              Foreground="White"/>
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          FontSize="50"
+                                          FontWeight="Bold"
+                                          Foreground="White"/>
                             </StackPanel>
 
                             <TextBlock Text="Cinema Magic: Where Dreams Take Flight!"
-              FontSize="15"
-              Margin="20,0,0,0"
-              FontWeight="Bold"
-              Foreground="White"/>
+                                      FontSize="15"
+                                      Margin="20,0,0,0"
+                                      FontWeight="Bold"
+                                      Foreground="White"/>
                             <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
-       <Span FontStyle="Italic" FontWeight="Bold" Foreground="Black">Utilizing Entity Framework with LINQ</Span>
+                                <Span FontStyle="Italic" FontWeight="Bold" Foreground="Black">Utilizing Entity Framework with LINQ</Span>
                             </TextBlock>
 
                             <TextBlock FontSize="15" Margin="20,20,0,0" TextWrapping="Wrap">
-       <Span  FontStyle="Italic" FontWeight="Bold" Foreground="Black">Powered by WPF and MVVM</Span>
+                                <Span  FontStyle="Italic" FontWeight="Bold" Foreground="Black">Powered by WPF and MVVM</Span>
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="1"
-           Orientation="Vertical"
-           Margin="40, 20, 0, 0">
+                                       Orientation="Vertical"
+                                       Margin="40, 20, 0, 0">
                             <TextBlock Text="Contact Us"
-              VerticalAlignment="Center"
-              FontSize="50"
-              FontWeight="Bold"
-              Foreground="White" 
-              HorizontalAlignment="Center"/>
+                                          VerticalAlignment="Center"
+                                          FontSize="50"
+                                          FontWeight="Bold"
+                                          Foreground="White" 
+                                          HorizontalAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
                                 <fa:IconImage Icon="Phone"
-                           Height="40" Width="40"
-                             Margin="10,0"/>
+                                               Height="40" Width="40"
+                                                 Margin="10,0"/>
                                 <TextBlock Text="0-188-421-631"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
                                 <fa:IconImage Icon="MailBulk"
-                           Height="40" Width="40"
-                             Margin="10,0"/>
+                                               Height="40" Width="40"
+                                                 Margin="10,0"/>
                                 <TextBlock Text="wemoviesupport@gmail.com"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
                                 <fa:IconImage Icon="Home"
-                     Height="40" Width="40"
-                     Margin="10,0"/>
+                                                 Height="40" Width="40"
+                                                 Margin="10,0"/>
                                 <TextBlock Text="227 Nguyen Van Cu, District 5, Ho Chi Minh city"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="2"
-           Orientation="Vertical"
-           Margin="40, 20, 0, 0">
+                                       Orientation="Vertical"
+                                       Margin="40, 20, 0, 0">
                             <TextBlock Text="About Us"
-               VerticalAlignment="Center"
-               FontSize="50"
-               FontWeight="Bold"
-               Foreground="White" 
-               HorizontalAlignment="Center"/>
+                                       VerticalAlignment="Center"
+                                       FontSize="50"
+                                       FontWeight="Bold"
+                                       Foreground="White" 
+                                       HorizontalAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
                                 <fa:IconImage Icon="UserAlt"
-                     Height="40" Width="40"
-                       Margin="10,0"/>
+                                             Height="40" Width="40"
+                                               Margin="10,0"/>
                                 <TextBlock Text="21127188 - DO MINH TRIET"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
                                 <fa:IconImage Icon="UserAlt"
-                     Height="40" Width="40"
-                       Margin="10,0"/>
+                                             Height="40" Width="40"
+                                               Margin="10,0"/>
                                 <TextBlock Text="21127421 - HO HUU TAM"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
                                 <fa:IconImage Icon="UserAlt"
-                     Height="40" Width="40"
-                       Margin="10,0"/>
+                                             Height="40" Width="40"
+                                               Margin="10,0"/>
                                 <TextBlock Text="21127631 - VU ANH KHOA"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                         </StackPanel>

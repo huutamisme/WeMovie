@@ -71,12 +71,80 @@
                     <TextBlock Margin="0 10 0 0" Text="DESCRIBE" FontSize="30" FontWeight="Bold" Foreground="White"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="0 10 0 0" Text="Director: " FontSize="15" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo, Joe Russo" FontSize="15" Foreground="White"/>
+                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo" FontSize="15" Foreground="White">
+                            <ToolTipService.ToolTip>
+                                <ToolTip>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="Images/Avengers.jpg" Width="100" Height="100" Margin="5"/>
+                                        <TextBlock Grid.Column="1" Text="Anthony Russo is an American film and television director. He is best known for directing several films in the Marvel Cinematic Universe, including Avengers: Infinity War." TextWrapping="Wrap" Margin="5"/>
+                                    </Grid>
+                                </ToolTip>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="0 10 0 0" Text="Cast: " FontSize="15" FontWeight="Bold" Foreground="White"/>
                         <TextBlock Margin="0 10 0 0" Text="Robert Downey Jr., Chris Hemsworth, Mark Ruffalo" FontSize="15" Foreground="White"/>
                     </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Margin="0 10 0 0" Text="Cast: " FontSize="15" FontWeight="Bold" Foreground="White" Grid.Column="0"/>
+                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo" FontSize="15" Foreground="White" Grid.Column="1">
+                            <ToolTipService.ToolTip>
+                                <ToolTip>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="Images/Avengers.jpg" Width="100" Height="100" Margin="5"/>
+                                        <TextBlock Grid.Column="1" Text="Anthony Russo is an American film and television director. He is best known for directing several films in the Marvel Cinematic Universe, including Avengers: Infinity War." TextWrapping="Wrap" Margin="5"/>
+                                    </Grid>
+                                </ToolTip>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+
+                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo" FontSize="15" Foreground="White" Grid.Column="2">
+                            <ToolTipService.ToolTip>
+                                <ToolTip>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="Images/Avengers.jpg" Width="100" Height="100" Margin="5"/>
+                                        <TextBlock Grid.Column="1" Text="Anthony Russo is an American film and television director. He is best known for directing several films in the Marvel Cinematic Universe, including Avengers: Infinity War." TextWrapping="Wrap" Margin="5"/>
+                                    </Grid>
+                                </ToolTip>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+
+                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo" FontSize="15" Foreground="White" Grid.Column="3">
+                            <ToolTipService.ToolTip>
+                                <ToolTip>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="Images/Avengers.jpg" Width="100" Height="100" Margin="5"/>
+                                        <TextBlock Grid.Column="1" Text="Anthony Russo is an American film and television director. He is best known for directing several films in the Marvel Cinematic Universe, including Avengers: Infinity War." TextWrapping="Wrap" Margin="5"/>
+                                    </Grid>
+                                </ToolTip>
+                            </ToolTipService.ToolTip>
+                        </TextBlock>
+                    </Grid>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="0 10 0 0" Text="Premiere: " FontSize="15" FontWeight="Bold" Foreground="White"/>
                         <TextBlock Margin="0 10 0 0" Text="Apri 27, 2018" FontSize="15" Foreground="White"/>

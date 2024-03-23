@@ -155,5 +155,19 @@ namespace LoginForm.View
 
             return (T)child;
         }
+
+        private void ScrollToTop_Click(object sender, MouseButtonEventArgs e)
+        {
+            scrollView.ScrollToTop();
+        }
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            // thực hiện search
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // thực hiện search
+        }
     }
 }

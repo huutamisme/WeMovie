@@ -20,17 +20,17 @@ namespace LoginForm
         {
             _navigationStore = new NavigationStore();
         }
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            _navigationStore.CurrentViewModel = new HomePageViewModel();
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    base.OnStartup(e);
+        //    _navigationStore.CurrentViewModel = new HomePageViewModel();
 
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(_navigationStore)
-            };
-            MainWindow.Show();
+        //    MainWindow = new MainWindow()
+        //    {
+        //        DataContext = new MainViewModel(_navigationStore)
+        //    };
+        //    MainWindow.Show();
 
-        }
+        //}
     }
 }

@@ -161,92 +161,85 @@
             <ImageBrush ImageSource="Images/bg.jpg"/>
         </Grid.Background>
         <Grid>
-            <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}" TabStripPlacement="Top" Background="White" Opacity="0.9" Width="400" Height="450">
-                <TabItem Header="SIGN IN" Style="{StaticResource TabItemCustomStyle}">
-                    <Border Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20,20,20,20" >
+            <Border Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20,20,20,20" Opacity="0.9" CornerRadius="10">
 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="WeMovie"
+                               FontSize="60" 
+                               FontWeight="Bold" 
+                               Foreground="Black" 
+                               HorizontalAlignment="Center"
+                               Grid.Row="0"/>
+                    <TextBlock Text="Cinema Magic: Where Dreams Take Flight!"
+                               FontSize="13" 
+                               FontWeight="Bold" 
+                               Foreground="Black" 
+                               HorizontalAlignment="Center"
+                               Grid.Row="1"
+                               Margin="0,-10,0,40"
+                               Opacity="0.5"/>
+                    <StackPanel Grid.Row="2" Width="350" Margin="0,0,0,20">
+                        <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <iconPacks:PackIconModern Kind="Email"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Margin="10"
+                                                          Foreground="Black"/>
+                                <TextBox BorderThickness="1,0,0,0"
+                                         x:Name="emailBox" 
+                                         Grid.Column="1"
+                                         Style="{StaticResource MahApps.Styles.TextBox}"
+                                         Controls:TextBoxHelper.Watermark="Enter your email"
+                                         Controls:TextBoxHelper.ClearTextButton="True"
+                                         Controls:TextBoxHelper.UseFloatingWatermark="True"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Width="350" Margin="0,0,0,20">
+                        <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <iconPacks:PackIconModern Kind="Lock"
+                                                          Width="20"
+                                                          Height="20"
+                                                          Margin="10"
+                                                          Foreground="Black"/>
+                                <PasswordBox BorderThickness="1,0,0,0"
+                                             x:Name="passwordBox" 
+                                             Grid.Column="1"
+                                             Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"
+                                             Controls:TextBoxHelper.Watermark="Enter your password"
+                                             Controls:TextBoxHelper.UseFloatingWatermark="True"
+                                             PreviewKeyDown="TextBox_PreviewKeyDown"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" HorizontalAlignment="Center" Width="350" Margin="0,0,0,20">
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock 
-                                Text="WeMovie"
-                                FontSize="60" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="0"/>
-                            <TextBlock 
-                                Text="Cinema Magic: Where Dreams Take Flight!"
-                                FontSize="13" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="1"
-                                Margin="0,-10,0,40"
-                                Opacity="0.5"/>
-                            <StackPanel Grid.Row="2" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Email"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <TextBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="emailBox" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.TextBox}"
-                                            Controls:TextBoxHelper.Watermark="Enter your email"
-                                            Controls:TextBoxHelper.ClearTextButton="True"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Row="3" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Lock"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <PasswordBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="passwordBox" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"
-                                            Controls:TextBoxHelper.Watermark="Enter your password"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
-                            <StackPanel Grid.Row="4" HorizontalAlignment="Center" Width="350" Margin="0,0,0,20">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <CheckBox FontWeight="Bold" Content="Remember me" HorizontalAlignment="Left" Grid.Column="0"/>
-                                    <TextBlock FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Right">
+                            <CheckBox FontWeight="Bold" Content="Remember me" HorizontalAlignment="Left" Grid.Column="0"/>
+                            <TextBlock FontWeight="Bold" Grid.Column="1" HorizontalAlignment="Right">
                                     <Hyperlink NavigateUri="ForgotPassword.xaml" Foreground="Black">
                                         <Run Text="Forgot password"/>
                                         <Hyperlink.Style>
@@ -262,133 +255,18 @@
                                             </Style>
                                         </Hyperlink.Style>
                                     </Hyperlink>
-                                    </TextBlock>
-                                </Grid>
-                            </StackPanel>
-
-                            <Button Grid.Row="5" Background="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SignInButtonClick" Width="350">
-                                <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="LoginVariant" Width="20" Height="20" Margin="5"/>
-                                    <TextBlock Text="Sign IN" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
+                            </TextBlock>
                         </Grid>
-                    </Border>
-                </TabItem>
-                <TabItem Header="SIGN UP" Style="{StaticResource TabItemCustomStyle}">
-                    <Border Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20,20,20,20" >
+                    </StackPanel>
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock 
-                                Text="WeMovie"
-                                FontSize="60" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="0"/>
-                            <TextBlock 
-                                Text="Cinema Magic: Where Dreams Take Flight!"
-                                FontSize="13" 
-                                FontWeight="Bold" 
-                                Foreground="Black" 
-                                HorizontalAlignment="Center"
-                                Grid.Row="1"
-                                Margin="0,-10,0,40"
-                                Opacity="0.5"/>
-                            <StackPanel Grid.Row="2" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Email"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <TextBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="emailBoxSignUp" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.TextBox}"
-                                            Controls:TextBoxHelper.Watermark="Enter your email"
-                                            Controls:TextBoxHelper.ClearTextButton="True"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="3" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Lock"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <PasswordBox 
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="passwordBoxSignUp" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.PasswordBox.Button.Revealed}"
-                                            Controls:TextBoxHelper.Watermark="Enter your password"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="4" Width="350" Margin="0,0,0,20">
-                                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="5" Padding="0,0,10,0">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <iconPacks:PackIconModern 
-                                            Kind="Calendar"
-                                            Width="20"
-                                            Height="20"
-                                            Margin="10"
-                                            Foreground="Black"/>
-                                        <DatePicker
-                                            BorderThickness="1,0,0,0"
-                                            x:Name="MyDatePicker" 
-                                            Grid.Column="1"
-                                            Style="{StaticResource MahApps.Styles.DatePicker}"
-                                            Controls:TextBoxHelper.Watermark="Enter your date of birth (dd/mm/yyyy)"
-                                            Controls:TextBoxHelper.UseFloatingWatermark="True"
-                                            Language="en-GB"
-                                            PreviewTextInput="DatePicker_PreviewTextInput"/>
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
-
-                            <Button Grid.Row="5" Background="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SignUpButtonClick" Width="350">
-                                <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="PencilBox" Width="20" Height="20" Margin="5"/>
-                                    <TextBlock Text="Sign up" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-
-                        </Grid>
-                    </Border>
-                </TabItem>
-            </TabControl>
+                    <Button Grid.Row="5" Background="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="SignInButtonClick" Width="350">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="LoginVariant" Width="20" Height="20" Margin="5"/>
+                            <TextBlock Text="Sign in" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 
