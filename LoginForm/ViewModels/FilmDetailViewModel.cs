@@ -53,15 +53,6 @@ namespace LoginForm.ViewModels
 
         private void GenerateShowtimes()
         {
-            //Showtimes.Add(new Showtime { StartTime = "10:30" });
-            //Showtimes.Add(new Showtime { StartTime = "11:30" });
-            //Showtimes.Add(new Showtime { StartTime = "13:00" });
-            //Showtimes.Add(new Showtime { StartTime = "14:30" });
-            //Showtimes.Add(new Showtime { StartTime = "16:00" });
-            //Showtimes.Add(new Showtime { StartTime = "17:30" });
-            //Showtimes.Add(new Showtime { StartTime = "19:00" });
-            //Showtimes.Add(new Showtime { StartTime = "20:30" });
-            //Showtimes.Add(new Showtime { StartTime = "22:00" });
 
             using (var db = new WeMovieEntities())
             {
