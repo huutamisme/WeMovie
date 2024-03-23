@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf86b29da369451994fba26f06febe3e" Name="Diagram1">
+        <EntityTypeShape EntityType="WeMovieModel.Actor" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Director" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Film" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Seat" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Showtime" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Ticket" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.User" Width="1.5" PointX="2.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WeMovieModel.Voucher" Width="1.5" PointX="4.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="WeMovieModel.FK_Film_Actor1" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Film_Director1" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Film_Showtime" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Showtime_Film" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Seat_Showtime" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Showtime_Seat" ManuallyRouted="false" />
+        <AssociationConnector Association="WeMovieModel.FK_Ticket_Showtime" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

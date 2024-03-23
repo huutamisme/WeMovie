@@ -1,14 +1,7 @@
 ﻿using LoginForm.Commands;
-using LoginForm.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace LoginForm.ViewModels
 {
@@ -16,7 +9,7 @@ namespace LoginForm.ViewModels
     public class HomePageViewModel : ViewModelBase
     {
         public ObservableCollection<Film> FilmList_BomTan { get; set; }
-        public ObservableCollection<Film> _filmListDisplayed_BomTan;
+        private ObservableCollection<Film> _filmListDisplayed_BomTan;
         public ObservableCollection<Film> FilmListDisplayed_BomTan
         {
             get
@@ -25,7 +18,6 @@ namespace LoginForm.ViewModels
             }
             set
             {
-                Trace.WriteLine("HERE");
                 _filmListDisplayed_BomTan = value;
                 OnPropertyChanged(nameof(FilmListDisplayed_BomTan));
             }
@@ -76,6 +68,10 @@ namespace LoginForm.ViewModels
 
         public HomePageViewModel()
         {
+            _filmListDisplayed_BomTan = new ObservableCollection<Film>();
+            FilmList_BomTan = new ObservableCollection<Film>();
+            _filmListDisplayed_GioVang = new ObservableCollection<Film>();
+            FilmList_GioVang = new ObservableCollection<Film>();
             InitializeFilms_BomTan();
             InitializeFilms_GioVang();
             UpdateDisplayedFilms_BomTan();
@@ -90,74 +86,17 @@ namespace LoginForm.ViewModels
 
         private void InitializeFilms_BomTan()
         {
-            FilmList_BomTan = new ObservableCollection<Film>
+            using (var db = new WeMovieEntities())
             {
-                new Film
+                var films = db.Films.ToList();
+                foreach (var film in films)
                 {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Avatar.jpg",
-                    FilmTitle= "Avatar",
-                    Duration = "192'",
-                    Genre = "Khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Avengers.jpg",
-                    FilmTitle= "Avengers",
-                    Duration = "149'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Black Panther.jpg",
-                    FilmTitle= "Black Panther",
-                    Duration = "134'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Captain America.jpg",
-                    FilmTitle = "Captain America",
-                    Duration = "136'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Fast and Furious 9.jpg",
-                    FilmTitle = "Fast and Furious 9",
-                    Duration = "143'",
-                    Genre = "Hành động, thám hiểm, tội phạm",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Finding Dory.jpg",
-                    FilmTitle = "Finding Dory",
-                    Duration = "97'",
-                    Genre = "Hoạt hình, phiêu lưu, hài hước",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Harry Potter.jpg",
-                    FilmTitle = "Harry Potter",
-                    Duration = "130'",
-                    Genre = "Phép thuật, hành động, phiêu lưu",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Incredibles 2.jpg",
-                    FilmTitle = "Incredibles 2",
-                    Duration = "118'",
-                    Genre = "Hoạt hình, hành động, phiêu lưu",
+                    _filmListDisplayed_BomTan.Add(film);
+                    FilmList_BomTan.Add(film);
 
                 }
-            };
+            }
+
             // Set the data context to the MainWindow instance itself
         }
         private void UpdateDisplayedFilms_BomTan()
@@ -176,7 +115,8 @@ namespace LoginForm.ViewModels
             }
         }, canExecute => { return true; });
 
-        public RelayCommand backButtonBomTanCommand => new RelayCommand(execute => {
+        public RelayCommand backButtonBomTanCommand => new RelayCommand(execute =>
+        {
             if (currentIndex_BomTan > 0)
             {
                 currentIndex_BomTan--;
@@ -186,74 +126,18 @@ namespace LoginForm.ViewModels
 
         private void InitializeFilms_GioVang()
         {
-            FilmList_GioVang = new ObservableCollection<Film>
+            using (var db = new WeMovieEntities())
             {
-                new Film
+                var films = db.Films.ToList();
+                foreach (var film in films)
                 {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Avatar.jpg",
-                    FilmTitle= "Avatar",
-                    Duration = "192'",
-                    Genre = "Khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Avengers.jpg",
-                    FilmTitle= "Avengers",
-                    Duration = "149'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Black Panther.jpg",
-                    FilmTitle= "Black Panther",
-                    Duration = "134'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Captain America.jpg",
-                    FilmTitle = "Captain America",
-                    Duration = "136'",
-                    Genre = "Hành động, khoa học viễn tưởng",
-
-                },
-
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Fast and Furious 9.jpg",
-                    FilmTitle = "Fast and Furious 9",
-                    Duration = "143'",
-                    Genre = "Hành động, thám hiểm, tội phạm",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Finding Dory.jpg",
-                    FilmTitle = "Finding Dory",
-                    Duration = "97'",
-                    Genre = "Hoạt hình, phiêu lưu, hài hước",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Harry Potter.jpg",
-                    FilmTitle = "Harry Potter",
-                    Duration = "130'",
-                    Genre = "Phép thuật, hành động, phiêu lưu",
-
-                },
-                new Film
-                {
-                    ThumbnailPath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film/Incredibles 2.jpg",
-                    FilmTitle = "Incredibles 2",
-                    Duration = "118'",
-                    Genre = "Hoạt hình, hành động, phiêu lưu",
+                    _filmListDisplayed_GioVang.Add(film);
+                    FilmList_GioVang.Add(film);
 
                 }
-            };
+            }
+
+
             // Set the data context to the MainWindow instance itself
         }
         private void UpdateDisplayedFilms_GioVang()
