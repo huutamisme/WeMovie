@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LoginForm
 {
@@ -26,13 +16,13 @@ namespace LoginForm
             PopulateListBoxWithSampleData();
         }
 
-        ObservableCollection<Voucher> sampleData = new ObservableCollection<Voucher>();
+        ObservableCollection<voucher> sampleData = new ObservableCollection<voucher>();
 
         private void PopulateListBoxWithSampleData()
         {
-           
-            sampleData.Add(new Voucher { Code = "KHLS1GG30H", VoucherInfoStr = "(Discount 30000)" });
-            sampleData.Add(new Voucher { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
+
+            sampleData.Add(new voucher { Code = "KHLS1GG30H", VoucherInfoStr = "(Discount 30000)" });
+            sampleData.Add(new voucher { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
             listBox.ItemsSource = sampleData;
         }
 
@@ -54,7 +44,7 @@ namespace LoginForm
             else
             {
                 // check invalid voucher
-                listBox.Items.Add(new Voucher { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
+                listBox.Items.Add(new voucher { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
                 VoucherTextBox.Text = "";
             }
 
@@ -62,7 +52,7 @@ namespace LoginForm
 
     }
 
-    public class Voucher
+    public class voucher
     {
         public string Code { get; set; }
         public string VoucherInfoStr { get; set; }

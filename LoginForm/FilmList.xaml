@@ -24,7 +24,11 @@
             </LinearGradientBrush>
         </ScrollViewer.Background>
         <Grid>
+            
             <StackPanel Orientation="Vertical">
+                <MediaElement Source="Trailer/responsive.mp4" x:Name="trailerVideo" Width="600" Height="400" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" 
+                    LoadedBehavior="Pause" UnloadedBehavior="Manual" />
+
                 <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
                         PHIM BOM TẤN
                 </TextBlock>

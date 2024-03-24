@@ -37,7 +37,6 @@
           <Property Name="certification" Type="nvarchar" MaxLength="10" />
           <Property Name="Actor" Type="int" />
           <Property Name="Director" Type="int" />
-          <Property Name="Showtime" Type="int" />
           <Property Name="plotSummary" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Seat">
@@ -57,7 +56,6 @@
           <Property Name="Film" Type="int" />
           <Property Name="date" Type="date" />
           <Property Name="price" Type="int" />
-          <Property Name="Seat" Type="int" />
           <Property Name="seatQuantities" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -123,18 +121,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Film_Showtime">
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Showtime">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Showtime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Seat_Showtime">
           <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
           <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
@@ -156,18 +142,6 @@
             </Principal>
             <Dependent Role="Showtime">
               <PropertyRef Name="Film" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Showtime_Seat">
-          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Seat">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Showtime">
-              <PropertyRef Name="Seat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -201,20 +175,12 @@
             <End Role="Director" EntitySet="Director" />
             <End Role="Film" EntitySet="Film" />
           </AssociationSet>
-          <AssociationSet Name="FK_Film_Showtime" Association="Self.FK_Film_Showtime">
-            <End Role="Showtime" EntitySet="Showtime" />
-            <End Role="Film" EntitySet="Film" />
-          </AssociationSet>
           <AssociationSet Name="FK_Seat_Showtime" Association="Self.FK_Seat_Showtime">
             <End Role="Showtime" EntitySet="Showtime" />
             <End Role="Seat" EntitySet="Seat" />
           </AssociationSet>
           <AssociationSet Name="FK_Showtime_Film" Association="Self.FK_Showtime_Film">
             <End Role="Film" EntitySet="Film" />
-            <End Role="Showtime" EntitySet="Showtime" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Showtime_Seat" Association="Self.FK_Showtime_Seat">
-            <End Role="Seat" EntitySet="Seat" />
             <End Role="Showtime" EntitySet="Showtime" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Showtime" Association="Self.FK_Ticket_Showtime">
@@ -261,11 +227,9 @@
           <Property Name="certification" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Actor" Type="Int32" />
           <Property Name="Director" Type="Int32" />
-          <Property Name="Showtime" Type="Int32" />
           <Property Name="plotSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Actor1" Relationship="Self.FK_Film_Actor1" FromRole="Film" ToRole="Actor" />
           <NavigationProperty Name="Director1" Relationship="Self.FK_Film_Director1" FromRole="Film" ToRole="Director" />
-          <NavigationProperty Name="Showtime1" Relationship="Self.FK_Film_Showtime" FromRole="Film" ToRole="Showtime" />
           <NavigationProperty Name="Showtimes" Relationship="Self.FK_Showtime_Film" FromRole="Film" ToRole="Showtime" />
         </EntityType>
         <EntityType Name="Seat">
@@ -276,7 +240,6 @@
           <Property Name="status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Showtime" Type="Int32" />
           <NavigationProperty Name="Showtime1" Relationship="Self.FK_Seat_Showtime" FromRole="Seat" ToRole="Showtime" />
-          <NavigationProperty Name="Showtimes" Relationship="Self.FK_Showtime_Seat" FromRole="Seat" ToRole="Showtime" />
         </EntityType>
         <EntityType Name="Showtime">
           <Key>
@@ -287,12 +250,9 @@
           <Property Name="Film" Type="Int32" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="price" Type="Int32" />
-          <Property Name="Seat" Type="Int32" />
           <Property Name="seatQuantities" Type="Int32" />
-          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Showtime" FromRole="Showtime" ToRole="Film" />
           <NavigationProperty Name="Film1" Relationship="Self.FK_Showtime_Film" FromRole="Showtime" ToRole="Film" />
           <NavigationProperty Name="Seats" Relationship="Self.FK_Seat_Showtime" FromRole="Showtime" ToRole="Seat" />
-          <NavigationProperty Name="Seat1" Relationship="Self.FK_Showtime_Seat" FromRole="Showtime" ToRole="Seat" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Showtime" FromRole="Showtime" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -359,18 +319,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Film_Showtime">
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Showtime">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Showtime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Showtime_Film">
           <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
           <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
@@ -392,18 +340,6 @@
             </Principal>
             <Dependent Role="Seat">
               <PropertyRef Name="Showtime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Showtime_Seat">
-          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Seat">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Showtime">
-              <PropertyRef Name="Seat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -437,10 +373,6 @@
             <End Role="Director" EntitySet="Directors" />
             <End Role="Film" EntitySet="Films" />
           </AssociationSet>
-          <AssociationSet Name="FK_Film_Showtime" Association="Self.FK_Film_Showtime">
-            <End Role="Showtime" EntitySet="Showtimes" />
-            <End Role="Film" EntitySet="Films" />
-          </AssociationSet>
           <AssociationSet Name="FK_Showtime_Film" Association="Self.FK_Showtime_Film">
             <End Role="Film" EntitySet="Films" />
             <End Role="Showtime" EntitySet="Showtimes" />
@@ -448,10 +380,6 @@
           <AssociationSet Name="FK_Seat_Showtime" Association="Self.FK_Seat_Showtime">
             <End Role="Showtime" EntitySet="Showtimes" />
             <End Role="Seat" EntitySet="Seats" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Showtime_Seat" Association="Self.FK_Showtime_Seat">
-            <End Role="Seat" EntitySet="Seats" />
-            <End Role="Showtime" EntitySet="Showtimes" />
           </AssociationSet>
           <AssociationSet Name="FK_Ticket_Showtime" Association="Self.FK_Ticket_Showtime">
             <End Role="Showtime" EntitySet="Showtimes" />
@@ -497,7 +425,6 @@
                 <ScalarProperty Name="certification" ColumnName="certification" />
                 <ScalarProperty Name="Actor" ColumnName="Actor" />
                 <ScalarProperty Name="Director" ColumnName="Director" />
-                <ScalarProperty Name="Showtime" ColumnName="Showtime" />
                 <ScalarProperty Name="plotSummary" ColumnName="plotSummary" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -519,7 +446,6 @@
                 <ScalarProperty Name="Film" ColumnName="Film" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="Seat" ColumnName="Seat" />
                 <ScalarProperty Name="seatQuantities" ColumnName="seatQuantities" />
               </MappingFragment>
             </EntityTypeMapping>
