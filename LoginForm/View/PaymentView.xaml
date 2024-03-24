@@ -187,7 +187,7 @@
                                             <Label Content="Date"
                                                    Grid.Column="0"
                                                    FontSize="20" />
-                                            <Label Content="{Binding Date}"
+                                            <Label x:Name="dateToBind"
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Center"
                                                    FontSize="20" 
@@ -195,11 +195,11 @@
                                             <Label Content="Showtime"
                                                    Grid.Column="2"
                                                    FontSize="20" />
-                                            <Label Content="{Binding Time}"
+                                            <Label
                                                    Grid.Column="3"
                                                    HorizontalAlignment="Left"
                                                    FontSize="20"
-                                                   x:Name="_time"
+                                                   x:Name="timeToBind"
                                                    FontWeight="Bold" />
                                         </Grid>
                                     </StackPanel>
@@ -213,7 +213,7 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Content="Seat" Grid.Column="0" FontSize="20" />
-                                            <TextBlock Text="{Binding Seat}"
+                                            <TextBlock x:Name="seatToBind"
                                                        TextWrapping="Wrap"
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Center"
@@ -235,12 +235,12 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Content="Price" Grid.Column="0" FontSize="20" />
-                                            <Label Content=""
+                                            <Label
                                                    Grid.Column="1"
                                                    HorizontalAlignment="Right"
                                                    Margin="0 0 70 0"
                                                    FontSize="20"
-                                                   x:Name="_price" 
+                                                   x:Name="priceToBind" 
                                                    FontWeight="Bold"/>
                                         </Grid>
                                     </StackPanel>
@@ -259,18 +259,28 @@
                                         <StackPanel Orientation="Horizontal">
                                             <Grid Width="650">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="32.74"/>
+                                                    <ColumnDefinition Width="19.304"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="259*"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <Label Content="Total" Grid.Column="0" FontSize="20" />
-                                                <Label x:Name="_totalticket"
-                                                       Grid.Column="1"
-                                                       HorizontalAlignment="Right"
+                                                <Label Content="Total" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" />
+                                                <Label x:Name="totalBeforeToBind"
+                                                       Grid.Column="3"
+                                                       HorizontalAlignment="Left"
                                                        FontSize="20"
-                                                       Content="{Binding TotalPriceMovie}" 
                                                        FontWeight="Bold"
-                                                       Margin="0 0 70 0"/>
+                                                       Margin="340,0,0,0" RenderTransformOrigin="0.5,0.5" Width="244">
+                                                    <Label.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform ScaleX="1"/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </Label.RenderTransform>
+                                                </Label>
                                             </Grid>
                                         </StackPanel>
                                     </StackPanel>
@@ -367,7 +377,7 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Label Content="Total" Grid.Column="0" FontSize="20" />
-                                                <Label x:Name="_totalbill"
+                                                <Label x:Name="totalAfterToBind"
                                                        Grid.Column="1"
                                                        HorizontalAlignment="Right"
                                                        FontSize="20"
@@ -378,7 +388,7 @@
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
-                                <Button Grid.Row="3" Style="{StaticResource PayTicketBillBtn}"/>
+                                <Button Grid.Row="3" Style="{StaticResource PayTicketBillBtn}" Click="Button_Click_1"/>
                             </Grid>
                         </Grid>
                     </Border>
