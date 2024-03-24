@@ -1,4 +1,5 @@
 ﻿using LoginForm.Commands;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -80,13 +81,13 @@ namespace LoginForm.ViewModels
                 return _film.certification;
             }
         }
-        public string listActors
+        public List<Actor> actors
         {
             get
             {
                 // B1: lấy ra những bảng film_actor có film_id = _film.id
                 // B2: lấy ra actor.id của bảng film_actor, sau đó tìm những actor có id = film_actor.id
-                string actorsString = "";
+                List<Actor> result = new List<Actor>();
                 using (var db = new WeMovieEntities())
                 {
                     var filmActors = db.Film_Actor
@@ -97,41 +98,28 @@ namespace LoginForm.ViewModels
                         Debug.WriteLine("actor id " + filmActor.Actor_id);
                         var id = filmActor.Actor_id;
                         var actor = db.Actors.FirstOrDefault(a => a.id == id);
-                        if (actor != null)
-                        {
-                            actorsString += actor.name + ", ";
-                        }
+                        result.Add(actor);
                     }
                 }
 
-                return actorsString.Substring(0, actorsString.Length - 2);
+                return result;
             }
         }
-        public string listDirectors
+        public Director director
         {
             get
             {
-                // B1: lấy ra những bảng film_actor có film_id = _film.id
-                // B2: lấy ra actor.id của bảng film_actor, sau đó tìm những actor có id = film_actor.id
-                string directorsString = "";
                 using (var db = new WeMovieEntities())
                 {
-                    var filmDirectors = db.Film_Director
-                                        .Where(fd => fd.Film_id == _film.id)
-                                        .ToList();
-                    foreach (var filmDirector in filmDirectors)
-                    {
-                        Debug.WriteLine("actor id " + filmDirector.Director_id);
-                        var id = filmDirector.Director_id;
-                        var director = db.Directors.FirstOrDefault(d => d.id == id);
-                        if (director != null)
-                        {
-                            directorsString += director.name + ", ";
-                        }
-                    }
-                }
+                    var filmDirector = db.Film_Director
+                                        .Where(fd => fd.Film_id == _film.id).FirstOrDefault();
+                    Debug.WriteLine("actor id " + filmDirector.Director_id);
+                    var id = filmDirector.Director_id;
+                    var director = db.Directors.FirstOrDefault(d => d.id == id);
+                    Debug.WriteLine("director " + director.name);
+                    return director;
 
-                return directorsString.Substring(0, directorsString.Length - 2);
+                }
             }
         }
 
@@ -160,7 +148,7 @@ namespace LoginForm.ViewModels
                 foreach (var showtime in showtimes)
                 {
                     Debug.WriteLine("check " + showtime.time);
-                    Showtimes.Add(new ShowTimeDTO { time = showtime.time.ToString(), id = showtime.id, filmDetail = this});
+                    Showtimes.Add(new ShowTimeDTO { time = showtime.time.ToString(), id = showtime.id, filmDetail = this });
                 }
             }
         }
@@ -180,7 +168,7 @@ namespace LoginForm.ViewModels
 
         public class ShowTimeDTO
         {
-            public string time {  get; set; }
+            public string time { get; set; }
             public int id { get; set; }
 
             public FilmDetailViewModel filmDetail { get; set; }

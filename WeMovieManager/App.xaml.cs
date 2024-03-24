@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using WeMovieManager.Stores;
 using WeMovieManager.ViewModels;
 
@@ -21,18 +15,18 @@ namespace WeMovieManager
         {
             _navigationStore = new NavigationStore();
         }
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    base.OnStartup(e);
-        //    _navigationStore.CurrentViewModel = new DashboardViewModel();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            _navigationStore.CurrentViewModel = new DashboardViewModel();
 
-        //    MainWindow = new MainWindow()
-        //    {
-        //        DataContext = new MainViewModel(_navigationStore)
-        //    };
-        //    Login login = new Login(MainWindow);
-        //    login.Show();
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_navigationStore)
+            };
+            Login login = new Login(MainWindow);
+            login.Show();
 
-        //}
+        }
     }
 }

@@ -12,7 +12,8 @@
         Background="Transparent"
         Title="MainWindow" Height="650" Width="1080"
         xmlns:views="clr-namespace:WeMovieManager.View"
-        xmlns:vms="clr-namespace:WeMovieManager.ViewModels">
+        xmlns:vms="clr-namespace:WeMovieManager.ViewModels"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
