@@ -98,10 +98,12 @@ namespace WeMovieManager
                     price = Int32.Parse(_moviePrice.Text),
                     seatQuantities = 112
                 };
-               
-                App.WeMovieDb.Showtimes.Add(toBeInserted);
+
+                App.WeMovieDb.Database.Connection.Open();
+                int showId = App.WeMovieDb.Database.SqlQuery<int>("INSERT Showtime(time, date, Film, price, seatQuantities) " 
+                                                        + "VALUES({0},{1}, {2}, {3}, {4}); SELECT CAST(SCOPE_IDENTITY() AS INT)"
+                                                        , toBeInserted.time, toBeInserted.date, toBeInserted.Film, toBeInserted.price, toBeInserted.seatQuantities).Single();
                 App.WeMovieDb.SaveChanges();
-                int showId = toBeInserted.id;
                 for(int i = 1; i <= 112; i++)
                 {
                     Seat seat = new Seat
@@ -109,9 +111,12 @@ namespace WeMovieManager
                         status = "NotTaken",
                         Showtime = showId
                     };
-                    App.WeMovieDb.Seats.Add(seat);
+                    App.WeMovieDb.Database.ExecuteSqlCommand("INSERT Seat(status, Showtime) "
+                                                        + "VALUES({0},{1})"
+                                                        , seat.status, seat.Showtime);
                     App.WeMovieDb.SaveChanges();
                 }
+
 
             }
         }
