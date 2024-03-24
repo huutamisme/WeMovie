@@ -137,6 +137,13 @@ namespace LoginForm.ViewModels
                 return _film.publishedYear.Value.Date.ToString("MM/dd/yyyy");
             }
         }
+        public string plotSummary
+        {
+            get
+            {
+                return _film.plotSummary;
+            }
+        }
 
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
 
