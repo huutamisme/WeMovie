@@ -4,6 +4,7 @@ using LoginForm.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,10 @@ namespace LoginForm.View
             sampleData.Add(new Voucher1 { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
             listBox.ItemsSource = sampleData;
             filmNameToBind.Text = payment.filmName;
+            foreach (var item in payment.seats)
+            {
+                Trace.WriteLine("In payment: " + item);
+            }
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -18,5 +18,7 @@ namespace LoginForm.Models
 
         public int total {  get; set; } 
         public string poster {  get; set; }
+
+        public List<int> seats { get; set; } = new List<int>();
     }
 }

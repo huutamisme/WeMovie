@@ -102,8 +102,13 @@ namespace LoginForm.View
             }
             else
             {
+                
                 App.payment = new Payment() { showId = showId, filmId = filmId, filmName = filmName, price = price, showDate = showDate , showTime = showTime,
                 total = total, poster = filmImg};
+                foreach (Seat seat in SeatListBox1.SelectedItems)
+                {
+                    App.payment.seats.Add(seat.SeatId);
+                }
                 NavigateCommand PaymentNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new PaymentViewModel(); }));
                 PaymentNavigateCommand.Execute(this);
             }
