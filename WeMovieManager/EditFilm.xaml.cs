@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,9 +21,72 @@ namespace WeMovieManager
     /// </summary>
     public partial class EditFilm : Window
     {
+
+        public ObservableCollection<string> ListActor { get; set; }
+        public ObservableCollection<string> ListDirector { get; set; }
         public EditFilm()
         {
             InitializeComponent();
+
+            DataContext = this;
+
+            // Khởi tạo danh sách ListActor
+            ListActor = new ObservableCollection<string>();
+
+            // Thêm dữ liệu mẫu cho ComboBox
+            actorList.Items.Add("Actor 1");
+            actorList.Items.Add("Actor 2");
+            actorList.Items.Add("Actor 3");
+
+            // Khởi tạo danh sách ListActor
+            ListDirector = new ObservableCollection<string>();
+
+            // Thêm dữ liệu mẫu cho ComboBox
+            directorList.Items.Add("Director 1");
+            directorList.Items.Add("Director 2");
+            directorList.Items.Add("Director 3");
+        }
+
+        private void actorList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // Thêm mục đã chọn từ ComboBox vào ListBox
+
+            string selectedActor = actorList.SelectedItem as string;
+            if (selectedActor != null)
+            {
+                ListActor.Add(selectedActor);
+            }
+        }
+
+        private void RemoveActor_Click(object sender, RoutedEventArgs e)
+        {
+            // Xóa mục đã chọn khỏi ListBox
+            string actorToRemove = (sender as FrameworkElement).DataContext as string;
+            if (actorToRemove != null)
+            {
+                ListActor.Remove(actorToRemove);
+            }
+        }
+
+        private void directorList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // Thêm mục đã chọn từ ComboBox vào ListBox
+
+            string selectedDirector = directorList.SelectedItem as string;
+            if (selectedDirector != null)
+            {
+                ListDirector.Add(selectedDirector);
+            }
+        }
+
+        private void RemoveDirector_Click(object sender, RoutedEventArgs e)
+        {
+            // Xóa mục đã chọn khỏi ListBox
+            string directorToRemove = (sender as FrameworkElement).DataContext as string;
+            if (directorToRemove != null)
+            {
+                ListDirector.Remove(directorToRemove);
+            }
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
