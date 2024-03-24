@@ -1,4 +1,4 @@
-﻿using LoginForm.Stores;
+using LoginForm.Stores;
 using LoginForm.ViewModels;
 using System.Windows;
 

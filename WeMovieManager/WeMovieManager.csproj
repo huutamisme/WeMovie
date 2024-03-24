@@ -205,6 +205,9 @@
     <Compile Include="Director.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditFilm.xaml.cs">
+      <DependentUpon>EditFilm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditShowtime.xaml.cs">
       <DependentUpon>EditShowtime.xaml</DependentUpon>
     </Compile>
@@ -273,6 +276,10 @@
       <DependentUpon>WeMovie.edmx</DependentUpon>
     </Compile>
     <Page Include="AddShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditFilm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
