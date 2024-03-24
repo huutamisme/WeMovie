@@ -130,6 +130,14 @@ namespace LoginForm.ViewModels
             }
         }
 
+        public string publishedYear
+        {
+            get
+            {
+                return _film.publishedYear.Value.Date.ToString("MM/dd/yyyy");
+            }
+        }
+
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
 
         private void GenerateShowtimes()
