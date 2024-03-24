@@ -17,7 +17,7 @@ namespace LoginForm
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Actor()
         {
-            this.Films = new HashSet<Film>();
+            this.Film_Actor = new HashSet<Film_Actor>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace LoginForm
         public string biography { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Film> Films { get; set; }
+        public virtual ICollection<Film_Actor> Film_Actor { get; set; }
     }
 }

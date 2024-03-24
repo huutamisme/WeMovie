@@ -1,21 +1,11 @@
-﻿using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LoginForm.View
@@ -52,6 +42,7 @@ namespace LoginForm.View
                 TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
                 StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
                 StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
+                StackPanel filmAgeText = FindVisualChild<StackPanel>(filmGrid, "FilmAgeText");
                 TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
 
                 Debug.WriteLine("test " + filmTitle);
@@ -69,11 +60,13 @@ namespace LoginForm.View
                 overlayRectangle.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                 filmTitleText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                 filmDurationText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
+                filmAgeText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                 filmGenreText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
 
                 overlayRectangle.Visibility = Visibility.Visible;
                 filmTitleText.Visibility = Visibility.Visible;
                 filmDurationText.Visibility = Visibility.Visible;
+                filmAgeText.Visibility = Visibility.Visible;
                 filmGenreText.Visibility = Visibility.Visible;
 
                 // Change the text color to yellow
@@ -92,6 +85,7 @@ namespace LoginForm.View
                 TextBlock filmTitleText = FindVisualChild<TextBlock>(filmGrid, "FilmTitleText");
                 StackPanel filmDurationText = FindVisualChild<StackPanel>(filmGrid, "FilmDurationText");
                 StackPanel filmGenreText = FindVisualChild<StackPanel>(filmGrid, "FilmGenreText");
+                StackPanel filmAgeText = FindVisualChild<StackPanel>(filmGrid, "FilmAgeText");
                 TextBlock filmTitle = FindVisualChild<TextBlock>(listBoxItem, "FilmTitle");
 
                 // Use DoubleAnimation to animate the opacity property
@@ -106,11 +100,13 @@ namespace LoginForm.View
                 filmTitleText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                 filmDurationText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
                 filmGenreText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
+                filmAgeText.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
 
                 overlayRectangle.Visibility = Visibility.Hidden;
                 filmTitleText.Visibility = Visibility.Hidden;
                 filmDurationText.Visibility = Visibility.Hidden;
                 filmGenreText.Visibility = Visibility.Hidden;
+                filmAgeText.Visibility = Visibility.Hidden;
 
                 // Revert the text color to white
                 filmTitle.Foreground = Brushes.White;

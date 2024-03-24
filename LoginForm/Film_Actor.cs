@@ -12,9 +12,13 @@ namespace LoginForm
     using System;
     using System.Collections.Generic;
     
-    public partial class Manager
+    public partial class Film_Actor
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public int id { get; set; }
+        public Nullable<int> Film_id { get; set; }
+        public Nullable<int> Actor_id { get; set; }
+    
+        public virtual Actor Actor { get; set; }
+        public virtual Film Film { get; set; }
     }
 }

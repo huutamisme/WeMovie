@@ -35,16 +35,23 @@
           <Property Name="rating" Type="int" />
           <Property Name="poster" Type="nvarchar" MaxLength="200" />
           <Property Name="certification" Type="nvarchar" MaxLength="10" />
-          <Property Name="Actor" Type="int" />
-          <Property Name="Director" Type="int" />
           <Property Name="plotSummary" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="Manager">
+        <EntityType Name="Film_Actor">
           <Key>
-            <PropertyRef Name="username" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Film_id" Type="int" />
+          <Property Name="Actor_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Film_Director">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Film_id" Type="int" />
+          <Property Name="Director_id" Type="int" />
         </EntityType>
         <EntityType Name="Seat">
           <Key>
@@ -94,27 +101,51 @@
           <Property Name="quantities" Type="int" />
           <Property Name="denomination" Type="int" />
         </EntityType>
-        <Association Name="FK_Film_Actor1">
+        <Association Name="FK_Film_Actor_Actor">
           <End Role="Actor" Type="Self.Actor" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <End Role="Film_Actor" Type="Self.Film_Actor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Actor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Actor" />
+            <Dependent Role="Film_Actor">
+              <PropertyRef Name="Actor_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Film_Director1">
+        <Association Name="FK_Film_Actor_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Film_Actor" Type="Self.Film_Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film_Actor">
+              <PropertyRef Name="Film_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Director_Director">
           <End Role="Director" Type="Self.Director" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <End Role="Film_Director" Type="Self.Film_Director" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Director">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Director" />
+            <Dependent Role="Film_Director">
+              <PropertyRef Name="Director_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Director_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Film_Director" Type="Self.Film_Director" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film_Director">
+              <PropertyRef Name="Film_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,19 +189,28 @@
           <EntitySet Name="Actor" EntityType="Self.Actor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film_Actor" EntityType="Self.Film_Actor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film_Director" EntityType="Self.Film_Director" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Showtime" EntityType="Self.Showtime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Film_Actor1" Association="Self.FK_Film_Actor1">
+          <AssociationSet Name="FK_Film_Actor_Actor" Association="Self.FK_Film_Actor_Actor">
             <End Role="Actor" EntitySet="Actor" />
-            <End Role="Film" EntitySet="Film" />
+            <End Role="Film_Actor" EntitySet="Film_Actor" />
           </AssociationSet>
-          <AssociationSet Name="FK_Film_Director1" Association="Self.FK_Film_Director1">
-            <End Role="Director" EntitySet="Director" />
+          <AssociationSet Name="FK_Film_Actor_Film" Association="Self.FK_Film_Actor_Film">
             <End Role="Film" EntitySet="Film" />
+            <End Role="Film_Actor" EntitySet="Film_Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Director_Director" Association="Self.FK_Film_Director_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="Film_Director" EntitySet="Film_Director" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Director_Film" Association="Self.FK_Film_Director_Film">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Film_Director" EntitySet="Film_Director" />
           </AssociationSet>
           <AssociationSet Name="FK_Seat_Showtime" Association="Self.FK_Seat_Showtime">
             <End Role="Showtime" EntitySet="Showtime" />
@@ -198,7 +238,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="biography" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Actor1" FromRole="Actor" ToRole="Film" />
+          <NavigationProperty Name="Film_Actor" Relationship="Self.FK_Film_Actor_Actor" FromRole="Actor" ToRole="Film_Actor" />
         </EntityType>
         <EntityType Name="Director">
           <Key>
@@ -208,7 +248,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="biography" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Films" Relationship="Self.FK_Film_Director1" FromRole="Director" ToRole="Film" />
+          <NavigationProperty Name="Film_Director" Relationship="Self.FK_Film_Director_Director" FromRole="Director" ToRole="Film_Director" />
         </EntityType>
         <EntityType Name="Film">
           <Key>
@@ -222,19 +262,30 @@
           <Property Name="rating" Type="Int32" />
           <Property Name="poster" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="certification" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Actor" Type="Int32" />
-          <Property Name="Director" Type="Int32" />
           <Property Name="plotSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Actor1" Relationship="Self.FK_Film_Actor1" FromRole="Film" ToRole="Actor" />
-          <NavigationProperty Name="Director1" Relationship="Self.FK_Film_Director1" FromRole="Film" ToRole="Director" />
+          <NavigationProperty Name="Film_Actor" Relationship="Self.FK_Film_Actor_Film" FromRole="Film" ToRole="Film_Actor" />
+          <NavigationProperty Name="Film_Director" Relationship="Self.FK_Film_Director_Film" FromRole="Film" ToRole="Film_Director" />
           <NavigationProperty Name="Showtimes" Relationship="Self.FK_Showtime_Film" FromRole="Film" ToRole="Showtime" />
         </EntityType>
-        <EntityType Name="Manager">
+        <EntityType Name="Film_Actor">
           <Key>
-            <PropertyRef Name="username" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Film_id" Type="Int32" />
+          <Property Name="Actor_id" Type="Int32" />
+          <NavigationProperty Name="Actor" Relationship="Self.FK_Film_Actor_Actor" FromRole="Film_Actor" ToRole="Actor" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_Actor_Film" FromRole="Film_Actor" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="Film_Director">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Film_id" Type="Int32" />
+          <Property Name="Director_id" Type="Int32" />
+          <NavigationProperty Name="Director" Relationship="Self.FK_Film_Director_Director" FromRole="Film_Director" ToRole="Director" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_Director_Film" FromRole="Film_Director" ToRole="Film" />
         </EntityType>
         <EntityType Name="Seat">
           <Key>
@@ -289,27 +340,51 @@
           <Property Name="quantities" Type="Int32" />
           <Property Name="denomination" Type="Int32" />
         </EntityType>
-        <Association Name="FK_Film_Actor1">
+        <Association Name="FK_Film_Actor_Actor">
           <End Role="Actor" Type="Self.Actor" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <End Role="Film_Actor" Type="Self.Film_Actor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Actor">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Actor" />
+            <Dependent Role="Film_Actor">
+              <PropertyRef Name="Actor_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Film_Director1">
+        <Association Name="FK_Film_Director_Director">
           <End Role="Director" Type="Self.Director" Multiplicity="0..1" />
-          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <End Role="Film_Director" Type="Self.Film_Director" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Director">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Film">
-              <PropertyRef Name="Director" />
+            <Dependent Role="Film_Director">
+              <PropertyRef Name="Director_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Actor_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Film_Actor" Type="Self.Film_Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film_Actor">
+              <PropertyRef Name="Film_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Director_Film">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Film_Director" Type="Self.Film_Director" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Film_Director">
+              <PropertyRef Name="Film_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -326,7 +401,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Seat_Showtime">
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Showtime">
@@ -338,7 +415,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ticket_Showtime">
-          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" />
+          <End Role="Showtime" Type="Self.Showtime" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Showtime">
@@ -353,19 +432,28 @@
           <EntitySet Name="Actors" EntityType="Self.Actor" />
           <EntitySet Name="Directors" EntityType="Self.Director" />
           <EntitySet Name="Films" EntityType="Self.Film" />
-          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <EntitySet Name="Film_Actor" EntityType="Self.Film_Actor" />
+          <EntitySet Name="Film_Director" EntityType="Self.Film_Director" />
           <EntitySet Name="Seats" EntityType="Self.Seat" />
           <EntitySet Name="Showtimes" EntityType="Self.Showtime" />
           <EntitySet Name="Tickets" EntityType="Self.Ticket" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
-          <AssociationSet Name="FK_Film_Actor1" Association="Self.FK_Film_Actor1">
+          <AssociationSet Name="FK_Film_Actor_Actor" Association="Self.FK_Film_Actor_Actor">
             <End Role="Actor" EntitySet="Actors" />
-            <End Role="Film" EntitySet="Films" />
+            <End Role="Film_Actor" EntitySet="Film_Actor" />
           </AssociationSet>
-          <AssociationSet Name="FK_Film_Director1" Association="Self.FK_Film_Director1">
+          <AssociationSet Name="FK_Film_Director_Director" Association="Self.FK_Film_Director_Director">
             <End Role="Director" EntitySet="Directors" />
+            <End Role="Film_Director" EntitySet="Film_Director" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Actor_Film" Association="Self.FK_Film_Actor_Film">
             <End Role="Film" EntitySet="Films" />
+            <End Role="Film_Actor" EntitySet="Film_Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Director_Film" Association="Self.FK_Film_Director_Film">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="Film_Director" EntitySet="Film_Director" />
           </AssociationSet>
           <AssociationSet Name="FK_Showtime_Film" Association="Self.FK_Showtime_Film">
             <End Role="Film" EntitySet="Films" />
@@ -417,17 +505,25 @@
                 <ScalarProperty Name="rating" ColumnName="rating" />
                 <ScalarProperty Name="poster" ColumnName="poster" />
                 <ScalarProperty Name="certification" ColumnName="certification" />
-                <ScalarProperty Name="Actor" ColumnName="Actor" />
-                <ScalarProperty Name="Director" ColumnName="Director" />
                 <ScalarProperty Name="plotSummary" ColumnName="plotSummary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Managers">
-            <EntityTypeMapping TypeName="WeMovieModel.Manager">
-              <MappingFragment StoreEntitySet="Manager">
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
+          <EntitySetMapping Name="Film_Actor">
+            <EntityTypeMapping TypeName="WeMovieModel.Film_Actor">
+              <MappingFragment StoreEntitySet="Film_Actor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Film_id" ColumnName="Film_id" />
+                <ScalarProperty Name="Actor_id" ColumnName="Actor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Film_Director">
+            <EntityTypeMapping TypeName="WeMovieModel.Film_Director">
+              <MappingFragment StoreEntitySet="Film_Director">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Film_id" ColumnName="Film_id" />
+                <ScalarProperty Name="Director_id" ColumnName="Director_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
