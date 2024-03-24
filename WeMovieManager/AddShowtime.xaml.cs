@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WeMovieManager.Commands;
+using WeMovieManager.Services;
+using WeMovieManager.ViewModels;
 
 namespace WeMovieManager
 {
@@ -99,7 +102,6 @@ namespace WeMovieManager
                     seatQuantities = 112
                 };
 
-                App.WeMovieDb.Database.Connection.Open();
                 int showId = App.WeMovieDb.Database.SqlQuery<int>("INSERT Showtime(time, date, Film, price, seatQuantities) " 
                                                         + "VALUES({0},{1}, {2}, {3}, {4}); SELECT CAST(SCOPE_IDENTITY() AS INT)"
                                                         , toBeInserted.time, toBeInserted.date, toBeInserted.Film, toBeInserted.price, toBeInserted.seatQuantities).Single();
@@ -116,6 +118,9 @@ namespace WeMovieManager
                                                         , seat.status, seat.Showtime);
                     App.WeMovieDb.SaveChanges();
                 }
+                ICommand ShowTimeManagementNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new ShowTimeManagementViewModel(); }));
+                ShowTimeManagementNavigateCommand.Execute(this);
+                this.Close();
             }
         }
     }

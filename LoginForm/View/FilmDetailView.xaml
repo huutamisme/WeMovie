@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoginForm.View"
              mc:Ignorable="d" 
-             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              Height="650" Width="1080">
     <UserControl.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
@@ -120,7 +120,13 @@
                                                     <Label Content="{Binding time}"
                                                            FontSize="17"
                                                            VerticalAlignment="Center"
-                                                           HorizontalAlignment="Center"/>
+                                                           HorizontalAlignment="Center">
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="MouseDown" >
+                                                                <i:InvokeCommandAction Command="{Binding ShowTimeClickedCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </Label>
                                                 </Border>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>

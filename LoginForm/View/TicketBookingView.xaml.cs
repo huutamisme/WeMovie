@@ -35,7 +35,7 @@ namespace LoginForm.View
         }
 
         public ObservableCollection<Seat> ListSeat1 { get; set; } = new ObservableCollection<Seat>();
-        public int showId = 16;
+        public int showId { get; set; }
         public int filmId { get; set; }
         public string filmName { get; set; }
         public string filmImg {  get; set; }
@@ -47,6 +47,7 @@ namespace LoginForm.View
 
         private void PopulateSeatList()
         {
+            showId = App.showId;
             totalSeats.Content = 0;
             var showQuery = from show in App.WeMovieDb.Showtimes where show.id == showId select show;
             var showResult = showQuery.Single();
