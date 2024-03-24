@@ -87,10 +87,6 @@
                         </TextBlock>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="0 10 0 0" Text="Cast: " FontSize="15" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Margin="0 10 0 0" Text="Robert Downey Jr., Chris Hemsworth, Mark Ruffalo" FontSize="15" Foreground="White"/>
-                    </StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
