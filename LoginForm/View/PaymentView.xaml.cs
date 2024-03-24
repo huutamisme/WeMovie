@@ -32,7 +32,7 @@ namespace LoginForm.View
             PopulateListBoxWithSampleData();
         }
 
-        ObservableCollection<Voucher1> sampleData = new ObservableCollection<Voucher1>();
+        public static ObservableCollection<Voucher1> sampleData = new ObservableCollection<Voucher1>();
 
         private void PopulateListBoxWithSampleData()
         {
@@ -67,7 +67,7 @@ namespace LoginForm.View
             else
             {
                 // check invalid voucher
-                listBox.Items.Add(new Voucher1 { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
+                sampleData.Add(new Voucher1 { Code = voucherId, VoucherInfoStr = "(Discount 10000)" });
                 VoucherTextBox.Text = "";
             }
 
@@ -82,6 +82,12 @@ namespace LoginForm.View
 
     public class Voucher1
     {
+        public RelayCommand delVoucherCommand => new RelayCommand(execute =>
+        {
+            Trace.WriteLine(Code);
+            PaymentView.sampleData.Remove(this);
+            
+        }, canExecute => { return true; });
         public string Code { get; set; }
         public string VoucherInfoStr { get; set; }
     }
