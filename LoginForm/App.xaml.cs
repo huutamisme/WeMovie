@@ -16,21 +16,23 @@ namespace LoginForm
     public partial class App : Application
     {
         public static NavigationStore _navigationStore;
+        public static WeMovieEntities WeMovieDb = new WeMovieEntities();
+        public static bool isLoggedIn = false;
         public App()
         {
             _navigationStore = new NavigationStore();
         }
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    base.OnStartup(e);
-        //    _navigationStore.CurrentViewModel = new HomePageViewModel();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            _navigationStore.CurrentViewModel = new TicketBookingViewModel();
 
-        //    MainWindow = new MainWindow()
-        //    {
-        //        DataContext = new MainViewModel(_navigationStore)
-        //    };
-        //    MainWindow.Show();
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_navigationStore)
+            };
+            MainWindow.Show();
 
-        //}
+        }
     }
 }

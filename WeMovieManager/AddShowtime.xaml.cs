@@ -116,8 +116,6 @@ namespace WeMovieManager
                                                         , seat.status, seat.Showtime);
                     App.WeMovieDb.SaveChanges();
                 }
-
-
             }
         }
     }

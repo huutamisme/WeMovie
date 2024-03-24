@@ -219,6 +219,7 @@
     </Compile>
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>

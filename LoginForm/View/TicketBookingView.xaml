@@ -15,6 +15,7 @@
     <UserControl.Resources>
         <!--Style ListBoxItems1-->
         <Style x:Key="styleListBoxItems1" TargetType="{x:Type ListBoxItem}">
+
             <Setter Property="SnapsToDevicePixels" Value="False" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Margin" Value="0 0 0 0" />
@@ -37,6 +38,11 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
+                <DataTrigger Binding="{Binding IsReserved}" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Focusable" Value="False"/>
+                </DataTrigger>
                 <Trigger Property="ItemsControl.AlternationIndex"
                  Value="0">
                     <Setter Property="Background"
@@ -47,6 +53,7 @@
                     <Setter Property="Background"
                     Value="#F7F7F7"></Setter>
                 </Trigger>
+
             </Style.Triggers>
         </Style>
         <Style x:Key="BookTicketBtn" TargetType="Button">
@@ -153,27 +160,29 @@
                                        Grid.Column="0"
                                        FontSize="14" />
                                                         <Label Grid.Column="1"
-                                       HorizontalAlignment="Right"
-                                       FontSize="16"
-                                       Content="{Binding txtFilm}"
-                                       x:Name="filmName" />
+                                                       HorizontalAlignment="Right"
+                                                       FontSize="16"
+                                       
+                                                       x:Name="filmNameToBind" />
                                                     </Grid>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Grid Width="280"
                                   Margin="0,10,0,0">
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition />
+                                                            <ColumnDefinition Width="16*" />
+                                                            <ColumnDefinition Width="86*"/>
+                                                            <ColumnDefinition Width="39*"/>
+                                                            <ColumnDefinition Width="140*" />
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Content="Showtime"
-                                       Grid.Column="0"
-                                       FontSize="14" />
-                                                        <Label Content="{Binding showTime}"
-                                       Grid.Column="1"
-                                       HorizontalAlignment="Right"
-                                       FontSize="16" />
+                                                       Grid.Column="0"
+                                                       FontSize="14" Grid.ColumnSpan="3" />
+                                                        <Label x:Name="showTimeToBind"
+                                                        Grid.Column="1"
+                                                        HorizontalAlignment="Left"
+                                                        FontSize="16" Margin="130,0,0,0" />
                                                     </Grid>
                                                 </StackPanel>
                                                 <StackPanel Orientation="Horizontal">
@@ -221,7 +230,7 @@
                                                         <Label Content="Seat"
                                        Grid.Column="0"
                                        FontSize="14" />
-                                                        <Label Content="{Binding TotalSeat,UpdateSourceTrigger=PropertyChanged}"
+                                                        <Label x:Name="totalSeats"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right"
                                        FontSize="14" />
@@ -241,7 +250,7 @@
                                                         <Label Grid.Column="1"
                                        HorizontalAlignment="Right"
                                        FontSize="16"
-                                       Content="{Binding price}" />
+                                       x:Name="priceToBind" />
                                                     </Grid>
                                                 </StackPanel>
                                             </StackPanel>
@@ -260,7 +269,7 @@
                                                         <Label Content="Total"
                                        Grid.Column="0"
                                        FontSize="16" />
-                                                        <Label Content="{Binding TotalPrice,UpdateSourceTrigger=PropertyChanged}"
+                                                        <Label x:Name="totalToBind"
                                        Grid.Column="1"
                                        HorizontalAlignment="Right"
                                        FontSize="15" />
@@ -274,7 +283,7 @@
                         </Border>
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                             <Button Style="{StaticResource BookTicketBtn}"
-                                    Margin="10 10 20 0"/>
+                                    Margin="10 10 20 0" Click="Button_Click"/>
                             <Button Style="{StaticResource CancelBookTicketBtn}"
                                     Margin="0 10 10 0"/>
                         </StackPanel>
@@ -311,10 +320,12 @@
                                  VerticalAlignment="Top"
                                  Margin="20 60 20 0"
                                  SelectedItem="{Binding SelectedSeat}"
-                                 SelectionMode="Multiple">
+                                 SelectionMode="Multiple"
+                                 SelectionChanged="SeatListBox1_SelectionChanged">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem"
                                    BasedOn="{StaticResource styleListBoxItems1}" />
+
                             </ListBox.ItemContainerStyle>
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -339,6 +350,11 @@
                                                 <Style TargetType="Label">
                                                     <Setter Property="Background" Value="White"/>
                                                     <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsReserved}" Value="True">
+                                                            <Setter Property="Background" Value="Red"/>
+                                                            <Setter Property="IsEnabled" Value="False"/>
+                                                            <Setter Property="Focusable" Value="False"/>
+                                                        </DataTrigger>
                                                         <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
                                                             <Setter Property="Background" Value="{StaticResource color3}"/>
                                                         </DataTrigger>
