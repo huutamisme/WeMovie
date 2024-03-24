@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoginForm.View"
              mc:Ignorable="d" 
-             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              Background="#f3f5f7"
              d:DesignHeight="650" d:DesignWidth="1080">
     <UserControl.Resources>
@@ -290,7 +290,7 @@
                                     </StackPanel>
                                     <Grid Margin="10 5 10 0" Grid.Column="2">
                                         <ScrollViewer>
-                                            <ListBox ItemsSource="{Binding ListVoucher}"
+                                            <ListBox
                                                      x:Name="listBox"
                                                      SelectedItem="{Binding SelectedItem}">
                                                 <ListBox.ItemTemplate>
@@ -333,6 +333,11 @@
                                                                            Content="X"
                                                                            VerticalContentAlignment="Center"
                                                                            HorizontalContentAlignment="Center">
+                                                                        <i:Interaction.Triggers>
+                                                                            <i:EventTrigger EventName="MouseDown" >
+                                                                                <i:InvokeCommandAction Command="{Binding delVoucherCommand}" />
+                                                                            </i:EventTrigger>
+                                                                        </i:Interaction.Triggers>
                                                                     </Label>
                                                                     <Border.Style>
                                                                         <Style TargetType="Border">
