@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace LoginForm.ViewModels
@@ -47,6 +48,31 @@ namespace LoginForm.ViewModels
             get
             {
                 return _film.genre;
+            }
+        }
+
+        // T18, T16,... Phim dành cho khán giả trên 18, 16t
+        // P: Phim dành cho khán giả mọi lứa tuổi
+        public string certificationStatement
+        {
+            get
+            {
+                if (_film.certification != "P")
+                {
+                    string resultString = Regex.Match(_film.certification, @"\d+").Value;
+                    return "Phim dành cho khán giả từ " + resultString + " tuổi trở lên";
+                }
+                else
+                {
+                    return "Phim dành cho khán giả mọi lứa tuổi";
+                }
+            }
+        }
+        public string certification
+        {
+            get
+            {
+                return _film.certification;
             }
         }
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();

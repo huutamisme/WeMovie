@@ -1,11 +1,5 @@
 ﻿using LoginForm.Stores;
 using LoginForm.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace LoginForm
@@ -20,17 +14,17 @@ namespace LoginForm
         {
             _navigationStore = new NavigationStore();
         }
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    base.OnStartup(e);
-        //    _navigationStore.CurrentViewModel = new HomePageViewModel();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            _navigationStore.CurrentViewModel = new HomePageViewModel();
 
-        //    MainWindow = new MainWindow()
-        //    {
-        //        DataContext = new MainViewModel(_navigationStore)
-        //    };
-        //    MainWindow.Show();
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_navigationStore)
+            };
+            MainWindow.Show();
 
-        //}
+        }
     }
 }

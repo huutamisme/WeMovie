@@ -42,7 +42,7 @@
                                       Height="20"
                                       Foreground="yellow"
                                       Margin="0 0 10 0"/>
-                        <TextBlock Text="Action, Adventure, Sci-Fi" Foreground="White" FontSize="15"/>
+                        <TextBlock Text="{Binding genre}" Foreground="White" FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <fa:IconImage Icon="Clock"
@@ -50,15 +50,7 @@
                                       Height="20"
                                       Foreground="yellow"
                                       Margin="0 0 10 0"/>
-                        <TextBlock Text="149'" Foreground="White" FontSize="15"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                        <fa:IconImage Icon="Globe"
-                                      Width="20"
-                                      Height="20"
-                                      Foreground="yellow"
-                                      Margin="0 0 10 0"/>
-                        <TextBlock Text="America" Foreground="White" FontSize="15"/>
+                        <TextBlock Text="{Binding duration}" Foreground="White" FontSize="15"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <fa:IconImage Icon="UserCheck"
@@ -66,7 +58,15 @@
                                       Height="20"
                                       Foreground="yellow"
                                       Margin="0 0 10 0"/>
-                        <TextBlock Text="T13: Movie for audiences 13 years of age and older." Foreground="White" FontSize="15"/>
+                        <TextBlock Foreground="White" FontSize="15">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}: {1}">
+                                    <Binding Path="certification"/>
+                                    <Binding Path="certificationStatement"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
                     </StackPanel>
                     <TextBlock Margin="0 10 0 0" Text="DESCRIBE" FontSize="30" FontWeight="Bold" Foreground="White"/>
                     <StackPanel Orientation="Horizontal">
