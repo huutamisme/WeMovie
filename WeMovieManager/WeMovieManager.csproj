@@ -193,13 +193,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actor.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="AddShowtime.xaml.cs">
       <DependentUpon>AddShowtime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Director.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="EditShowtime.xaml.cs">
       <DependentUpon>EditShowtime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Film.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -209,14 +219,25 @@
     </Compile>
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    <Compile Include="Seat.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Showtime.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Ticket.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\InfoCard.xaml.cs">
       <DependentUpon>InfoCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Controls\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\FilmsManagementViewModel.cs" />
@@ -231,6 +252,9 @@
     </Compile>
     <Compile Include="View\ShowtimeManagementView.xaml.cs">
       <DependentUpon>ShowtimeManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Voucher.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="WeMovie.Context.cs">
       <AutoGen>True</AutoGen>

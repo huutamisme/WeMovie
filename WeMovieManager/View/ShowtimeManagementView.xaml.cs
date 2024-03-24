@@ -23,6 +23,13 @@ namespace WeMovieManager.View
         public ShowtimeManagementView()
         {
             InitializeComponent();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddShowtime addShowTime = new AddShowtime();
+            addShowTime.Show();
         }
     }
 }
