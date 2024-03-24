@@ -138,7 +138,7 @@
                                             <RowDefinition Height="255" />
                                             <RowDefinition Height="40" />
                                         </Grid.RowDefinitions>
-                                        <Image Source="/Images/Avengers.jpg"
+                                        <Image x:Name="imgToBind"
                        Grid.Row="0"
                        Height="200"
                        HorizontalAlignment="Center"

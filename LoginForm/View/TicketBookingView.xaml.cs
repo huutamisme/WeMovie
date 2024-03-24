@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LoginForm.Commands;
+using LoginForm.Models;
+using LoginForm.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -14,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit.Primitives;
 
 namespace LoginForm.View
 {
@@ -32,8 +36,14 @@ namespace LoginForm.View
 
         public ObservableCollection<Seat> ListSeat1 { get; set; } = new ObservableCollection<Seat>();
         public int showId = 16;
+        public int filmId { get; set; }
+        public string filmName { get; set; }
+        public string filmImg {  get; set; }
+        public string showDate { get; set; }
+        public string showTime { get; set; }
+        public int price { get; set; }
 
-        private int price { get; set; }
+        public int total { get; set; }
 
         private void PopulateSeatList()
         {
@@ -43,6 +53,17 @@ namespace LoginForm.View
 
             var filmQuery = from film in App.WeMovieDb.Films where film.id == showResult.Film select film;
             var filmResult = filmQuery.Single();
+
+            string packUri = "pack://application:,,,/LoginForm;component" + filmResult.poster;
+
+            imgToBind.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+
+            filmId = filmResult.id;
+            filmName = filmResult.name;
+            filmImg = filmResult.poster;
+            showTime = showResult.time.ToString();
+            showDate = showResult.date.ToString();
+
 
             price = (int)showResult.price;
             filmNameToBind.Content = filmResult.name;
@@ -69,11 +90,28 @@ namespace LoginForm.View
             TotalSeat = SeatListBox1.SelectedItems.Count;
             totalSeats.Content = TotalSeat;
             totalToBind.Content = TotalSeat * price;
+            total = TotalSeat * price;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        
+            if (!App.isLoggedIn)
+            {
+                Login login = new Login();
+                login.Show();
+            }
+            else
+            {
+                
+                App.payment = new Payment() { showId = showId, filmId = filmId, filmName = filmName, price = price, showDate = showDate , showTime = showTime,
+                total = total, poster = filmImg};
+                foreach (Seat seat in SeatListBox1.SelectedItems)
+                {
+                    App.payment.seats.Add(seat.SeatId);
+                }
+                NavigateCommand PaymentNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new PaymentViewModel(); }));
+                PaymentNavigateCommand.Execute(this);
+            }
         }
     }
     public class Seat

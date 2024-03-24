@@ -269,9 +269,7 @@
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Payment.xaml.cs">
-      <DependentUpon>Payment.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
@@ -305,6 +303,7 @@
     <Compile Include="ViewModels\FilmDetailViewModel.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\TicketBookingViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="View\FilmDetailView.xaml.cs">
@@ -401,10 +400,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MessageBoxCustom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Payment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -525,6 +520,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Actor\Avatar\Kate_Winslet.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sam_ Worthington.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sigourney_ Weaver.jpg" />
+    <Resource Include="Images\Actor\Avatar\Stephen_Lang.jpg" />
+    <Resource Include="Images\Actor\Avatar\Zoe_Saldana.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Chadwick_Boseman.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Lupita_Nyong%27o.jpg" />
+    <Resource Include="Images\Actor\Black Panther\Michael_B._Jordan.jpg" />
+    <Resource Include="Images\Actor\Captain America\Chris_Evans.jpg" />
+    <Resource Include="Images\Actor\Captain America\Scarlett_Johansson.jpg" />
+    <Resource Include="Images\Actor\Captain America\Sebastian_Stan.jpg" />
+    <Content Include="Trailer\responsive.mp4" />
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>
