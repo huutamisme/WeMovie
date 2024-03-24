@@ -57,14 +57,19 @@ namespace LoginForm.ViewModels
         {
             get
             {
-                if (_film.certification != "P")
+                if (_film.certification != "P" && _film.certification != "K")
                 {
                     string resultString = Regex.Match(_film.certification, @"\d+").Value;
-                    return "Phim dành cho khán giả từ " + resultString + " tuổi trở lên";
+                    return "Movie for audiences from " + resultString + " years of age or older";
+                }
+                if (_film.certification == "K")
+                {
+                    string resultString = Regex.Match(_film.certification, @"\d+").Value;
+                    return "Movie for audiences under " + resultString + " years of age with parents's guidance";
                 }
                 else
                 {
-                    return "Phim dành cho khán giả mọi lứa tuổi";
+                    return "Movie for all audiences";
                 }
             }
         }

@@ -162,7 +162,7 @@
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Vertical">
                         <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
-                  PHIM BOM TẤN
+                            BLOCKBUSTER MOVIES
                         </TextBlock>
                         <!-- Top Films with Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -245,7 +245,7 @@
                         <StackPanel Height="50"></StackPanel>
 
                         <TextBlock FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="2">
-                  PHIM GIỜ VÀNG
+                            GOLDEN HOUR MOVIES
                         </TextBlock>
                         <!-- Bottom Films with Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
