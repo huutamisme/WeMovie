@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -254,6 +254,12 @@
     <Compile Include="FilmManagement.xaml.cs">
       <DependentUpon>FilmManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Film_Actor.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Film_Director.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
@@ -285,6 +291,9 @@
       <DependentUpon>ShowtimeManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ticket.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -520,6 +529,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WeMovie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WeMovie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.cs</LastGenOutput>
+    </Content>
     <Resource Include="Images\Actor\Avatar\Kate_Winslet.jpg" />
     <Resource Include="Images\Actor\Avatar\Sam_ Worthington.jpg" />
     <Resource Include="Images\Actor\Avatar\Sigourney_ Weaver.jpg" />
@@ -532,16 +551,6 @@
     <Resource Include="Images\Actor\Captain America\Scarlett_Johansson.jpg" />
     <Resource Include="Images\Actor\Captain America\Sebastian_Stan.jpg" />
     <Content Include="Trailer\responsive.mp4" />
-    <Content Include="WeMovie.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="WeMovie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
