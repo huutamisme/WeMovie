@@ -254,8 +254,14 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ShowTimeManagementViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="View\CastManagementView.xaml.cs">
+      <DependentUpon>CastManagementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DirectorManagementView.xaml.cs">
+      <DependentUpon>DirectorManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FilmManagementView.xaml.cs">
       <DependentUpon>FilmManagementView.xaml</DependentUpon>
@@ -339,7 +345,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CastManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DirectorManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

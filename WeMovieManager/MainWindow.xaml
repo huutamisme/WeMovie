@@ -82,15 +82,23 @@
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Ticket" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Ticket" Style="{StaticResource menuButtonText}"/>
+                        <TextBlock Text="Voucher - Ticket" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
                               Tag="{StaticResource color5}"
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
-                        <fa:IconImage Icon="Ticket" Style="{StaticResource menuButtonIcon}"/>
-                        <TextBlock Text="Voucher" Style="{StaticResource menuButtonText}"/>
+                        <fa:IconImage Icon="UserGroup" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Cast" Style="{StaticResource menuButtonText}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Style="{StaticResource menuButton}"
+                              Tag="{StaticResource color6}"
+                              IsChecked="False">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="VideoCamera" Style="{StaticResource menuButtonIcon}"/>
+                        <TextBlock Text="Director" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Style="{StaticResource menuButton}"
