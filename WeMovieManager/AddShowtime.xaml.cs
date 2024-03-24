@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,18 @@ namespace WeMovieManager
     /// </summary>
     public partial class AddShowtime : Window
     {
+        public List<int> ids = new List<int>();
+        public List<string> movieNames = new List<string>();
         public AddShowtime()
         {
+            var query = from film in App.WeMovieDb.Films select new { Name = film.name, id = film.id };
+            var results = query.ToList();
             InitializeComponent();
-            List<string> movieNames = new List<string>
+            foreach (var movie in results)
             {
-                "The Shawshank Redemption",
-                "The Godfather",
-                "The Dark Knight",
-                "Forrest Gump",
-                "Inception"
-            };
+                ids.Add(movie.id);
+                movieNames.Add(movie.Name);
+            }
 
             // Set the sample data as the ItemsSource for the ComboBox
             filmList.ItemsSource = movieNames;
@@ -66,5 +68,52 @@ namespace WeMovieManager
             this.Close();
         }
 
+        private void filmList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = filmList.SelectedIndex;
+            Trace.WriteLine(movieNames[index]);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (timePicker.SelectedTime.ToString().Length == 0)
+            {
+                MessageBox.Show("Please input show time", "Error");
+            }
+            else if(_moviePrice.Text.Length == 0)
+            {
+                MessageBox.Show("Please input ticket price", "Error");
+            }
+            else if(_movieDate.Text.Length == 0)
+            {
+                MessageBox.Show("Please input show date", "Error");
+            }
+            else
+            {
+                Showtime toBeInserted = new Showtime
+                {
+                    Film = ids[filmList.SelectedIndex],
+                    time = timePicker.SelectedTime.Value.TimeOfDay,
+                    date = _movieDate.DisplayDate.Date,
+                    price = Int32.Parse(_moviePrice.Text),
+                    seatQuantities = 112
+                };
+               
+                App.WeMovieDb.Showtimes.Add(toBeInserted);
+                App.WeMovieDb.SaveChanges();
+                int showId = toBeInserted.id;
+                for(int i = 1; i <= 112; i++)
+                {
+                    Seat seat = new Seat
+                    {
+                        status = "NotTaken",
+                        Showtime = showId
+                    };
+                    App.WeMovieDb.Seats.Add(seat);
+                    App.WeMovieDb.SaveChanges();
+                }
+
+            }
+        }
     }
 }
