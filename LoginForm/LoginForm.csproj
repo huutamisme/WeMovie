@@ -313,6 +313,9 @@
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PaymentView.xaml.cs">
+      <DependentUpon>PaymentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TicketBookingView.xaml.cs">
       <DependentUpon>TicketBookingView.xaml</DependentUpon>
     </Compile>
@@ -436,6 +439,10 @@
     <Page Include="View\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TicketBookingView.xaml">
       <Generator>MSBuild:Compile</Generator>
