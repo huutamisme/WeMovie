@@ -1,3 +1,4 @@
+using LoginForm.Models;
 using LoginForm.Stores;
 using LoginForm.ViewModels;
 using System.Windows;
@@ -10,6 +11,9 @@ namespace LoginForm
     public partial class App : Application
     {
         public static NavigationStore _navigationStore;
+        public static WeMovieEntities WeMovieDb = new WeMovieEntities();
+        public static bool isLoggedIn = false;
+        public static Payment payment;
         public App()
         {
             _navigationStore = new NavigationStore();

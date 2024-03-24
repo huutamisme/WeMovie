@@ -30,8 +30,10 @@ namespace LoginForm
         public virtual DbSet<Film> Films { get; set; }
         public virtual DbSet<Film_Actor> Film_Actor { get; set; }
         public virtual DbSet<Film_Director> Film_Director { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Seat> Seats { get; set; }
         public virtual DbSet<Showtime> Showtimes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
