@@ -217,6 +217,8 @@
     <Compile Include="Manager.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxCustom.xaml.cs">
+      <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -293,6 +295,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MessageBoxCustom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\UIColors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -359,6 +365,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\error.png" />
+    <Resource Include="Images\ErrorIcon.png" />
+    <Resource Include="Images\iconApp.ico" />
+    <Resource Include="Images\info.png" />
+    <Resource Include="Images\succes.png" />
+    <Resource Include="Images\warning.png" />
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>

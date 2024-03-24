@@ -187,7 +187,8 @@
                                         Foreground="Black"
                                         VerticalAlignment="Top"
                                         materialDesign:ButtonAssist.CornerRadius="8"
-                                        Width="100">
+                                        Width="100"
+                                    Click="DeleteShowtime_Click">
                             </Button>
                         </StackPanel>
                     </Grid>
