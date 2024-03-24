@@ -75,11 +75,36 @@ namespace LoginForm.ViewModels
                 return _film.certification;
             }
         }
+        public string listActors
+        {
+            get
+            {
+                string actorsString = "";
+                using (var db = new WeMovieEntities())
+                {
+                    var filmActors = db.Film_Actor
+                                        .Where(fa => fa.Film_id == _film.id)
+                                        .ToList();
+                    foreach (var filmActor in filmActors)
+                    {
+                        Debug.WriteLine("actor id " + filmActor.Actor_id);
+                        var id = filmActor.Actor_id;
+                        var actor = db.Actors.FirstOrDefault(fa => fa.id == id);
+                        if (actor != null)
+                        {
+                            actorsString += actor.name + ", ";
+                        }
+                    }
+                }
+
+                return actorsString.Substring(0, actorsString.Length - 2);
+            }
+        }
+
         public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
 
         private void GenerateShowtimes()
         {
-
             using (var db = new WeMovieEntities())
             {
                 var showtimes = db.Showtimes.Where(s => s.Film == _film.id).ToList();

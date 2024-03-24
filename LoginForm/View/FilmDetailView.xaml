@@ -71,7 +71,7 @@
                     <TextBlock Margin="0 10 0 0" Text="DESCRIBE" FontSize="30" FontWeight="Bold" Foreground="White"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="0 10 0 0" Text="Director: " FontSize="15" FontWeight="Bold" Foreground="White"/>
-                        <TextBlock Margin="0 10 0 0" Text="Anthony Russo, Joe Russo" FontSize="15" Foreground="White"/>
+                        <TextBlock Margin="0 10 0 0" Text="{Binding listActors}" FontSize="15" Foreground="White"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="0 10 0 0" Text="Cast: " FontSize="15" FontWeight="Bold" Foreground="White"/>

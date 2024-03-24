@@ -215,7 +215,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="actor.cs">
+    <Compile Include="Actor.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="AddFilm.xaml.cs">
@@ -230,7 +230,7 @@
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="director.cs">
+    <Compile Include="Director.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="EditShowtime.xaml.cs">
@@ -254,6 +254,12 @@
     <Compile Include="FilmManagement.xaml.cs">
       <DependentUpon>FilmManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Film_Actor.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Film_Director.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
@@ -262,9 +268,6 @@
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Manager.cs">
-      <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxCustom.xaml.cs">
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
@@ -276,18 +279,18 @@
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
-    <Compile Include="seat.cs">
+    <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="showtime.cs">
+    <Compile Include="Showtime.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="ShowtimeManagement.xaml.cs">
       <DependentUpon>ShowtimeManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
-    <Compile Include="ticket.cs">
+    <Compile Include="Ticket.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="TicketBooking.xaml.cs">
@@ -299,7 +302,7 @@
     <Compile Include="User Controls\Item.xaml.cs">
       <DependentUpon>Item.xaml</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
+    <Compile Include="User.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FilmDetailViewModel.cs" />
@@ -484,18 +487,6 @@
     <Resource Include="Images\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WeMovie.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="WeMovie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Avengers.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -528,6 +519,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WeMovie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WeMovie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />

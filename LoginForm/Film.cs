@@ -17,6 +17,8 @@ namespace LoginForm
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Film()
         {
+            this.Film_Actor = new HashSet<Film_Actor>();
+            this.Film_Director = new HashSet<Film_Director>();
             this.Showtimes = new HashSet<Showtime>();
         }
     
@@ -28,12 +30,12 @@ namespace LoginForm
         public Nullable<int> rating { get; set; }
         public string poster { get; set; }
         public string certification { get; set; }
-        public Nullable<int> Actor { get; set; }
-        public Nullable<int> Director { get; set; }
         public string plotSummary { get; set; }
     
-        public virtual Actor Actor1 { get; set; }
-        public virtual Director Director1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Film_Actor> Film_Actor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Film_Director> Film_Director { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Showtime> Showtimes { get; set; }
     }
