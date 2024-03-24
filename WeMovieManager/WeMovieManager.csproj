@@ -199,6 +199,9 @@
     <Compile Include="AddShowtime.xaml.cs">
       <DependentUpon>AddShowtime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddVoucher.xaml.cs">
+      <DependentUpon>AddVoucher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
@@ -211,6 +214,9 @@
     <Compile Include="EditShowtime.xaml.cs">
       <DependentUpon>EditShowtime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditVoucher.xaml.cs">
+      <DependentUpon>EditVoucher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Film.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -220,9 +226,9 @@
     <Compile Include="Manager.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
-	  <Compile Include="MessageBoxCustom.xaml.cs">
-		  <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="MessageBoxCustom.xaml.cs">
+      <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -254,8 +260,14 @@
     <Compile Include="View\FilmManagementView.xaml.cs">
       <DependentUpon>FilmManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ShowtimeManagementView.xaml.cs">
       <DependentUpon>ShowtimeManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoucherManagementView.xaml.cs">
+      <DependentUpon>VoucherManagementView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Voucher.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
@@ -279,11 +291,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditFilm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditVoucher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,7 +347,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ShowtimeManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VoucherManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
