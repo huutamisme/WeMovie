@@ -205,6 +205,15 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DetailFilm.xaml.cs">
+      <DependentUpon>DetailFilm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetailShowtime.xaml.cs">
+      <DependentUpon>DetailShowtime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetailVoucher.xaml.cs">
+      <DependentUpon>DetailVoucher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Director.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -298,6 +307,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailShowtime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailVoucher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

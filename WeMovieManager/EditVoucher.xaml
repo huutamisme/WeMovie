@@ -9,38 +9,9 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
         Title="EditVoucher" Height="350" Width="800">
     <Window.Resources>
-        <Style x:Key="CloseWindow" TargetType="Button">
-            <Setter Property="Width" Value="30"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="Transparent"
-                               CornerRadius="5">
-                            <StackPanel Orientation="Horizontal"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"/>
-                                <materialDesign:PackIcon Kind="WindowClose"
-                                                         Height="20"
-                                                         Width="20"/>
-                            </StackPanel>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="{StaticResource color11}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style x:Key="DeleteBtn" TargetType="Button">
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="40"/>
@@ -123,7 +94,7 @@
                         <Button Click="Button_Click_1"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
-                                Style="{StaticResource CloseWindow}">
+                                Style="{StaticResource CloseWindowBtn}">
                         </Button>
                     </Grid>
 

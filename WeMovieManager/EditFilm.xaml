@@ -8,7 +8,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStyle="None"
         Background="Transparent"
-        AllowsTransparency="True"        
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
         Title="EditFilm" Height="650" Width="1080">
     <Grid>
         <Border CornerRadius="10"
@@ -35,19 +36,10 @@
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Grid.Row="0">
-                                <Button Command="{Binding CloseCM}"
-                                        CommandParameter="{Binding ElementName=addmoviewindow}"
-                                        ToolBar.OverflowMode="AsNeeded"
-                                        Background="Transparent"
-                                        Foreground="Black"
-                                        BorderBrush="Transparent"
-                                        MouseEnter="Button_MouseEnter_1"
-                                        MouseLeave="Button_MouseLeave_1"
-                                        materialDesign:ButtonAssist.CornerRadius="0,10,0,0"
-                                        Click="CloseWindow_Click">
-                                    <materialDesign:PackIcon Kind="WindowClose"
-                                                             Padding="0" />
-                                </Button>
+                                <Button Click="CloseWindow_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Style="{StaticResource CloseWindowBtn}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

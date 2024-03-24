@@ -9,6 +9,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
         Title="EditShowtime" Height="350" Width="800">
     <Border Background="#FFF0F3F7"
             CornerRadius="10"
@@ -36,16 +37,9 @@
                                 Grid.Row="0">
 
                             <Button Click="Button_Click_1"
-                                ToolBar.OverflowMode="AsNeeded"
-                                Background="Transparent"
-                                Foreground="Black"
-                                BorderBrush="Transparent"
-                                MouseEnter="Button_MouseEnter_1"
-                                MouseLeave="Button_MouseLeave_1"
-                                materialDesign:ButtonAssist.CornerRadius="0,10,0,0">
-                                <materialDesign:PackIcon Kind="WindowClose"
-                                                         Padding="0" />
-                            </Button>
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource CloseWindowBtn}"/>
                         </StackPanel>
                     </Grid>
 
