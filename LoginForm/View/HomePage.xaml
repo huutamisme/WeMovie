@@ -281,6 +281,10 @@
                                                         <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
                                                         <TextBlock Text="{Binding genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
+                                                    <StackPanel x:Name="FilmAgeText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
+                                                        <fa:IconImage Icon="User" Height="14" Width="14" Foreground="Yellow" Margin="3"></fa:IconImage>
+                                                        <TextBlock Text="{Binding certification}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </StackPanel>
                                                 </StackPanel>
                                             </Grid>
                                         </StackPanel>
