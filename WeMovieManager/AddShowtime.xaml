@@ -78,7 +78,7 @@
                                       Background="#FFF0F3F7"
                                       FontSize="25"
                                       VerticalAlignment="Bottom"
-                                      FontWeight="Bold"/>
+                                      FontWeight="Bold" SelectionChanged="filmList_SelectionChanged"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -150,7 +150,6 @@
                              FontSize="25"
                                  Background="Transparent"
                                  BorderThickness="0 0 0 1"
-                             Text="{Binding moviePrice}"
                              x:Name="_moviePrice">
                         </TextBox>
                     </StackPanel>
@@ -160,13 +159,13 @@
                            Margin="50,0,0,0">
                         <Label Content="Seat Quantity"
                           FontSize="20" />
-                        <TextBox Width="175"
+                        <TextBlock Width="175"
                             Height="43"
                             FontSize="25"
                             Background="Transparent"
-                            BorderThickness="0 0 0 1"
-                            x:Name="numberofseat">
-                        </TextBox>
+                            x:Name="numberofseat"
+                            Text="112">
+                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
 
@@ -199,7 +198,7 @@
                                         materialDesign:ButtonAssist.CornerRadius="8"
                                         Width="100"
                                         Command="{Binding SaveCM}"
-                                        CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                                        CommandParameter="{Binding  ElementName=AddSuatChieu}" Click="Button_Click">
                                 </Button>
                             </StackPanel>
                         </Grid>
