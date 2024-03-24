@@ -291,9 +291,6 @@
       <DependentUpon>ShowtimeManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>WeMovie.tt</DependentUpon>
-    </Compile>
     <Compile Include="Ticket.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -540,8 +537,8 @@
       <LastGenOutput>WeMovie.cs</LastGenOutput>
     </Content>
     <Resource Include="Images\Actor\Avatar\Kate_Winslet.jpg" />
-    <Resource Include="Images\Actor\Avatar\Sam_ Worthington.jpg" />
-    <Resource Include="Images\Actor\Avatar\Sigourney_ Weaver.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sam_Worthington.jpg" />
+    <Resource Include="Images\Actor\Avatar\Sigourney_Weaver.jpg" />
     <Resource Include="Images\Actor\Avatar\Stephen_Lang.jpg" />
     <Resource Include="Images\Actor\Avatar\Zoe_Saldana.jpg" />
     <Resource Include="Images\Actor\Black Panther\Chadwick_Boseman.jpg" />
