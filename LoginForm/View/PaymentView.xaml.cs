@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LoginForm.Commands;
+using LoginForm.Models;
+using LoginForm.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,6 +24,7 @@ namespace LoginForm.View
     /// </summary>
     public partial class PaymentView : UserControl
     {
+        public Payment payment { get; set; }
         public PaymentView()
         {
             InitializeComponent();
@@ -31,10 +35,13 @@ namespace LoginForm.View
 
         private void PopulateListBoxWithSampleData()
         {
-
+            payment = App.payment;
+            string packUri = "pack://application:,,,/LoginForm;component" + payment.poster;
+            imgToBind.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
             sampleData.Add(new Voucher1 { Code = "KHLS1GG30H", VoucherInfoStr = "(Discount 30000)" });
             sampleData.Add(new Voucher1 { Code = "KHLS1GG40H", VoucherInfoStr = "(Discount 40000)" });
             listBox.ItemsSource = sampleData;
+            filmNameToBind.Text = payment.filmName;
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -61,6 +68,11 @@ namespace LoginForm.View
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateCommand BookingNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new TicketBookingViewModel(); }));
+            BookingNavigateCommand.Execute(this);
+        }
     }
 
     public class Voucher1
