@@ -191,11 +191,11 @@
                                                     <TextBlock x:Name="FilmTitleText" Text="{Binding name}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
                                                  FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
                                                     <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
-                                                        <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <fa:IconImage Icon="Clock" Height="14" Width="14" Foreground="Yellow" Margin="3"></fa:IconImage>
                                                         <TextBlock Text="{Binding duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
-                                                        <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <fa:IconImage Icon="Tag" Height="14" Width="14" Foreground="Yellow" Margin="3"></fa:IconImage>
                                                         <TextBlock Text="{Binding genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmAgeText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
@@ -274,11 +274,11 @@
                                                     <TextBlock x:Name="FilmTitleText" Text="{Binding name}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"
                                                  FontSize="15" FontWeight="Bold" Height="30" Margin="15, 0, 0, 0"/>
                                                     <StackPanel x:Name="FilmDurationText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
-                                                        <Image Source="{StaticResource DurationImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <fa:IconImage Icon="Clock" Height="14" Width="14" Foreground="Yellow" Margin="3"></fa:IconImage>
                                                         <TextBlock Text="{Binding duration}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmGenreText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
-                                                        <Image Source="{StaticResource GenreImage}" Width="15" Height="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" />
+                                                        <fa:IconImage Icon="Tag" Height="14" Width="14" Foreground="Yellow" Margin="3"></fa:IconImage>
                                                         <TextBlock Text="{Binding genre}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel x:Name="FilmAgeText" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Margin="10, 0, 0, 0">
