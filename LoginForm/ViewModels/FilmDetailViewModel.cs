@@ -150,26 +150,46 @@ namespace LoginForm.ViewModels
             }
         }
 
-        public ObservableCollection<Showtime> Showtimes { get; set; } = new ObservableCollection<Showtime>();
+        public ObservableCollection<ShowTimeDTO> Showtimes { get; set; } = new ObservableCollection<ShowTimeDTO>();
 
         private void GenerateShowtimes()
         {
             using (var db = new WeMovieEntities())
             {
                 var showtimes = db.Showtimes.Where(s => s.Film == _film.id).ToList();
-                Debug.WriteLine("count " + showtimes.Count);
                 foreach (var showtime in showtimes)
                 {
                     Debug.WriteLine("check " + showtime.time);
-                    Showtimes.Add(showtime);
+                    Showtimes.Add(new ShowTimeDTO { time = showtime.time.ToString(), id = showtime.id, filmDetail = this});
                 }
             }
         }
+
+        public void NavigateToBooking()
+        {
+            ICommand BookingNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new TicketBookingViewModel(); }));
+            BookingNavigateCommand.Execute(this);
+        }
+
         public FilmDetailViewModel(Film film)
         {
             _film = film;
             GenerateShowtimes();
             HomeNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new HomePageViewModel(); }));
+        }
+
+        public class ShowTimeDTO
+        {
+            public string time {  get; set; }
+            public int id { get; set; }
+
+            public FilmDetailViewModel filmDetail { get; set; }
+
+            public RelayCommand ShowTimeClickedCommand => new RelayCommand(execute =>
+            {
+                App.showId = id;
+                filmDetail.NavigateToBooking();
+            }, canExecute => { return true; });
         }
     }
 }

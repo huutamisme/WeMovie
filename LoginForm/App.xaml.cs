@@ -14,6 +14,7 @@ namespace LoginForm
         public static WeMovieEntities WeMovieDb = new WeMovieEntities();
         public static bool isLoggedIn = false;
         public static Payment payment;
+        public static int showId;
         public App()
         {
             _navigationStore = new NavigationStore();
