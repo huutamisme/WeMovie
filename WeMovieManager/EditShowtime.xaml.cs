@@ -65,5 +65,11 @@ namespace WeMovieManager
         {
             this.Close();
         }
+
+        private void DeleteShowtime_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxCustom mb = new MessageBoxCustom("Confirm", "Are you sure to delete this showtime?", MessageType.Warning, MessageButtons.YesNo);
+            mb.Show();
+        }
     }
 }
