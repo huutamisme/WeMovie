@@ -68,7 +68,7 @@
                             Margin="25,0,25,10"
                             Orientation="Horizontal">
                         <StackPanel>
-                            <Label Content="Movie name"
+                            <Label Content="Movie Name"
                                FontSize="20" />
                             <TextBox Width="479"
                                      Height="47"

@@ -63,7 +63,7 @@
                         <StackPanel Grid.Column="0"
                                     Margin="25,0,25,0">
                             <StackPanel>
-                                <Label Content="Movie name"
+                                <Label Content="Movie Name"
                                        FontSize="20"
                                        Height="36" />
                                 <TextBox Padding="0 17 0 0"
@@ -463,8 +463,10 @@
                                             Width="100"
                                             Margin="10,0,10,10"
                                             materialDesign:ButtonAssist.CornerRadius="8"
+                                            Background="{StaticResource color3}"
+                                            Cursor="Hand"
                                             Command="{Binding UpdateMovieCM}"
-                                            CommandParameter="{Binding ElementName=EditMovieWindow}" />
+                                            CommandParameter="{Binding ElementName=EditMovieWindow}" Click="SaveBtn_Click" />
                                 </StackPanel>
                             </Grid>
                         </Grid>

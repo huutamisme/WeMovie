@@ -27,5 +27,10 @@ namespace WeMovieManager
         {
             this.Close();
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

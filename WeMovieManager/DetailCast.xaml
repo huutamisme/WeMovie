@@ -57,7 +57,7 @@
                     <!--NAME-->
                     <StackPanel Grid.Column="0" Margin="25,0,30,0">
                         <StackPanel>
-                            <Label Content="Cast name"
+                            <Label Content="Cast Name"
                                        FontSize="20"
                                        Height="36" />
                             <TextBox Padding="0 17 0 0"
@@ -78,7 +78,7 @@
                     <!--Film name-->
                     <StackPanel Grid.Column="1"
                                     Margin="0,0,25,0">
-                        <Label Content="Movie name"
+                        <Label Content="Movie Name"
                                    FontSize="20" 
                                    Height="36"/>
 
@@ -111,7 +111,7 @@
 
                         <StackPanel Grid.Column="0"
                                     Margin="25 0 0 0">
-                            <Label Content="Plot summary"
+                            <Label Content="Plot Summary"
                                    FontSize="20"
                                    Foreground="Black"/>
                             <TextBox x:Name="_plotSummary"

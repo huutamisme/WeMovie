@@ -167,26 +167,6 @@
             <Grid Grid.Row="2">
                 <Grid>
 
-                    <!--Delete Button-->
-                    <Grid Grid.Column="1">
-                        <StackPanel VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Right"
-                                    Orientation="Horizontal"
-                                    Margin="0,0,140,10">
-                            <Button Content="DELETE"
-                                        Background="{StaticResource color11}"
-                                        Cursor="Hand"
-                                        FontSize="20"
-                                        Height="40"
-                                        Foreground="Black"
-                                        VerticalAlignment="Top"
-                                        materialDesign:ButtonAssist.CornerRadius="8"
-                                        Width="100"
-                                    Click="DeleteShowtime_Click">
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-
                     <!--Button-->
                     <Grid Grid.Column="2">
                         <StackPanel VerticalAlignment="Bottom"
@@ -202,7 +182,7 @@
                                         materialDesign:ButtonAssist.CornerRadius="8"
                                         Width="100"
                                         Command="{Binding SaveCM}"
-                                        CommandParameter="{Binding ElementName=AddSuatChieu}"/>
+                                        CommandParameter="{Binding ElementName=AddSuatChieu}" Click="SaveBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </Grid>

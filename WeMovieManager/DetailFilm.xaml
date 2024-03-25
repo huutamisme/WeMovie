@@ -70,7 +70,7 @@
                         <StackPanel Grid.Column="0"
                                     Margin="25,0,25,0">
                             <StackPanel>
-                                <Label Content="Movie name"
+                                <Label Content="Movie Name"
                                        FontSize="20"
                                        Height="36" />
                                 <TextBox Padding="0 17 0 0"
@@ -234,7 +234,7 @@
                                         Width="773">
 
                                 <StackPanel>
-                                    <Label Content="Plot summary"
+                                    <Label Content="Plot Summary"
                                            FontSize="20"
                                            Foreground="Black"/>
                                     <TextBox x:Name="_plotSummary"

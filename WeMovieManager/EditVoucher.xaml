@@ -12,35 +12,6 @@
         WindowStartupLocation="CenterOwner"
         Title="EditVoucher" Height="350" Width="800">
     <Window.Resources>
-        <Style x:Key="DeleteBtn" TargetType="Button">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{StaticResource color11}"
-                               CornerRadius="5">
-                            <StackPanel Orientation="Horizontal"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center">
-                                <ContentPresenter HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="{StaticResource BoxBorderGradient}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Style x:Key="SaveBtn" TargetType="Button">
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="40"/>
@@ -210,16 +181,6 @@
 
             </Grid>
             <Grid Grid.Row="2">
-                <StackPanel VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Right"
-                                    Orientation="Horizontal"
-                                    Margin="0,0,140,10">
-                    <Button Style="{StaticResource DeleteBtn}" 
-                            Content="DELETE"
-                            Command="{Binding SaveCM}"
-                            CommandParameter="{Binding  ElementName=AddSuatChieu}">
-                    </Button>
-                </StackPanel>
 
                 <StackPanel VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
@@ -228,7 +189,7 @@
                     <Button Style="{StaticResource SaveBtn}" 
                             Content="SAVE"
                             Command="{Binding SaveCM}"
-                            CommandParameter="{Binding  ElementName=AddSuatChieu}">
+                            CommandParameter="{Binding  ElementName=AddSuatChieu}" Click="SaveBtn_Click">
                     </Button>
                 </StackPanel>
             </Grid>
