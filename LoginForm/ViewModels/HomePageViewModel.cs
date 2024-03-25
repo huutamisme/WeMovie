@@ -199,15 +199,37 @@ namespace LoginForm.ViewModels
             foreach (var film in resultsBomTan2)
             {
                 var resultsActorIds = from a in App.WeMovieDb.Film_Actor
-                                     where a.Film_id == film.id
-                                     select a;
-                foreach(var a in resultsActorIds)
+                                      join b in App.WeMovieDb.Actors on a.Actor_id equals b.id
+                                      where a.Film_id == film.id && b.name.Contains(SearchText)
+                                      select a;
+                if(!(resultsActorIds.Count() == 0))
                 {
-                    Trace.WriteLine(a.Actor_id);
+                    if (!(FilmList_BomTan.Any(obj => obj.id == film.id))) {
+                        FilmList_BomTan.Add(film);
+                    }
                 }
-                break;
+            }
+            // search by director
+            // get numbers of film in the database
+            var resultsBomTan3 = from f in App.WeMovieDb.Films
+                                 where f.id % 2 == 0
+                                 select f;
+            foreach (var film in resultsBomTan2)
+            {
+                var resultsDirectorIds = from a in App.WeMovieDb.Film_Director
+                                      join b in App.WeMovieDb.Directors on a.Director_id equals b.id
+                                      where a.Film_id == film.id && b.name.Contains(SearchText)
+                                      select a;
+                if (!(resultsDirectorIds.Count() == 0))
+                {
+                    if (!(FilmList_BomTan.Any(obj => obj.id == film.id)))
+                    {
+                        FilmList_BomTan.Add(film);
+                    }
+                }
             }
             UpdateDisplayedFilms_BomTan();
+
             // search gio vang
             var resultsGioVang = from f in App.WeMovieDb.Films
                                 where f.name.Contains(SearchText) && f.id % 2 == 1
@@ -218,6 +240,46 @@ namespace LoginForm.ViewModels
             {
                 FilmList_GioVang.Add(film);
             }
+
+            // search by actors
+            // get numbers of film in the database
+            var resultsGioVang2 = from f in App.WeMovieDb.Films
+                                 where f.id % 2 == 1
+                                 select f;
+            foreach (var film in resultsGioVang2)
+            {
+                var resultsActorIds = from a in App.WeMovieDb.Film_Actor
+                                      join b in App.WeMovieDb.Actors on a.Actor_id equals b.id
+                                      where a.Film_id == film.id && b.name.Contains(SearchText)
+                                      select a;
+                if (!(resultsActorIds.Count() == 0))
+                {
+                    if (!(FilmList_GioVang.Any(obj => obj.id == film.id)))
+                    {
+                        FilmList_GioVang.Add(film);
+                    }
+                }
+            }
+            // search by director
+            // get numbers of film in the database
+            var resultsGioVang3 = from f in App.WeMovieDb.Films
+                                 where f.id % 2 == 1
+                                 select f;
+            foreach (var film in resultsGioVang2)
+            {
+                var resultsDirectorIds = from a in App.WeMovieDb.Film_Director
+                                         join b in App.WeMovieDb.Directors on a.Director_id equals b.id
+                                         where a.Film_id == film.id && b.name.Contains(SearchText)
+                                         select a;
+                if (!(resultsDirectorIds.Count() == 0))
+                {
+                    if (!(FilmList_GioVang.Any(obj => obj.id == film.id)))
+                    {
+                        FilmList_GioVang.Add(film);
+                    }
+                }
+            }
+
             UpdateDisplayedFilms_GioVang();
 
         }, canExecute => { return true; });
