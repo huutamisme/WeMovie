@@ -74,13 +74,15 @@ namespace LoginForm.View
             var query = from seat in App.WeMovieDb.Seats orderby seat.id where seat.Showtime == showId select new { SeatId = seat.id, IsReserved = seat.status };
             var results = query.ToList();
             char row = 'A';
+            int count = 0;
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 1; j <= 14; j++)
                 {
                     string seatPosition = $"{row}{j}";
-                    ListSeat1.Add(new Seat { SeatPosition = seatPosition, SeatId = results[i + j -1].SeatId,
-                        IsReserved = results[i + j - 1].IsReserved == "NotTaken" ? "True" : "False" });
+                    ListSeat1.Add(new Seat { SeatPosition = seatPosition, SeatId = results[count].SeatId,
+                        IsReserved = results[count].IsReserved.Trim() == "NotTaken" ? "False" : "True" });
+                    count++;
                 }
                 row++;
             }
