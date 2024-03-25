@@ -20,7 +20,7 @@ namespace WeMovieManager.ViewModels
             set
             {
                 _selectedItem = value;
-                Trace.WriteLine(value.time);
+                Trace.WriteLine(value.Time);
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
@@ -29,18 +29,26 @@ namespace WeMovieManager.ViewModels
         {
             // Initialize your MovieList
 
+            ShowTimeList = new ObservableCollection<Showtime>();
 
-            var query = from showtime in App.WeMovieDb.Showtimes
-                        select new Showtime
+            using (var db = new WeMovieEntitiesManager())
+            {
+                var showtimes = db.Showtimes.ToList();
+                foreach (var showtime in showtimes)
+                {
+                    var film = db.Films.FirstOrDefault(f => f.id == showtime.Film);
+                    if (film != null)
+                    {
+                        ShowTimeList.Add(new Showtime
                         {
-                            time = (TimeSpan)showtime.time,
-                            date = (DateTime)showtime.date,
-                            price = (int)showtime.price,
-                            seatQuantities = (int)showtime.seatQuantities,
-                            Film = (int)showtime.Film
-                        };
-            // Add some example movies
-            ShowTimeList = new ObservableCollection<Showtime>(query.ToList());
+                            Time = (TimeSpan)showtime.time,
+                            FilmName = film.name,
+                            Duration = (int)film.duration
+                        });
+                    }
+                }
+            }
+
 
             Debug.Write("showtime " + ShowTimeList.Count);
 
@@ -49,15 +57,13 @@ namespace WeMovieManager.ViewModels
 
         public class Showtime
         {
-            public TimeSpan time { get; set; }
-            public DateTime date { get; set; }
-            public int price { get; set; }
-            public int seatQuantities { get; set; }
-            public int Film { get; set; }    // ten 
+            public TimeSpan Time { get; set; }
+            public string FilmName { get; set; }
+            public int Duration { get; set; }
 
             public RelayCommand editButtonCommand => new RelayCommand(execute =>
             {
-                Trace.WriteLine("Edit " + time);
+                Trace.WriteLine("Edit " + Time);
             }, canExecute => { return true; });
         }
     }
