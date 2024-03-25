@@ -205,6 +205,12 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DetailCast.xaml.cs">
+      <DependentUpon>DetailCast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetailDirector.xaml.cs">
+      <DependentUpon>DetailDirector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailFilm.xaml.cs">
       <DependentUpon>DetailFilm.xaml</DependentUpon>
     </Compile>
@@ -317,6 +323,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddVoucher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailCast.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailDirector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

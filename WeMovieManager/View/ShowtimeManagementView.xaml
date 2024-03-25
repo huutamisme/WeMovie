@@ -117,8 +117,8 @@
                                             <Setter Property="Background" Value="{StaticResource dashboardRightBg}"/>
                                         </Style>
                                     </GridView.ColumnHeaderContainerStyle>
-                                    <GridViewColumn Header="Film Name"
-                                            Width="280">
+                                    <GridViewColumn Header="Showtime"
+                                            Width="200">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding DisplayName}"
@@ -135,39 +135,12 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="Showtime"
+                                    <GridViewColumn Header="Film name"
                                                     Width="260">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <ListBox ItemsSource="{Binding Showtimes}" Background="Transparent">
-                                                    <ListBox.ItemContainerStyle>
-                                                        <Style TargetType="ListBoxItem" 
-                                                               BasedOn="{StaticResource styleListBoxItems1}" />
-                                                    </ListBox.ItemContainerStyle>
-
-                                                    <ListBox.ItemsPanel>
-                                                        <ItemsPanelTemplate>
-                                                            <UniformGrid Columns="4" />
-                                                        </ItemsPanelTemplate>
-                                                    </ListBox.ItemsPanel>
-                                                    <ListBox.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <Border BorderBrush="{StaticResource BoxBorderGradient}"
-                                                                    BorderThickness="2"
-                                                                    CornerRadius="3">
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <Button Content="{Binding StartTime}"
-                                                                            FontSize="18"
-                                                                            Width="110"
-                                                                            Background="{StaticResource dashboardRightBg}"
-                                                                            Foreground="White">
-                                                                    </Button>
-                                                                </StackPanel>
-                                                            </Border>
-
-                                                        </DataTemplate>
-                                                    </ListBox.ItemTemplate>
-                                                </ListBox>
+                                                <TextBlock Text="{Binding DisplayName}"
+                                                   FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
