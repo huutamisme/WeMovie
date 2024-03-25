@@ -447,8 +447,8 @@
                                             Foreground="Black"/>
                                         <Border BorderThickness="1 0 0 0" BorderBrush="Gray" Grid.Column="1">
                                             <StackPanel Orientation="Horizontal">
-                                                <RadioButton Content="Male" Height="33" Margin="10 0 0 0"></RadioButton>
-                                                <RadioButton Content="Female" Height="33" Margin="100 0 0 0"></RadioButton>
+                                                <RadioButton Content="Male" Height="33" Margin="10 0 0 0" Checked="RadioButton_Male_Checked"></RadioButton>
+                                                <RadioButton Content="Female" Height="33" Margin="100 0 0 0" Checked="RadioButton_Female_Checked"></RadioButton>
                                             </StackPanel>
                                         </Border>
                                     </Grid>

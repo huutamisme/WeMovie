@@ -141,5 +141,15 @@ namespace LoginForm
 
             }
         }
+
+        private void RadioButton_Male_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Female_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
