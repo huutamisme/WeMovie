@@ -12,12 +12,13 @@ namespace WeMovieManager
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class Film_Actor
     {
         public int id { get; set; }
-        public string status { get; set; }
-        public Nullable<int> Showtime { get; set; }
+        public Nullable<int> Film_id { get; set; }
+        public Nullable<int> Actor_id { get; set; }
     
-        public virtual Showtime Showtime1 { get; set; }
+        public virtual Actor Actor { get; set; }
+        public virtual Film Film { get; set; }
     }
 }
