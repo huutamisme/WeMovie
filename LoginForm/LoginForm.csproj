@@ -239,6 +239,9 @@
     <Compile Include="EditShowtimePage.xaml.cs">
       <DependentUpon>EditShowtimePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditUserProfile.xaml.cs">
+      <DependentUpon>EditUserProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditVoucher.xaml.cs">
       <DependentUpon>EditVoucher.xaml</DependentUpon>
     </Compile>
@@ -362,6 +365,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditShowtimePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditUserProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
