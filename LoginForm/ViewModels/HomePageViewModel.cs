@@ -1,5 +1,8 @@
 ﻿using LoginForm.Commands;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
+using System.Data.Linq.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
@@ -37,6 +40,21 @@ namespace LoginForm.ViewModels
                 OnPropertyChanged(nameof(FilmListDisplayed_GioVang));
             }
         }
+
+        public string _searchText { get; set; }
+        public string SearchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged(nameof(FilmListDisplayed_GioVang));
+            }
+        }
+
         private int currentIndex_BomTan = 0;
         private int currentIndex_GioVang = 0;
         public string backImagePath { get; set; }
@@ -88,12 +106,10 @@ namespace LoginForm.ViewModels
         {
             using (var db = new WeMovieEntities())
             {
-                var films = db.Films.ToList();
+                var films = db.Films.Where(film => film.id % 2 == 0).ToList();
                 foreach (var film in films)
                 {
-                    _filmListDisplayed_BomTan.Add(film);
                     FilmList_BomTan.Add(film);
-
                 }
             }
 
@@ -128,12 +144,10 @@ namespace LoginForm.ViewModels
         {
             using (var db = new WeMovieEntities())
             {
-                var films = db.Films.ToList();
+                var films = db.Films.Where(film => film.id % 2 == 1).ToList();
                 foreach (var film in films)
                 {
-                    _filmListDisplayed_GioVang.Add(film);
                     FilmList_GioVang.Add(film);
-
                 }
             }
 
@@ -162,6 +176,50 @@ namespace LoginForm.ViewModels
                 currentIndex_GioVang--;
                 UpdateDisplayedFilms_GioVang();
             }
+        }, canExecute => { return true; });
+
+        public RelayCommand SearchCommand => new RelayCommand(execute =>
+        {
+            Trace.WriteLine(SearchText);
+            // search bomtan
+            var resultsBomTan = from f in App.WeMovieDb.Films
+                          where f.name.Contains(SearchText) && f.id % 2 == 0
+                          select f;
+            currentIndex_BomTan = 0;
+            FilmList_BomTan.Clear();
+            foreach (var film in resultsBomTan)
+            {
+                FilmList_BomTan.Add(film);
+            }
+            // search by actors
+            // get numbers of film in the database
+            var resultsBomTan2 = from f in App.WeMovieDb.Films
+                                 where f.id % 2 == 0
+                                 select f;
+            foreach (var film in resultsBomTan2)
+            {
+                var resultsActorIds = from a in App.WeMovieDb.Film_Actor
+                                     where a.Film_id == film.id
+                                     select a;
+                foreach(var a in resultsActorIds)
+                {
+                    Trace.WriteLine(a.Actor_id);
+                }
+                break;
+            }
+            UpdateDisplayedFilms_BomTan();
+            // search gio vang
+            var resultsGioVang = from f in App.WeMovieDb.Films
+                                where f.name.Contains(SearchText) && f.id % 2 == 1
+                                select f;
+            currentIndex_GioVang = 0;
+            FilmList_GioVang.Clear();
+            foreach (var film in resultsGioVang)
+            {
+                FilmList_GioVang.Add(film);
+            }
+            UpdateDisplayedFilms_GioVang();
+
         }, canExecute => { return true; });
     }
 }

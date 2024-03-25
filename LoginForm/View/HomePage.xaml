@@ -95,13 +95,13 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Style="{StaticResource SearchBtn}" Margin="0,5,0,4" Click="SearchBtn_Click" HorizontalAlignment="Right" Width="40"/>
+                        <Button Style="{StaticResource SearchBtn}" Margin="0,5,0,4" Command="{Binding SearchCommand}" HorizontalAlignment="Right" Width="40"/>
                         <Grid Grid.Column="1">
                             <TextBox BorderThickness="0"
                                      BorderBrush="Transparent"
                                      x:Name="searchBox"
                                      Height="20"
-                                     PreviewKeyDown="TextBox_PreviewKeyDown"/>
+                                     PreviewKeyDown="TextBox_PreviewKeyDown" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
                             <TextBlock Text="Search film, cast, director"
                                        Foreground="Gray"
                                        Margin="5,0,0,0"
