@@ -92,7 +92,7 @@
                                                     Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding ReleasePeriod}"
+                                                <TextBlock Text="{Binding ReleasedPeriod}"
                                                        FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -101,7 +101,7 @@
                                                 Width="100">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Quantity}"
+                                                <TextBlock Text="{Binding Quantities}"
                                                        FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
