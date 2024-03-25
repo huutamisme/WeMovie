@@ -246,6 +246,10 @@
                         <Setter Property="Background" Value="#5B60C4" />
                         <Setter Property="Foreground" Value="#ffffff" />
                     </Trigger>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="#5B60C4" />
+                        <Setter Property="Foreground" Value="#ffffff" />
+                    </Trigger>
                 </Style.Triggers>
             </Style>
 

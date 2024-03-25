@@ -24,5 +24,25 @@ namespace WeMovieManager.View
         {
             InitializeComponent();
         }
+
+        private void Filter_By_Day(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Filter_By_Week(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Filter_By_Month(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Filter_By_Year(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

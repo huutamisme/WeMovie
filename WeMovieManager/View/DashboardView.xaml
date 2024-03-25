@@ -32,9 +32,10 @@
                 <TextBlock FontSize="26" Foreground="#CCD7FF" Margin="50 35 0 20" Text="DASHBOARD" HorizontalAlignment="Left"/>
 
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0 0 30 20" DockPanel.Dock="Right">
-                    <Button Content="Today" Style="{StaticResource topMenuButton}"/>
-                    <Button Content="Week" Style="{StaticResource topMenuButton}" Background="#5B60C4" Foreground="#ffffff"/>
-                    <Button Content="Month" Style="{StaticResource topMenuButton}"/>
+                    <Button Content="Today" Style="{StaticResource topMenuButton}" Click="Filter_By_Day"/>
+                    <Button Content="Week" Style="{StaticResource topMenuButton}" Click="Filter_By_Week"/>
+                    <Button Content="Month" Style="{StaticResource topMenuButton}" Click="Filter_By_Month"/>
+                    <Button Content="Year" Style="{StaticResource topMenuButton}" Click="Filter_By_Year"/>
                 </StackPanel>
             </DockPanel>
 
