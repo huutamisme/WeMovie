@@ -1,0 +1,154 @@
+﻿<Window x:Class="WeMovieManager.DetailDirector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeMovieManager"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Title="DetailCast" Height="550" Width="800">
+    <Grid>
+        <Border CornerRadius="10"
+                BorderThickness="5"
+                BorderBrush="{StaticResource BoxBorderGradient}"
+                Background="White">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="60*" />
+                </Grid.RowDefinitions>
+
+                <!--Form header-->
+                <Grid Grid.Row="0">
+                    <Border BorderThickness="0,0,0,1"
+                            BorderBrush="Black">
+                        <Grid>
+                            <TextBlock Text="Detail Directory"
+                                       FontSize="25"
+                                       Margin="20,10,0,0"
+                                       FontWeight="Bold" />
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Grid.Row="0">
+                                <Button Click="CloseWindow_Click"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Style="{StaticResource CloseWindowBtn}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+
+                <!--Cast & Movie name-->
+                <Grid Grid.Row="1" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="450" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--NAME-->
+                    <StackPanel Grid.Column="0" Margin="25,0,30,0">
+                        <StackPanel>
+                            <Label Content="Directory name"
+                                       FontSize="20"
+                                       Height="36" />
+                            <TextBox Padding="0 17 0 0"
+                                         VerticalAlignment="Top"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         FontSize="22"
+                                         Background="White"
+                                         BorderThickness="0,0,0,1"
+                                         Foreground="Black"
+                                         Height="50"
+                                         materialDesign:ValidationAssist.Background="White"
+                                         x:Name="_castName"
+                                     IsReadOnly="True"
+                                         Text="{Binding movieName,Mode=TwoWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <!--Film name-->
+                    <StackPanel Grid.Column="1"
+                                    Margin="0,0,25,0">
+                        <Label Content="Movie name"
+                                   FontSize="20" 
+                                   Height="36"/>
+
+                        <TextBox Padding="0 17 0 0"
+                                     VerticalAlignment="Top"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     FontSize="22"
+                                     Background="White"
+                                     BorderThickness="0,0,0,1"
+                                     Foreground="Black"
+                                     Height="50"
+                                     materialDesign:ValidationAssist.Background="White"
+                                     x:Name="_filmName"
+                                 IsReadOnly="True"
+                                     Text="{Binding movieName,Mode=TwoWay}" />
+                    </StackPanel>
+
+                </Grid>
+
+
+
+                <Grid Grid.Row="2">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Margin="25 0 0 0">
+                            <Label Content="Plot summary"
+                                   FontSize="20"
+                                   Foreground="Black"/>
+                            <TextBox x:Name="_plotSummary"
+                                     HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             VerticalScrollBarVisibility="Auto"
+                                             HorizontalScrollBarVisibility="Disabled"
+                                             materialDesign:HintAssist.Hint="Giới thiệu phim"
+                                             FontSize="18"
+                                             Height="300"
+                                             Width="400"
+                                             Foreground="Black"
+                                     IsReadOnly="True"
+                                             Text="{Binding movieDes,Mode=TwoWay}" />
+
+                        </StackPanel>
+
+                        <StackPanel Margin="30,36,0,0"
+                                    Width="346"
+                                    Orientation="Horizontal"
+                                    Grid.Column="1">
+
+                            <Border BorderBrush="Black"
+                                            BorderThickness="1"
+                                            Width="210"
+                                            Height="300"
+                                    VerticalAlignment="Top">
+                                <Image x:Name="imgframe"
+                                       Source="{Binding ImageSource,Mode=TwoWay}" />
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+
