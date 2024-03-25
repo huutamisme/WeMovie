@@ -47,7 +47,7 @@
                 <Grid Grid.Row="1">
                     <StackPanel>
                         <ListView x:Name="CastListView"
-                             ItemsSource="{Binding VoucherList}"
+                             ItemsSource="{Binding FilmActorList}"
                              SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                              Focusable="True"
                              Height="578"
@@ -83,7 +83,7 @@
                                                    Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Code}"
+                                                <TextBlock Text="{Binding ActorName}"
                                                           FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -92,7 +92,7 @@
                                                    Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding ReleasePeriod}"
+                                                <TextBlock Text="{Binding FilmName}"
                                                       FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>

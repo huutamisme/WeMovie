@@ -12,12 +12,12 @@ namespace WeMovieManager
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class sysdiagram
     {
-        public int id { get; set; }
-        public string status { get; set; }
-        public Nullable<int> Showtime { get; set; }
-    
-        public virtual Showtime Showtime1 { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

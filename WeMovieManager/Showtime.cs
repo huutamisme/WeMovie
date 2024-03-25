@@ -11,9 +11,7 @@ namespace WeMovieManager
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Showtime
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,8 +20,7 @@ namespace WeMovieManager
             this.Seats = new HashSet<Seat>();
             this.Tickets = new HashSet<Ticket>();
         }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    
         public int id { get; set; }
         public Nullable<System.TimeSpan> time { get; set; }
         public Nullable<int> Film { get; set; }

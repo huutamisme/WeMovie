@@ -85,7 +85,7 @@
                 <Grid Grid.Row="1">
                     <StackPanel>
                         <ListView x:Name="MovieListView"
-                          ItemsSource="{Binding MovieList}"
+                          ItemsSource="{Binding ShowtimeList}"
                           SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                           Focusable="True"
                           Height="578"
@@ -121,7 +121,7 @@
                                             Width="280">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DisplayName}"
+                                                <TextBlock Text="{Binding Film}"
                                                    FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -156,7 +156,7 @@
                                                                     BorderThickness="2"
                                                                     CornerRadius="3">
                                                                 <StackPanel Orientation="Horizontal">
-                                                                    <Button Content="{Binding StartTime}"
+                                                                    <Button Content="{Binding time}"
                                                                             FontSize="18"
                                                                             Width="110"
                                                                             Background="{StaticResource dashboardRightBg}"

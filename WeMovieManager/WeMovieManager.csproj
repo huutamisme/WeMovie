@@ -235,6 +235,12 @@
     <Compile Include="Film.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
+    <Compile Include="Film_Actor.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Film_Director.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -252,6 +258,9 @@
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>WeMovie.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ticket.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
@@ -460,6 +469,8 @@
     <Resource Include="Images\info.png" />
     <Resource Include="Images\succes.png" />
     <Resource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>
