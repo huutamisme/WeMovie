@@ -17,8 +17,11 @@ namespace WeMovieManager.ViewModels
 
         public ICommand DashboardNavigateCommand { get; }
         public ICommand FilmManagementNavigateCommand { get; }
-
         public ICommand ShowTimeManagementNavigateCommand { get; }
+        public ICommand VoucherNavigateCommand { get; }
+        public ICommand CastNavigateCommand { get; }
+        public ICommand DirectorNavigateCommand { get; }
+        public ICommand ReportNavigateCommand { get; }
 
 
         public MainViewModel(NavigationStore navigationStore)
@@ -28,7 +31,10 @@ namespace WeMovieManager.ViewModels
             DashboardNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new DashboardViewModel(); }));
             FilmManagementNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new FilmsManagementViewModel(); }));
             ShowTimeManagementNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new ShowTimeManagementViewModel(); }));
-
+            VoucherNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new VoucherManagementViewModel(); }));
+            CastNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new CastManagementViewModel(); }));
+            DirectorNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new DirectorManagementViewModel(); }));
+            ReportNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new ReportViewModel(); }));
         }
 
         private void OnCurrentViewModelChanged()

@@ -124,6 +124,9 @@ namespace LoginForm.View
                 result.status = "Taken";
                 App.WeMovieDb.SaveChanges();
             }
+            new MessageBoxCustom("Success", "Ticket booked", MessageType.Success, MessageButtons.OK).ShowDialog();
+            NavigateCommand BookingNavigateCommand = new NavigateCommand(new Services.NavigationService(App._navigationStore, () => { return new TicketBookingViewModel(); }));
+            BookingNavigateCommand.Execute(this);
         }
     }
 
