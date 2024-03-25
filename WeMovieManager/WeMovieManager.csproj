@@ -264,11 +264,15 @@
     <Compile Include="User.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CastManagementViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DirectorManagementViewModel.cs" />
     <Compile Include="ViewModels\FilmsManagementViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\ShowTimeManagementViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\VoucherManagementViewModel.cs" />
     <Compile Include="View\CastManagementView.xaml.cs">
       <DependentUpon>CastManagementView.xaml</DependentUpon>
     </Compile>

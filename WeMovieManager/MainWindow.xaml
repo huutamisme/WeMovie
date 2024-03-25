@@ -79,7 +79,9 @@
                         <TextBlock Text="Showtime - Ticket" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource menuButton}"
+                <RadioButton 
+                                Command="{Binding VoucherNavigateCommand}"
+                                Style="{StaticResource menuButton}"
                               Tag="{StaticResource color4}"
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
@@ -87,7 +89,9 @@
                         <TextBlock Text="Voucher" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource menuButton}"
+                <RadioButton 
+                    Command="{Binding CastNavigateCommand}"
+                    Style="{StaticResource menuButton}"
                               Tag="{StaticResource color5}"
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
@@ -95,7 +99,9 @@
                         <TextBlock Text="Cast" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource menuButton}"
+                <RadioButton
+                    Command="{Binding DirectorNavigateCommand}"
+                    Style="{StaticResource menuButton}"
                               Tag="{StaticResource color6}"
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
@@ -103,7 +109,9 @@
                         <TextBlock Text="Director" Style="{StaticResource menuButtonText}"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource menuButton}"
+                <RadioButton 
+                    Command="{Binding ReportNavigateCommand}"
+                    Style="{StaticResource menuButton}"
                               Tag="{StaticResource color7}"
                               IsChecked="False">
                     <StackPanel Orientation="Horizontal">
@@ -127,15 +135,27 @@
 
         <Border Grid.Column="1" CornerRadius="10">
             <Grid>
-            <Grid.Resources>
-                <DataTemplate DataType="{x:Type vms:DashboardViewModel}">
-                    <views:DashboardView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vms:FilmsManagementViewModel}">
-                    <views:FilmManagementView />
-                </DataTemplate>
+                <Grid.Resources>
+                    <DataTemplate DataType="{x:Type vms:DashboardViewModel}">
+                        <views:DashboardView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:FilmsManagementViewModel}">
+                        <views:FilmManagementView />
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type vms:ShowTimeManagementViewModel}">
                         <views:ShowtimeManagementView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:VoucherManagementViewModel}">
+                        <views:VoucherManagementView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:CastManagementViewModel}">
+                        <views:CastManagementView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:DirectorManagementViewModel}">
+                        <views:DirectorManagementView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:ReportViewModel}">
+                        <views:ReportView />
                     </DataTemplate>
                 </Grid.Resources>
 
