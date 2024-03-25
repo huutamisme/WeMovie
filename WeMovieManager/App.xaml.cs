@@ -15,18 +15,18 @@ namespace WeMovieManager
         {
             _navigationStore = new NavigationStore();
         }
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            _navigationStore.CurrentViewModel = new DashboardViewModel();
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    base.OnStartup(e);
+        //    _navigationStore.CurrentViewModel = new DashboardViewModel();
 
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(_navigationStore)
-            };
-            Login login = new Login(MainWindow);
-            login.Show();
+        //    MainWindow = new MainWindow()
+        //    {
+        //        DataContext = new MainViewModel(_navigationStore)
+        //    };
+        //    Login login = new Login(MainWindow);
+        //    login.Show();
 
-        }
+        //}
     }
 }

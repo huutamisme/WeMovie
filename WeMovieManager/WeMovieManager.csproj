@@ -220,6 +220,9 @@
     <Compile Include="EditCast.xaml.cs">
       <DependentUpon>EditCast.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditDirector.xaml.cs">
+      <DependentUpon>EditDirector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditFilm.xaml.cs">
       <DependentUpon>EditFilm.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditCast.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditDirector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
