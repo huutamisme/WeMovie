@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using WeMovieManager.Commands;
+using WeMovieManager.Model;
 
 namespace WeMovieManager.ViewModels
 {
@@ -40,24 +41,14 @@ namespace WeMovieManager.ViewModels
                         FilmDirectorList.Add(new FilmDirector
                         {
                             FilmName = film.name,
-                            DirectorName = Director.name
+                            DirectorName = Director.name,
+                            Id = Director.id,
+                            Bio = Director.biography
                         });
                     }
                 }
             }
 
-            Debug.WriteLine("showtime " + FilmDirectorList.Count);
-        }
-
-        public class FilmDirector
-        {
-            public string FilmName { get; set; }
-            public string DirectorName { get; set; }
-
-            public RelayCommand EditButtonCommand => new RelayCommand(execute =>
-            {
-                Trace.WriteLine("Edit " + DirectorName);
-            }, canExecute => { return true; });
         }
     }
 }
