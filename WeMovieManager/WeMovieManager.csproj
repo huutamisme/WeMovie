@@ -257,6 +257,7 @@
       <DependentUpon>MessageBoxCustom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\VoucherDTO.cs" />
     <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
     </Compile>
