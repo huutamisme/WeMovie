@@ -30,7 +30,7 @@ namespace WeMovieManager
             InitializeComponent();
             bioToBind.Text = director.Bio;
             nameToBind.Text = director.DirectorName;
-            movieToBind.Text = director.FilmName;
+            //movieToBind.Text = director.FilmName;
         }
 
         private void CloseWindow_Click(object sender, RoutedEventArgs e)

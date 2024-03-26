@@ -370,30 +370,6 @@
                                              Foreground="Black"/>
 
                                 </StackPanel>
-                                <StackPanel Margin="30,20,0,0"
-                                            Width="346"
-                                            Orientation="Horizontal">
-
-                                    <Border BorderBrush="Black"
-                                            BorderThickness="1"
-                                            Width="210"
-                                            Height="300">
-                                        <Image x:Name="imgframe"
-                                               Source="{Binding ImageSource,Mode=TwoWay}" />
-                                    </Border>
-                                    <Button Padding="0"
-                                            Width="50"
-                                            VerticalAlignment="Bottom"
-                                            Margin="10,0,0,17"
-                                            materialDesign:ButtonAssist.CornerRadius="5"
-                                            Command="{Binding UploadImageCM}">
-                                        <Button.Content>
-                                            <materialDesign:PackIcon Kind="FolderUpload"
-                                                     Height="23"
-                                                     Width="25" />
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
                             </StackPanel>
                         </Grid>
 

@@ -29,7 +29,7 @@ namespace WeMovieManager
         {
             showtimeDTO = showtime;
             InitializeComponent();
-            movieToBind.Text = showtime.FilmName;
+            //movieToBind.Text = showtime.FilmName;
             priceToBind.Text = showtime.Price.ToString();
         }
 

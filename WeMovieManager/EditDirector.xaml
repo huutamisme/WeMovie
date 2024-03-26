@@ -10,7 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterOwner"
-        Title="EditCast" Height="650" Width="800">
+        Title="EditCast" Height="650" Width="600">
     <Grid>
         <Border CornerRadius="10"
                 BorderThickness="5"
@@ -74,23 +74,6 @@
                                          x:Name="nameToBind"/>
                         </StackPanel>
                     </StackPanel>
-                    <!--GENRE-->
-                    <StackPanel Grid.Column="1"
-                                    Margin="0,0,25,0">
-                        <Label Content="Movie Name"
-                                   FontSize="20" 
-                                   Height="36"/>
-
-                        <TextBlock Padding="0 17 0 0"
-                                     VerticalAlignment="Top"
-                                     TextWrapping="Wrap"
-                                     FontSize="22"
-                                     Background="White"
-                                     Foreground="Black"
-                                     Height="50"
-                                     materialDesign:ValidationAssist.Background="White"
-                                     x:Name="movieToBind"/>
-                    </StackPanel>
 
                 </Grid>
 
@@ -140,33 +123,6 @@
                                              Width="400"
                                              Foreground="Black"/>
 
-                        </StackPanel>
-
-                        <StackPanel Margin="30,36,0,0"
-                                    Width="346"
-                                    Orientation="Horizontal"
-                                    Grid.Column="1">
-
-                            <Border BorderBrush="Black"
-                                            BorderThickness="1"
-                                            Width="210"
-                                            Height="300"
-                                    VerticalAlignment="Top">
-                                <Image x:Name="imgframe"
-                                       Source="{Binding ImageSource,Mode=TwoWay}" />
-                            </Border>
-                            <Button Padding="0"
-                                            Width="50"
-                                            VerticalAlignment="Bottom"
-                                            Margin="10,0,0,58"
-                                            materialDesign:ButtonAssist.CornerRadius="5"
-                                            Command="{Binding UploadImageCM}">
-                                <Button.Content>
-                                    <materialDesign:PackIcon Kind="FolderUpload"
-                                                     Height="23"
-                                                     Width="25" />
-                                </Button.Content>
-                            </Button>
                         </StackPanel>
                     </Grid>
                 </Grid>
