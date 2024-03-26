@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WeMovieManager.Commands;
+using WeMovieManager.Model;
+using WeMovieManager.Services;
+using WeMovieManager.ViewModels;
 
 namespace WeMovieManager
 {
@@ -19,20 +24,13 @@ namespace WeMovieManager
     /// </summary>
     public partial class EditShowtime : Window
     {
-        public EditShowtime()
+        ShowtimeDTO showtimeDTO;
+        public EditShowtime(ShowtimeDTO showtime)
         {
+            showtimeDTO = showtime;
             InitializeComponent();
-            List<string> movieNames = new List<string>
-            {
-                "The Shawshank Redemption",
-                "The Godfather",
-                "The Dark Knight",
-                "Forrest Gump",
-                "Inception"
-            };
-
-            // Set the sample data as the ItemsSource for the ComboBox
-            filmList.ItemsSource = movieNames;
+            movieToBind.Text = showtime.FilmName;
+            priceToBind.Text = showtime.Price.ToString();
         }
 
         private void TimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
@@ -61,7 +59,22 @@ namespace WeMovieManager
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            var query = from showtime in App.WeMovieDb.Showtimes where showtime.id == showtimeDTO.Id select showtime;
+            var result = query.Single();
+            result.price = Int32.Parse(priceToBind.Text);
+            if(_movieDate.Text.Length > 0)
+            {
+                result.date = _movieDate.DisplayDate.Date;
+            }
+            if (timePicker.SelectedTime.ToString().Length > 0)
+            {
+                result.time = timePicker.SelectedTime.Value.TimeOfDay;
+            }
+            App.WeMovieDb.SaveChanges();
 
+            ICommand ShowtimeCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new ShowTimeManagementViewModel(); }));
+            ShowtimeCommand.Execute(this);
+            this.Close();
         }
     }
 }

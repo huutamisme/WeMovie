@@ -259,6 +259,7 @@
     <Compile Include="Model\FilmActor.cs" />
     <Compile Include="Model\FilmDirector.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Showtime.cs" />
     <Compile Include="Model\VoucherDTO.cs" />
     <Compile Include="Seat.cs">
       <DependentUpon>WeMovie.tt</DependentUpon>
