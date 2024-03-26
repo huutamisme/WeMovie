@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -59,13 +60,36 @@ namespace WeMovieManager.View
         //    { "Phim 30", 38 }
         //};
 
-        public void LoadMovieDictionary()
+        public void LoadMovieDictionary(string filter)
         {
+            DateTime startDate;
+            DateTime endDate = DateTime.Today;
+
+            switch (filter)
+            {
+                case "Day":
+                    startDate = DateTime.Today.AddDays(-1); // From yesterday till now
+                    break;
+                case "Week":
+                    startDate = DateTime.Today.AddDays(-7); // Last 7 days till now
+                    break;
+                case "Month":
+                    startDate = DateTime.Today.AddDays(-30); // Last 30 days till now
+                    break;
+                case "Year":
+                    startDate = DateTime.Today.AddYears(-1); // Last year till now
+                    break;
+                default:
+                    startDate = DateTime.MinValue; // Load all data
+                    break;
+            }
+
             numberOfFilms = db.Films.Count();
             Debug.WriteLine("number " + numberOfFilms);
 
             movieDictionary = (from film in db.Films
                                join showtime in db.Showtimes on film.id equals showtime.Film
+                               where showtime.date >= startDate && showtime.date <= endDate
                                group showtime by film.name into filmGroup
                                select new
                                {
@@ -95,7 +119,7 @@ namespace WeMovieManager.View
 
         private void LoadListBox()
         {
-            LoadMovieDictionary();
+            LoadMovieDictionary("");
 
             foreach (string movieName in movieDictionary.Keys)
             {
@@ -127,22 +151,26 @@ namespace WeMovieManager.View
 
         private void Filter_By_Day(object sender, RoutedEventArgs e)
         {
-
+            LoadMovieDictionary("Day");
+            UpdatePieChart();
         }
 
         private void Filter_By_Week(object sender, RoutedEventArgs e)
         {
-
+            LoadMovieDictionary("Week");
+            UpdatePieChart();
         }
 
         private void Filter_By_Month(object sender, RoutedEventArgs e)
         {
-
+            LoadMovieDictionary("Month");
+            UpdatePieChart();
         }
 
         private void Filter_By_Year(object sender, RoutedEventArgs e)
         {
-
+            LoadMovieDictionary("Year");
+            UpdatePieChart();
         }
     }
 }

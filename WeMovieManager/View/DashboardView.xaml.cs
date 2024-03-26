@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WeMovieManager.ViewModels;
 
 namespace WeMovieManager.View
 {
@@ -20,29 +10,60 @@ namespace WeMovieManager.View
     /// </summary>
     public partial class DashboardView : UserControl
     {
+        private DashboardViewModel viewModel;
         public DashboardView()
         {
             InitializeComponent();
+
+            // Initialize the viewModel instance
+            viewModel = new DashboardViewModel();
+
+            // Set the initial DataContext
+            DataContext = viewModel;
         }
 
         private void Filter_By_Day(object sender, RoutedEventArgs e)
         {
+            DateTime startDate = DateTime.Today.AddDays(-1);
+            DateTime endDate = DateTime.Today;
 
+            viewModel.calculateTotalFilms(startDate, endDate);
+            viewModel.calculateTotalShowtimes(startDate, endDate);
+            viewModel.getMostGrossingFilms(startDate, endDate);
+            // viewModel.getProfit(startDate, endDate);
         }
 
         private void Filter_By_Week(object sender, RoutedEventArgs e)
         {
+            DateTime startDate = DateTime.Today.AddDays(-7);
+            DateTime endDate = DateTime.Today;
 
+            viewModel.calculateTotalFilms(startDate, endDate);
+            viewModel.calculateTotalShowtimes(startDate, endDate);
+            viewModel.getMostGrossingFilms(startDate, endDate);
+            // viewModel.getProfit(startDate, endDate);
         }
 
         private void Filter_By_Month(object sender, RoutedEventArgs e)
         {
+            DateTime startDate = DateTime.Today.AddDays(-30);
+            DateTime endDate = DateTime.Today;
 
+            viewModel.calculateTotalFilms(startDate, endDate);
+            viewModel.calculateTotalShowtimes(startDate, endDate);
+            viewModel.getMostGrossingFilms(startDate, endDate);
+            // viewModel.getProfit(startDate, endDate);
         }
 
         private void Filter_By_Year(object sender, RoutedEventArgs e)
         {
+            DateTime startDate = DateTime.Today.AddYears(-1);
+            DateTime endDate = DateTime.Today;
 
+            viewModel.calculateTotalFilms(startDate, endDate);
+            viewModel.calculateTotalShowtimes(startDate, endDate);
+            viewModel.getMostGrossingFilms(startDate, endDate);
+            // viewModel.getProfit(startDate, endDate);
         }
     }
 }
