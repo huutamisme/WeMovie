@@ -79,7 +79,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="200"/>
                                         </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding director.image}" Width="100" Height="100" Margin="5"/>
+                                        <Image Source="{Binding director.avatar}" Width="100" Height="100" Margin="5"/>
                                         <TextBlock Grid.Column="1" Text="{Binding director.biography}" TextWrapping="Wrap" Margin="5"/>
                                     </Grid>
                                 </ToolTip>
