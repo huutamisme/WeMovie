@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
@@ -29,6 +30,14 @@ namespace LoginForm.View
             durationImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/clock.png";
             ageImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/age.png";
             genreImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/genre.png";
+            List<string> field_to_sort = new List<string>
+            {
+                "Showtime",
+                "Price",
+                "Premiere",
+            };
+            filterCombobox.ItemsSource = field_to_sort;
+            filterCombobox.SelectedIndex = 0;
         }
 
         private void FilmGrid_MouseEnter(object sender, MouseEventArgs e)
@@ -165,5 +174,7 @@ namespace LoginForm.View
         {
             // thực hiện search
         }
+
+
     }
 }
