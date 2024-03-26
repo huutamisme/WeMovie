@@ -9,7 +9,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Title="DetailFilm" Height="650" Width="1080">
     <Grid>
         <Border CornerRadius="10"
@@ -36,16 +36,7 @@
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Right"
                                         Grid.Row="0">
-                                <Button Command="{Binding CloseCM}"
-                                        CommandParameter="{Binding ElementName=addmoviewindow}"
-                                        ToolBar.OverflowMode="AsNeeded"
-                                        Background="Transparent"
-                                        Foreground="Black"
-                                        BorderBrush="Transparent"
-                                        materialDesign:ButtonAssist.CornerRadius="0,10,0,0" Click="Button_Click">
-                                    <materialDesign:PackIcon Kind="WindowClose"
-                                                             Padding="0" />
-                                </Button>
+                                <Button Style="{StaticResource CloseWindowBtn}" Click="Button_Click"/>
                             </StackPanel>
                         </Grid>
                     </Border>

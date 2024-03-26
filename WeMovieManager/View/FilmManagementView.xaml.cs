@@ -27,6 +27,12 @@ namespace WeMovieManager.View
             // Initialize your MovieList
 
         }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DetailFilm df = new DetailFilm();
+            df.Show();
+        }
     }
 
 
