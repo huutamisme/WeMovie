@@ -524,6 +524,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WeMovie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WeMovie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeMovie.edmx</DependentUpon>
+      <LastGenOutput>WeMovie.cs</LastGenOutput>
+    </Content>
     <Resource Include="Images\Actor\Mena_Massoud.jpg" />
     <Resource Include="Images\Actor\Naomi_Scott.jpg" />
     <Resource Include="Images\Actor\Will_Smith.jpg" />
@@ -664,16 +674,6 @@
     <Resource Include="Images\Director\VictorVu.jpg" />
     <Resource Include="Images\Director\Ngo_Thanh_Van.png" />
     <Resource Include="Images\Film\Em_Chua_18.jpg" />
-    <Content Include="WeMovie.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="WeMovie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeMovie.edmx</DependentUpon>
-      <LastGenOutput>WeMovie.cs</LastGenOutput>
-    </Content>
     <Content Include="Trailer\responsive.mp4" />
   </ItemGroup>
   <ItemGroup />

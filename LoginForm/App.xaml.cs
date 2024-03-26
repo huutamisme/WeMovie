@@ -15,6 +15,7 @@ namespace LoginForm
         public static bool isLoggedIn = false;
         public static Payment payment;
         public static int showId;
+        public static string username;
         public App()
         {
             _navigationStore = new NavigationStore();
