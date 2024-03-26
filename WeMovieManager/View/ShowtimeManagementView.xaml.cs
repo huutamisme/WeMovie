@@ -31,5 +31,11 @@ namespace WeMovieManager.View
             AddShowtime addShowTime = new AddShowtime();
             addShowTime.Show();
         }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DetailShowtime df = new DetailShowtime();
+            df.Show();
+        }
     }
 }

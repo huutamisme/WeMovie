@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WeMovieManager.View
 {
@@ -21,6 +22,12 @@ namespace WeMovieManager.View
             //    new Voucher2 { Code = "Voucher002", ReleasePeriod = "Birthday", Quantity = 150, Denomination = "$100" },
             //    new Voucher2 { Code = "Voucher003", ReleasePeriod = "Anniversary", Quantity = 120, Denomination = "$75" },
             //};
+        }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DetailVoucher df = new DetailVoucher();
+            df.Show();
         }
     }
     //public class Voucher2

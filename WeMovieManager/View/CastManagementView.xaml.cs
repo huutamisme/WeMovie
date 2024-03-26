@@ -24,5 +24,11 @@ namespace WeMovieManager.View
         {
             InitializeComponent();
         }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DetailCast df = new DetailCast();
+            df.Show();
+        }
     }
 }

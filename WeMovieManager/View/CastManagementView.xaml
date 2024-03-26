@@ -51,7 +51,8 @@
                              SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
                              Focusable="True"
                              Height="578"
-                             Background="{StaticResource dashboardRightBg}">
+                             Background="{StaticResource dashboardRightBg}"
+                                  MouseDoubleClick="ListViewItem_MouseDoubleClick">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Foreground" Value="White"/>
