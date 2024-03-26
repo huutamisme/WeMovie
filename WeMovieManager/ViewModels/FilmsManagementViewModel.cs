@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using WeMovieManager.Commands;
+using WeMovieManager.Model;
 
 namespace WeMovieManager.ViewModels
 {
@@ -28,7 +29,7 @@ namespace WeMovieManager.ViewModels
 
         public FilmsManagementViewModel()
         {
-            using (var db = new WeMovieEntitiesManager())
+            using (var db = new WeMovieEntities())
             {
                 // Initialize your MovieList
                 var query = from film in db.Films
@@ -37,6 +38,9 @@ namespace WeMovieManager.ViewModels
                                 Name = film.name,
                                 Duration = (int)film.duration,
                                 Genre = film.genre,
+                                Rating = (int)film.rating,
+                                Cert = film.certification,
+                                Id = film.id,
                                 DirectorName = (from fd in db.Film_Director
                                                 join director in db.Directors on fd.Director_id equals director.id
                                                 where fd.Film_id == film.id
@@ -68,21 +72,6 @@ namespace WeMovieManager.ViewModels
             }
         }
 
-        public class Movie
-        {
-            public string Name { get; set; }
-            public int Duration { get; set; }
-            public string Genre { get; set; }
-            public string DirectorName { get; set; }
-            public List<string> Actors { get; set; }
-            public string ActorNames { get; set; }
-            public DateTime PublishedYear { get; set; }
-            public string Summary { get; set; }
-
-            public RelayCommand editButtonCommand => new RelayCommand(execute =>
-            {
-                Trace.WriteLine("Edit " + Name);
-            }, canExecute => { return true; });
-        }
+        
     }
 }

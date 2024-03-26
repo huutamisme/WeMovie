@@ -91,9 +91,10 @@
                         <StackPanel>
                             <Label Content="Code"
                                FontSize="20" />
-                            <TextBox Width="175"
+                            <TextBlock 
+                                x:Name="codeToBind"
+                                     Width="175"
                                      Height="47"
-                                     BorderThickness="0 0 0 1"
                                      Background="#FFF0F3F7"
                                      FontSize="25"
                                      VerticalAlignment="Bottom"
@@ -106,7 +107,9 @@
                         <Label Content="Release Period"
                                FontSize="20"
                                Height="40" />
-                        <TextBox Width="479"
+                        <TextBox 
+                            x:Name="releasePeriodToBind"
+                            Width="479"
                                  Height="43"
                                  FontSize="25"
                                  HorizontalAlignment="Left"
@@ -157,8 +160,7 @@
                              FontSize="25"
                                  Background="Transparent"
                                  BorderThickness="0 0 0 1"
-                             Text="{Binding moviePrice}"
-                             x:Name="_moviePrice">
+                             x:Name="denomToBind">
                         </TextBox>
                     </StackPanel>
 
@@ -172,7 +174,7 @@
                             FontSize="25"
                             Background="Transparent"
                             BorderThickness="0 0 0 1"
-                            x:Name="numberofseat">
+                            x:Name="quantityToBind">
                         </TextBox>
                     </StackPanel>
                 </StackPanel>

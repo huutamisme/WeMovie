@@ -197,8 +197,13 @@ namespace LoginForm.View
 
         private void profileButton_Click(object sender, RoutedEventArgs e)
         {
-            EditUserProfile editProfile = new EditUserProfile();
+            EditUserProfile editProfile = new EditUserProfile(App.username);
             editProfile.Show();
+        }
+
+        private void filterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

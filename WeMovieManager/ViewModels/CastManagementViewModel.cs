@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using WeMovieManager.Commands;
+using WeMovieManager.Model;
 
 namespace WeMovieManager.ViewModels
 {
@@ -27,7 +28,7 @@ namespace WeMovieManager.ViewModels
         {
             FilmActorList = new ObservableCollection<FilmActor>();
 
-            using (var db = new WeMovieEntitiesManager())
+            using (var db = new WeMovieEntities())
             {
                 var filmActors = db.Film_Actor.ToList();
                 foreach (var filmActor in filmActors)
@@ -40,24 +41,13 @@ namespace WeMovieManager.ViewModels
                         FilmActorList.Add(new FilmActor
                         {
                             FilmName = film.name,
-                            ActorName = actor.name
+                            ActorName = actor.name,
+                            Bio = actor.biography,
+                            Id = actor.id,
                         });
                     }
                 }
             }
-
-            Debug.WriteLine("showtime " + FilmActorList.Count);
-        }
-
-        public class FilmActor
-        {
-            public string FilmName { get; set; }
-            public string ActorName { get; set; }
-
-            public RelayCommand EditButtonCommand => new RelayCommand(execute =>
-            {
-                Trace.WriteLine("Edit " + ActorName);
-            }, canExecute => { return true; });
         }
     }
 }

@@ -71,8 +71,7 @@
                                          Foreground="Black"
                                          Height="50"
                                          materialDesign:ValidationAssist.Background="White"
-                                         x:Name="_movieName"
-                                         Text="{Binding movieName,Mode=TwoWay}" />
+                                         x:Name="nameToBind"/>
                         </StackPanel>
                     </StackPanel>
                     <!--GENRE-->
@@ -82,18 +81,15 @@
                                    FontSize="20" 
                                    Height="36"/>
 
-                        <TextBox Padding="0 17 0 0"
+                        <TextBlock Padding="0 17 0 0"
                                      VerticalAlignment="Top"
-                                     AcceptsReturn="True"
                                      TextWrapping="Wrap"
                                      FontSize="22"
                                      Background="White"
-                                     BorderThickness="0,0,0,1"
                                      Foreground="Black"
                                      Height="50"
                                      materialDesign:ValidationAssist.Background="White"
-                                     x:Name="_genre"
-                                     Text="{Binding movieName,Mode=TwoWay}" />
+                                     x:Name="movieToBind"/>
                     </StackPanel>
 
                 </Grid>
@@ -131,7 +127,7 @@
                             <Label Content="Plot Summary"
                                    FontSize="20"
                                    Foreground="Black"/>
-                            <TextBox x:Name="_plotSummary"
+                            <TextBox x:Name="bioToBind"
                                      HorizontalAlignment="Left"
                                              VerticalAlignment="Top"
                                              AcceptsReturn="True"
@@ -142,8 +138,7 @@
                                              FontSize="18"
                                              Height="300"
                                              Width="400"
-                                             Foreground="Black"
-                                             Text="{Binding movieDes,Mode=TwoWay}" />
+                                             Foreground="Black"/>
 
                         </StackPanel>
 

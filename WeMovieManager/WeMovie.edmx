@@ -79,16 +79,6 @@
           <Property Name="price" Type="int" />
           <Property Name="seatQuantities" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Ticket">
           <Key>
             <PropertyRef Name="id" />
@@ -211,7 +201,6 @@
           <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Showtime" EntityType="Self.Showtime" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
@@ -336,16 +325,6 @@
           <NavigationProperty Name="Seats" Relationship="Self.FK_Seat_Showtime" FromRole="Showtime" ToRole="Seat" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Showtime" FromRole="Showtime" ToRole="Ticket" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Ticket">
           <Key>
             <PropertyRef Name="id" />
@@ -460,7 +439,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WeMovieEntitiesManager" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WeMovieEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Actors" EntityType="Self.Actor" />
           <EntitySet Name="Directors" EntityType="Self.Director" />
           <EntitySet Name="Films" EntityType="Self.Film" />
@@ -469,7 +448,6 @@
           <EntitySet Name="Managers" EntityType="Self.Manager" />
           <EntitySet Name="Seats" EntityType="Self.Seat" />
           <EntitySet Name="Showtimes" EntityType="Self.Showtime" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tickets" EntityType="Self.Ticket" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
@@ -507,7 +485,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WeMovieModelStoreContainer" CdmEntityContainer="WeMovieEntitiesManager">
+        <EntityContainerMapping StorageEntityContainer="WeMovieModelStoreContainer" CdmEntityContainer="WeMovieEntities">
           <EntitySetMapping Name="Actors">
             <EntityTypeMapping TypeName="WeMovieModel.Actor">
               <MappingFragment StoreEntitySet="Actor">
@@ -587,17 +565,6 @@
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="seatQuantities" ColumnName="seatQuantities" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="WeMovieModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

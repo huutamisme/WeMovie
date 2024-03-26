@@ -7,7 +7,7 @@ namespace WeMovieManager.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
-        public static WeMovieEntitiesManager db = new WeMovieEntitiesManager();
+        public static WeMovieEntities db = new WeMovieEntities();
 
         private ObservableCollection<GrossingFilm> _grossingFilmList;
         public ObservableCollection<GrossingFilm> GrossingFilmList

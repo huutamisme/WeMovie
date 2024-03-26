@@ -130,7 +130,13 @@
                                       Width="20"
                                       Height="20"
                                       Foreground="Black"/>
-                        <ComboBox x:Name="filterCombobox" BorderBrush="White" Width="80"/>
+                        <ComboBox x:Name="filterCombobox" BorderBrush="White" Width="80" SelectedIndex="{Binding index}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
                     </StackPanel>
                 </Border>
                 <StackPanel Grid.Column="4" Margin="30,10,0,0">
