@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,6 +14,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WeMovieManager.Commands;
+using WeMovieManager.Model;
+using WeMovieManager.Services;
+using WeMovieManager.ViewModels;
 
 namespace WeMovieManager
 {
@@ -23,28 +28,67 @@ namespace WeMovieManager
     {
 
         public ObservableCollection<string> ListActor { get; set; }
+        public ObservableCollection<string> ListAllActor { get; set; }
+
         public ObservableCollection<string> ListDirector { get; set; }
-        public EditFilm()
+        public ObservableCollection<string> ListAllDirector { get; set; }
+
+        public Movie Movie { get; set; }
+
+        public EditFilm(Movie movie)
         {
             InitializeComponent();
-
+            Movie = movie;
             DataContext = this;
+
+            _movieName.Text = movie.Name;
+            _IMDb.Text = movie.Rating.ToString();
+            _genre.Text = movie.Genre;
+            _certification.Text = movie.Cert;
+            _movieDuration.Text = movie.Duration.ToString();
+            _premier.Text = movie.PublishedYear.ToString();
+            _plotSummary.Text = movie.Summary;
 
             // Khởi tạo danh sách ListActor
             ListActor = new ObservableCollection<string>();
+            ListAllActor = new ObservableCollection<string>();
+            var resultsActor = from a in App.WeMovieDb.Actors
+                               join a_m in App.WeMovieDb.Film_Actor on a.id equals a_m.Actor_id
+                               where a_m.Film_id == movie.Id
+                               select a;
 
-            // Thêm dữ liệu mẫu cho ComboBox
-            actorList.Items.Add("Actor 1");
-            actorList.Items.Add("Actor 2");
-            actorList.Items.Add("Actor 3");
+            foreach (var r in resultsActor)
+            {
+                ListActor.Add(r.name + "'" + r.id);
+            }
 
-            // Khởi tạo danh sách ListActor
+            var resultsAllActor = from a2 in App.WeMovieDb.Actors
+                                  select a2;
+            foreach (var a in resultsAllActor)
+            {
+                ListAllActor.Add(a.name + "'" + a.id);
+            }
+            actorList.ItemsSource = ListAllActor;
+            // Khởi tạo danh sách ListDirector
             ListDirector = new ObservableCollection<string>();
+            ListAllDirector = new ObservableCollection<string>();
+            var resultsDirector = from a in App.WeMovieDb.Directors
+                               join a_m in App.WeMovieDb.Film_Director on a.id equals a_m.Director_id
+                               where a_m.Film_id == movie.Id
+                               select a;
 
-            // Thêm dữ liệu mẫu cho ComboBox
-            directorList.Items.Add("Director 1");
-            directorList.Items.Add("Director 2");
-            directorList.Items.Add("Director 3");
+            foreach (var r in resultsDirector)
+            {
+                ListDirector.Add(r.name + "'" + r.id);
+            }
+
+            var resultsAllDirector = from a2 in App.WeMovieDb.Directors
+                                  select a2;
+            foreach (var a in resultsAllDirector)
+            {
+                ListAllDirector.Add(a.name + "'" + a.id);
+            }
+            directorList.ItemsSource = ListAllDirector;
         }
 
         private void actorList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -52,7 +96,7 @@ namespace WeMovieManager
             // Thêm mục đã chọn từ ComboBox vào ListBox
 
             string selectedActor = actorList.SelectedItem as string;
-            if (selectedActor != null)
+            if (selectedActor != null && !(ListActor).Contains(selectedActor))
             {
                 ListActor.Add(selectedActor);
             }
@@ -75,6 +119,7 @@ namespace WeMovieManager
             string selectedDirector = directorList.SelectedItem as string;
             if (selectedDirector != null)
             {
+                ListDirector.Clear();
                 ListDirector.Add(selectedDirector);
             }
         }
@@ -115,7 +160,37 @@ namespace WeMovieManager
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            var query = from film in App.WeMovieDb.Films where film.id == Movie.Id select film;
+            var result = query.Single();
+            result.name = _movieName.Text;
+            result.rating = Int32.Parse(_IMDb.Text);
+            result.genre = _genre.Text;
+            result.certification = _certification.Text;
+            result.duration = Int32.Parse(_movieDuration.Text);
+            result.publishedYear = DateTime.ParseExact(_premier.Text.Trim(), "d/M/yyyy hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
+            result.plotSummary = _plotSummary.Text;
+            App.WeMovieDb.SaveChanges();
 
+            // delete all actor and add it again
+            App.WeMovieDb.Database.ExecuteSqlCommand("DELETE FROM Film_Actor WHERE Film_id = {0}", Movie.Id);
+
+            foreach(string actor in ListActor)
+            {
+                string[] parts = actor.Split('\'');
+                App.WeMovieDb.Database.ExecuteSqlCommand("INSERT Film_Actor(Film_id, Actor_id) VALUES({0}, {1})", Movie.Id, parts[1]);
+            }
+
+            App.WeMovieDb.Database.ExecuteSqlCommand("DELETE FROM Film_Director WHERE Film_id = {0}", Movie.Id);
+
+            foreach (string director in ListDirector)
+            {
+                string[] parts = director.Split('\'');
+                App.WeMovieDb.Database.ExecuteSqlCommand("INSERT Film_Director(Film_id, Director_id) VALUES({0}, {1})", Movie.Id, parts[1]);
+            }
+
+            ICommand FilmManagementNavigateCommand = new NavigateCommand(new NavigationService(App._navigationStore, () => { return new FilmsManagementViewModel(); }));
+            FilmManagementNavigateCommand.Execute(this);
+            this.Close();
         }
     }
 }

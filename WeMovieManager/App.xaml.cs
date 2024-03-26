@@ -10,7 +10,7 @@ namespace WeMovieManager
     public partial class App : Application
     {
         public static NavigationStore _navigationStore;
-        public static WeMovieEntitiesManager WeMovieDb = new WeMovieEntitiesManager();
+        public static WeMovieEntities WeMovieDb = new WeMovieEntities();
         public App()
         {
             _navigationStore = new NavigationStore();

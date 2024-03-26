@@ -19,7 +19,7 @@ namespace LoginForm
     /// </summary>
     public partial class EditUserProfile : Window
     {
-        public EditUserProfile()
+        public EditUserProfile(string username)
         {
             InitializeComponent();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using WeMovieManager.Model;
 using WeMovieManager.ViewModels;
 
 namespace WeMovieManager.View
@@ -19,7 +20,7 @@ namespace WeMovieManager.View
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             // Retrieve the selected movie
-            FilmsManagementViewModel.Movie selectedMovie = (FilmsManagementViewModel.Movie)MovieListView.SelectedItem;
+            Movie selectedMovie = (Movie)MovieListView.SelectedItem;
 
             if (selectedMovie != null)
             {

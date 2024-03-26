@@ -27,7 +27,7 @@ namespace WeMovieManager.ViewModels
         {
             FilmActorList = new ObservableCollection<FilmActor>();
 
-            using (var db = new WeMovieEntitiesManager())
+            using (var db = new WeMovieEntities())
             {
                 var filmActors = db.Film_Actor.ToList();
                 foreach (var filmActor in filmActors)

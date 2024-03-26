@@ -15,7 +15,7 @@ namespace WeMovieManager.View
     public partial class ReportView : UserControl
     {
         private Dictionary<string, int> movieDictionary;
-        private static WeMovieEntitiesManager db = new WeMovieEntitiesManager();
+        private static WeMovieEntities db = new WeMovieEntities();
 
         public static readonly DependencyProperty NumberOfFilmsProperty =
         DependencyProperty.Register("NumberOfFilms", typeof(int), typeof(ReportView), new PropertyMetadata(0));

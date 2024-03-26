@@ -31,7 +31,7 @@ namespace WeMovieManager.ViewModels
 
             ShowTimeList = new ObservableCollection<Showtime>();
 
-            using (var db = new WeMovieEntitiesManager())
+            using (var db = new WeMovieEntities())
             {
                 var showtimes = db.Showtimes.ToList();
                 foreach (var showtime in showtimes)

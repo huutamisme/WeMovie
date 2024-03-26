@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WeMovieManager.Model;
 using WeMovieManager.ViewModels;
 
 namespace WeMovieManager
@@ -9,9 +10,9 @@ namespace WeMovieManager
     public partial class DetailFilm : Window
     {
         // Receive the selected film from FilmManagementView
-        private FilmsManagementViewModel.Movie selectedFilm;
+        private Movie selectedFilm;
 
-        public DetailFilm(FilmsManagementViewModel.Movie selectedMovie)
+        public DetailFilm(Movie selectedMovie)
         {
             InitializeComponent();
 
