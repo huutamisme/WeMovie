@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
-             d:DesignHeight="650" d:DesignWidth="1080">
+             d:DesignHeight="650" d:DesignWidth="1400">
     <UserControl.Resources>
         <Style x:Key="HyperlinkCustom" TargetType="Hyperlink">
             <Setter Property="TextDecorations" Value="None"/>
@@ -67,7 +67,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="50,-20,0,0" Grid.Row="0">
+        <StackPanel Margin="50,0,0,0" Grid.Row="0" HorizontalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -154,7 +154,7 @@
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Separator Margin="10,-40,50,0" Background="White" Opacity="0.5"/>
+            <Separator Margin="10,-40,0,0" Background="White" Opacity="0.5"/>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both" Grid.Row="1" x:Name="scrollView">
@@ -336,15 +336,17 @@
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                <StackPanel Background="{StaticResource FooterGradientBrush}" Height="Auto" Grid.Row="1" Margin="0 40 0 0">
+                <StackPanel Background="{StaticResource FooterGradientBrush}" Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" Margin="0 40 0 0">
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
                             <ColumnDefinition Width="350"/>
                             <ColumnDefinition Width="350"/>
                             <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="160"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
+                        <StackPanel Grid.Column="1">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Images/logo.png" Height="100" Width="100"/>
                                 <TextBlock Text="WeMovie"
@@ -368,7 +370,7 @@
                                 <Span  FontStyle="Italic" FontWeight="Bold" Foreground="Black">Powered by WPF and MVVM</Span>
                             </TextBlock>
                         </StackPanel>
-                        <StackPanel Grid.Column="1"
+                        <StackPanel Grid.Column="2"
                                        Orientation="Vertical"
                                        Margin="40, 20, 0, 0">
                             <TextBlock Text="Contact Us"
@@ -396,7 +398,7 @@
                                 <TextBlock Text="227 Nguyen Van Cu, District 5, Ho Chi Minh city"  Margin="10,10,0,0" FontWeight="Bold"/>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel Grid.Column="2"
+                        <StackPanel Grid.Column="3"
                                        Orientation="Vertical"
                                        Margin="40, 20, 0, 0">
                             <TextBlock Text="About Us"
