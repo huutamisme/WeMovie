@@ -144,7 +144,7 @@
                         <!--Profit Chart-->
                         <Grid Grid.Row="1" Width="450" HorizontalAlignment="Left">
                             <!--Chart-->
-                            <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+                            <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40" Height="220" VerticalAlignment="Bottom">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
@@ -261,7 +261,7 @@
 
                                 <StackPanel Orientation="Vertical" Width="70" Background="#41518F" Height="90">
                                     <Label Content="Total" FontSize="19" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" BorderThickness="0 0 0 1" BorderBrush="Black"></Label>
-                                    <TextBlock FontSize="20" FontWeight="Bold" Text="30" Foreground="White" HorizontalAlignment="Center"/>
+                                    <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding numberOfFilms}" Foreground="White" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </StackPanel>
 
@@ -269,7 +269,6 @@
                             <lvc:PieChart LegendLocation="Bottom"
                                          Foreground="White"
                                          Background="Transparent"
-                                         Series="{Binding MovieData}"
                                          Height="300"
                                          Width="300" 
                                          x:Name="pieChart"

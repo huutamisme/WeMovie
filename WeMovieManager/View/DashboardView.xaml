@@ -46,8 +46,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <uc:InfoCard Grid.Column="0" Title="Total Films" Number="654,947" Icon="Film" Background1="#827BFF" Background2="#D9B5FF" EllipseBackground1="#B298FD" EllipseBackground2="#E4BBFF"/>
-                <uc:InfoCard Grid.Column="1" Title="Total Showtimes" Number="192,320" Icon="Ticket" Background1="#FD8A87" Background2="#F3AB92" EllipseBackground1="#FBD5A8" EllipseBackground2="#FDB89B"/>
+                <uc:InfoCard Grid.Column="0" Title="Total Films" Number="{Binding TotalFilms}" Icon="Film" Background1="#827BFF" Background2="#D9B5FF" EllipseBackground1="#B298FD" EllipseBackground2="#E4BBFF"/>
+                <uc:InfoCard Grid.Column="1" Title="Total Showtimes" Number="{Binding TotalShowtimes}" Icon="Ticket" Background1="#FD8A87" Background2="#F3AB92" EllipseBackground1="#FBD5A8" EllipseBackground2="#FDB89B"/>
                 <!--<uc:InfoCard Grid.Column="2" Title="Total Revenue" Number="$14,528" Icon="Coins" Background1="#FC84CB" Background2="#FC8FAE" EllipseBackground1="#FC8FAE" EllipseBackground2="#FFABE6"/>-->
             </Grid>
 
@@ -59,7 +59,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Chart-->
-                <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+                <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40" Height="220" VerticalAlignment="Bottom">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -71,30 +71,33 @@
                             <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
                         </StackPanel>
 
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
-                            <TextBlock Text="70000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="60000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 25"/>
-                            <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
-                        </StackPanel>
+                        <Grid Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Orientation="Horizontal" Margin="50 0 0 0">
-                            <TextBlock Text="1" Foreground="#717EB2"/>
-                            <TextBlock Text="2" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="3" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="4" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="5" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="6" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="7" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="8" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="9" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="10" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="11" Foreground="#717EB2" Margin="41 0 0 0"/>
-                            <TextBlock Text="12" Foreground="#717EB2" Margin="41 0 0 0"/>
+                            <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 0" Grid.Row="0"/>
+                            <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 0" Grid.Row="1"/>
+                            <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 0" Grid.Row="2"/>
+                            <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 0" Grid.Row="3"/>
+                            <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 0" Grid.Row="4"/>
+                            <TextBlock Text="0" Foreground="#717EB2" Margin="0 0 0 25" Grid.Row="5"/>
+                        </Grid>
+
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" Orientation="Horizontal" Margin="50 0 0 0">
+                            <TextBlock Text="0" Foreground="#717EB2"/>
+                            <TextBlock Text="1" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="2" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="3" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="4" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="5" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="6" Foreground="#717EB2" Margin="31 0 0 0"/>
+                            <TextBlock Text="7" Foreground="#717EB2" Margin="31 0 0 0"/>
                         </StackPanel>
 
                         <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
@@ -110,7 +113,7 @@
                             </lvc:CartesianChart.DataTooltip>
 
                             <lvc:CartesianChart.AxisX>
-                                <lvc:Axis MinValue="1" MaxValue="5" Foreground="#717EB2" ShowLabels="False">
+                                <lvc:Axis MinValue="0" MaxValue="7" Foreground="#717EB2" ShowLabels="False">
                                     <lvc:Axis.Separator>
                                         <lvc:Separator StrokeThickness="0" Step="1"/>
                                     </lvc:Axis.Separator>
@@ -118,15 +121,15 @@
                             </lvc:CartesianChart.AxisX>
 
                             <lvc:CartesianChart.AxisY>
-                                <lvc:Axis MinValue="0" MaxValue="60000" Foreground="#717EB2" ShowLabels="False">
+                                <lvc:Axis MinValue="0" MaxValue="50000" Foreground="#717EB2" ShowLabels="False">
                                     <lvc:Axis.Separator>
-                                        <lvc:Separator StrokeThickness="0"/>
+                                        <lvc:Separator StrokeThickness="0" Step="10000"/>
                                     </lvc:Axis.Separator>
                                 </lvc:Axis>
                             </lvc:CartesianChart.AxisY>
 
                             <lvc:CartesianChart.Series>
-                                <lvc:LineSeries Name="Slm" Values="20000,17000,30000,15000,50000,30000,20000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
+                                <lvc:LineSeries Name="Sl" Values="30000,20000,30000,40000,20000,30000,23000,20000" StrokeThickness="2" Stroke="#ADA4FD" PointGeometrySize="0">
                                     <lvc:LineSeries.Fill>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <GradientStop Color="#B397E2" Offset="0.4"/>
@@ -154,9 +157,9 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="1">
-                            <uc:Item Title="Avatar" Desc="999999999$" Icon="_1" Background="{StaticResource top1Gradient}"/>
-                            <uc:Item Title="Avengers" Desc="88888888$" Icon="_2" Background="{StaticResource top2Gradient}"/>
-                            <uc:Item Title="Minions" Desc="7777777$" Icon="_3" Background="{StaticResource top3Gradient}"/>
+                            <uc:Item Title="{Binding GrossingFilmList[0].FilmName}" Desc="{Binding GrossingFilmList[0].FilmGross, StringFormat='{}{0}$'}" Icon="_1" Background="{StaticResource top1Gradient}"/>
+                            <uc:Item Title="{Binding GrossingFilmList[1].FilmName}" Desc="{Binding GrossingFilmList[1].FilmGross, StringFormat='{}{0}$'}" Icon="_2" Background="{StaticResource top2Gradient}"/>
+                            <uc:Item Title="{Binding GrossingFilmList[2].FilmName}" Desc="{Binding GrossingFilmList[2].FilmGross, StringFormat='{}{0}$'}" Icon="_3" Background="{StaticResource top3Gradient}"/>
                         </StackPanel>
                     </Grid>
                 </Border>
