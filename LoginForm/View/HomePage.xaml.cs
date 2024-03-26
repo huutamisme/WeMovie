@@ -200,5 +200,10 @@ namespace LoginForm.View
             EditUserProfile editProfile = new EditUserProfile(App.username);
             editProfile.Show();
         }
+
+        private void filterCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

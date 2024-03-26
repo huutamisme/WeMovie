@@ -283,5 +283,31 @@ namespace LoginForm.ViewModels
             UpdateDisplayedFilms_GioVang();
 
         }, canExecute => { return true; });
+
+        public int index { get; set; }
+
+        public RelayCommand SelectionChangedCommand => new RelayCommand(execute =>
+        {
+            if(index == 2)
+            {
+                var sortedItems = new ObservableCollection<Film>(FilmList_BomTan.OrderBy(item => item.publishedYear));
+                FilmList_BomTan.Clear();
+                foreach (var item in sortedItems)
+                {
+                    currentIndex_BomTan = 0;
+                    FilmList_BomTan.Add(item);
+                }
+                UpdateDisplayedFilms_BomTan();
+
+                var sortedItems2 = new ObservableCollection<Film>(FilmList_GioVang.OrderBy(item => item.publishedYear));
+                FilmList_GioVang.Clear();
+                foreach (var item in sortedItems2)
+                {
+                    currentIndex_GioVang = 0;
+                    FilmList_GioVang.Add(item);
+                }
+                UpdateDisplayedFilms_GioVang();
+            }
+        }, canExecute => { return true; });
     }
 }
