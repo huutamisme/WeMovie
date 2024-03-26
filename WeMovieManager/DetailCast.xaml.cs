@@ -16,5 +16,9 @@ namespace WeMovieManager
             // Close the window
             this.Close();
         }
+        public class Film
+        {
+            public string name { get; set; }
+        }
     }
 }

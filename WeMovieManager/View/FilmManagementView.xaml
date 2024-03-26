@@ -85,7 +85,7 @@
                                                 Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding DisplayName}"
+                                                <TextBlock Text="{Binding Name}"
                                                        FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -94,7 +94,7 @@
                                                 Width="300">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding MovieType}"
+                                                <TextBlock Text="{Binding Genre}"
                                                        FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
@@ -103,7 +103,7 @@
                                                 Width="150">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding RunningTime}"
+                                                <TextBlock Text="{Binding Duration}"
                                                        FontSize="18" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>

@@ -76,7 +76,7 @@
                                          materialDesign:ValidationAssist.Background="White"
                                          x:Name="_movieName"
                                          IsReadOnly="True"
-                                         Text="{Binding movieName,Mode=TwoWay}" />
+                                         Text="{Binding Name,Mode=TwoWay}" />
                             </StackPanel>
                         </StackPanel>
                         <!--GENRE-->
@@ -97,7 +97,7 @@
                                      materialDesign:ValidationAssist.Background="White"
                                      x:Name="_genre"
                                      IsReadOnly="True"
-                                     Text="{Binding movieName,Mode=TwoWay}" />
+                                     Text="{Binding Genre,Mode=TwoWay}" />
                         </StackPanel>
 
                         <!--Duration-->
@@ -115,7 +115,7 @@
                                       materialDesign:ValidationAssist.Background="White"
                                       x:Name="_movieDuration"
                                          IsReadOnly="True"
-                                      Text="{Binding movieDuration,Mode=TwoWay}">
+                                      Text="{Binding Duration,Mode=TwoWay}">
                                 </TextBox>
                             </StackPanel>
                         </StackPanel>
@@ -138,7 +138,7 @@
                                        Height="35" />
                                 <TextBox AcceptsReturn="True"
                                          TextWrapping="Wrap"
-                                         FontSize="25"
+                                         FontSize="20"
                                          Background="White"
                                          Padding="0"
                                          VerticalContentAlignment="Center"
@@ -148,7 +148,7 @@
                                          materialDesign:ValidationAssist.Background="White"
                                          x:Name="_movieDirector"
                                          IsReadOnly="True"
-                                         Text="{Binding movieDirector,Mode=TwoWay}">
+                                         Text="{Binding DirectorName,Mode=TwoWay}">
                                 </TextBox>
 
                             </StackPanel>
@@ -162,7 +162,7 @@
                                    Height="35" />
                             <TextBox AcceptsReturn="True"
                                      TextWrapping="Wrap"
-                                     FontSize="25"
+                                     FontSize="20"
                                      Background="White"
                                      Padding="0"
                                      VerticalContentAlignment="Center"
@@ -172,7 +172,7 @@
                                      materialDesign:ValidationAssist.Background="White"
                                      x:Name="_cast"
                                      IsReadOnly="True"
-                                     Text="{Binding movieDirector,Mode=TwoWay}">
+                                     Text="{Binding ActorNames,Mode=TwoWay}">
                             </TextBox>
                         </StackPanel>
 
@@ -196,7 +196,7 @@
                                          materialDesign:ValidationAssist.Background="White"
                                          x:Name="_premier"
                                          IsReadOnly="True"
-                                         Text="{Binding movieDirector,Mode=TwoWay}">
+                                         Text="{Binding PublishedYear,Mode=TwoWay}">
                                 </TextBox>
                             </StackPanel>
                         </StackPanel>
@@ -240,7 +240,7 @@
                                              Width="400"
                                              Foreground="Black"
                                              IsReadOnly="True"
-                                             Text="{Binding movieDes,Mode=TwoWay}" />
+                                             Text="{Binding Summary,Mode=TwoWay}" />
 
                                 </StackPanel>
                                 <StackPanel Margin="30,20,0,0"
@@ -252,7 +252,7 @@
                                             Width="210"
                                             Height="300">
                                         <Image x:Name="imgframe"
-                                               Source="{Binding ImageSource,Mode=TwoWay}" />
+                                               Source="{Binding Poster,Mode=TwoWay}" />
                                     </Border>
                                 </StackPanel>
                             </StackPanel>
