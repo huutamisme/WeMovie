@@ -53,7 +53,7 @@ namespace WeMovieManager
             result.quantities = Int32.Parse(quantityToBind.Text);
             if(_movieDate.Text.Length > 0)
             {
-                result.releaseDate = _movieDate.DisplayDate;
+                result.releaseDate = _movieDate.DisplayDate.Date;
             }
             App.WeMovieDb.SaveChanges();
 

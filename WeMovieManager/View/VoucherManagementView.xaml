@@ -167,6 +167,11 @@
                                                             <fa:IconImage Icon="Trash"
                                                                       Width="30"
                                                                       Height="30">
+                                                                <i:Interaction.Triggers>
+                                                                    <i:EventTrigger EventName="MouseDown">
+                                                                        <i:InvokeCommandAction Command="{Binding deleteButtonCommand}" />
+                                                                    </i:EventTrigger>
+                                                                </i:Interaction.Triggers>
                                                             </fa:IconImage>
                                                         </StackPanel>
                                                     </Border>
