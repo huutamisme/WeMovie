@@ -134,7 +134,7 @@
                     </StackPanel>
                 </Border>
                 <StackPanel Grid.Column="4" Margin="30,10,0,0">
-                    <Grid Height="120">
+                    <Grid Height="120" x:Name="notLoginGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -143,18 +143,21 @@
                             <Image Source="/Images/unknown.png" Stretch="UniformToFill" Width="20" Height="20"/>
                         </Border>
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" Margin="10,0,0,0">
-                        <Hyperlink Style="{StaticResource HyperlinkCustom}">
+                        <Hyperlink Style="{StaticResource HyperlinkCustom}" Hyperlink.Click="Hyperlink_Click">
                             <TextBlock Text="Sign In"/>
                         </Hyperlink>
                         /
-                        <Hyperlink Style="{StaticResource HyperlinkCustom}">
+                        <Hyperlink Style="{StaticResource HyperlinkCustom}" Hyperlink.Click="Hyperlink_Click">
                             <TextBlock Text="Sign Up"/>
                         </Hyperlink>
                     </TextBlock>
                     </Grid>
+                    <Grid x:Name="loginGrid" Visibility="Hidden">
+                        <Button x:Name="profileButton" Content="Welcome" Margin="19,-63,-19,63" Click="profileButton_Click"/>
+                    </Grid>
                 </StackPanel>
             </Grid>
-            <Separator Margin="10,-40,0,0" Background="White" Opacity="0.5"/>
+            <Separator Background="White" Opacity="0.5"/>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" ScrollViewer.PanningMode="Both" Grid.Row="1" x:Name="scrollView">

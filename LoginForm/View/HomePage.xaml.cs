@@ -25,6 +25,10 @@ namespace LoginForm.View
         public HomePage()
         {
             InitializeComponent();
+            if (App.isLoggedIn)
+            {
+                showLogin();
+            }
             backImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/back.png";
             nextImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/next.png";
             durationImagePath = $"pack://application:,,,/{Assembly.GetExecutingAssembly().GetName().Name};component/Images/Film helper/clock.png";
@@ -38,6 +42,16 @@ namespace LoginForm.View
             };
             filterCombobox.ItemsSource = field_to_sort;
             filterCombobox.SelectedIndex = 0;
+        }
+
+        public void showLogin()
+        {
+            if(notLoginGrid != null)
+            {
+                notLoginGrid.Visibility = Visibility.Hidden;
+                loginGrid.Visibility = Visibility.Visible;
+                profileButton.Content = "Welcome, " + App.username;
+            }
         }
 
         private void FilmGrid_MouseEnter(object sender, MouseEventArgs e)
@@ -175,6 +189,16 @@ namespace LoginForm.View
             // thực hiện search
         }
 
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login(this);
+            login.Show();
+        }
 
+        private void profileButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditUserProfile editProfile = new EditUserProfile();
+            editProfile.Show();
+        }
     }
 }
