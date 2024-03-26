@@ -569,7 +569,7 @@
     <Resource Include="Images\Director\Gore_Verbinski.jpg" />
     <Resource Include="Images\Director\Guy_Ritchie.jpg" />
     <Resource Include="Images\Director\J.J._Abrams.jpg" />
-    <Resource Include="Images\Director\James _Cameron.jpg" />
+    <Resource Include="Images\Director\James_Cameron.jpg" />
     <Resource Include="Images\Director\Joe_Russell.jpg" />
     <Resource Include="Images\Director\Jon_Favreau.jpg" />
     <Resource Include="Images\Director\Justin_Lin.jpg" />
@@ -581,11 +581,12 @@
     <Resource Include="Images\Director\Ngo_Thanh_Van.png" />
     <Resource Include="Images\Director\Nguyen_Phan_Quang_Binh.jpg" />
     <Resource Include="Images\Director\Nguyen_Quang_Dung.jpg" />
+    <Resource Include="Images\Director\Peter_Sohn.jpg" />
     <Resource Include="Images\Director\Ryan_Coogler.jpg" />
     <Resource Include="Images\Director\Todd_Phillips.jpg" />
     <Resource Include="Images\Director\Tran_Buu_Loc.jpg" />
     <Resource Include="Images\Director\Tran_Thanh.png" />
-    <Resource Include="Images\Director\VictorVu.jpg" />
+    <Resource Include="Images\Director\Victor_Vu.jpg" />
     <Resource Include="Images\error.png" />
     <Resource Include="Images\ErrorIcon.png" />
     <Resource Include="Images\Film\Aladdin.jpg" />
@@ -598,6 +599,7 @@
     <Resource Include="Images\Film\Co_Ba_Sai_Gon.jpg" />
     <Resource Include="Images\Film\Cuop_Bien_Vung_Caribbe_2.jpg" />
     <Resource Include="Images\Film\Dau_Truong_Sinh_Tu_2.jpg" />
+    <Resource Include="Images\Film\Em_Chua_18.jpg" />
     <Resource Include="Images\Film\Fast_And_Furious_9.jpg" />
     <Resource Include="Images\Film\Finding_Dory.jpg" />
     <Resource Include="Images\Film\Hai_Phuong.png" />
@@ -627,7 +629,6 @@
     <Resource Include="Images\succes.png" />
     <Resource Include="Images\unknown.png" />
     <Resource Include="Images\warning.png" />
-    <Resource Include="Images\Film\Em_Chua_18.jpg" />
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>

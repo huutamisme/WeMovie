@@ -531,7 +531,7 @@
     <Resource Include="Images\Actor\Sigourney_Weaver.jpg" />
     <Resource Include="Images\Actor\Zoe_Saldana.jpg" />
     <Resource Include="Images\Director\Guy_Ritchie.jpg" />
-    <Resource Include="Images\Director\James _Cameron.jpg" />
+    <Resource Include="Images\Director\James_Cameron.jpg" />
     <Resource Include="Images\Film\Avatar.jpg" />
     <Resource Include="Images\Film\Avengers.jpg" />
     <Resource Include="Images\Film\Bay_Rong.jpg" />
@@ -583,7 +583,6 @@
     <Resource Include="Images\Actor\Orlando_Bloom.jpg" />
     <Resource Include="Images\Actor\Elizabeth_Banks.jpg" />
     <Resource Include="Images\Actor\Jennifer_Lawrence.jpg" />
-    <Resource Include="Images\Actor\Josh_Hutcherson.png" />
     <Resource Include="Images\Actor\Huy_Khanh.jpg" />
     <Resource Include="Images\Actor\Kaity_Nguyen.png" />
     <Resource Include="Images\Actor\Kieu_Minh_Tuan.jpg" />
@@ -661,9 +660,11 @@
     <Resource Include="Images\Director\Todd_Phillips.jpg" />
     <Resource Include="Images\Director\Tran_Buu_Loc.jpg" />
     <Resource Include="Images\Director\Tran_Thanh.png" />
-    <Resource Include="Images\Director\VictorVu.jpg" />
+    <Resource Include="Images\Director\Victor_Vu.jpg" />
     <Resource Include="Images\Director\Ngo_Thanh_Van.png" />
     <Resource Include="Images\Film\Em_Chua_18.jpg" />
+    <Resource Include="Images\Director\Peter_Sohn.jpg" />
+    <Resource Include="Images\Actor\Josh_Hutcherson.png" />
     <Content Include="WeMovie.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeMovie.edmx</DependentUpon>
